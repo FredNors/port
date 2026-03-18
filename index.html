@@ -83,7 +83,7 @@
       display: grid;
       grid-template-columns: 1fr auto;
       align-items: end;
-      padding: 0 48px 96px;
+      padding: 140px 48px 96px;
       position: relative;
       overflow: hidden;
     }
@@ -202,23 +202,14 @@
     }
     .work-header a:hover { color: var(--text); }
 
-    .work-block {
-      display: grid;
-      grid-template-columns: 1fr 360px;
-      gap: 80px;
-      align-items: start;
-      margin-bottom: 80px;
-    }
-    .work-block:last-child { margin-bottom: 0; }
-
     .projects-list { display: flex; flex-direction: column; }
 
     .project-row {
       display: grid;
-      grid-template-columns: 1fr auto auto;
+      grid-template-columns: 1fr 220px 220px;
       align-items: center;
       gap: 24px;
-      padding: 28px 0;
+      padding: 24px 0;
       border-bottom: 1px solid var(--border);
       border-top: 1px solid transparent;
       text-decoration: none;
@@ -230,30 +221,30 @@
 
     .project-row-title {
       font-family: var(--font-serif);
-      font-size: 1.6rem;
+      font-size: 1.35rem;
       font-weight: 300;
       letter-spacing: -.01em;
     }
-    .project-row-tags { display: flex; gap: 12px; }
+    .project-row-desc {
+      font-size: .82rem;
+      color: var(--muted);
+      margin-top: 3px;
+      font-weight: 300;
+    }
     .project-tag {
-      font-size: .75rem;
+      font-size: .72rem;
       letter-spacing: .06em;
       text-transform: uppercase;
       color: var(--muted);
     }
-    .project-row-year {
-      font-size: .9rem;
+    .project-row-partner {
+      font-size: .82rem;
       color: var(--muted);
       text-align: right;
       white-space: nowrap;
+      font-weight: 300;
     }
 
-    .work-photo {
-      width: 100%;
-      aspect-ratio: 3/2;
-      object-fit: cover;
-      display: block;
-    }
 
     /* ── Process ── */
     #process { border-top: 1px solid var(--border); }
@@ -426,14 +417,14 @@
     @media (max-width: 1024px) {
       .hero { grid-template-columns: 1fr; }
       .hero-illustration { display: none; }
-      .work-block { grid-template-columns: 1fr; }
-      .work-photo { max-height: 260px; width: 100%; }
+      .project-row { grid-template-columns: 1fr; gap: 6px; }
+      .project-row-partner { text-align: left; }
     }
     @media (max-width: 900px) {
       nav { padding: 20px 24px; }
       .nav-links { display: none; }
       section { padding: 80px 24px; }
-      .hero { padding: 0 24px 72px; }
+      .hero { padding: 120px 24px 72px; }
       .process-steps { grid-template-columns: 1fr 1fr; gap: 40px; }
       #about { grid-template-columns: 1fr; gap: 56px; }
       .testimonial-row { grid-template-columns: 1fr; gap: 20px; }
@@ -488,30 +479,87 @@
       <a href="#">View all</a>
     </div>
 
-    <div class="work-block fade-up">
-      <div class="projects-list">
-        <a href="orbit.html" class="project-row">
-          <div class="project-row-title">Orbit — Analytics Dashboard</div>
-          <div class="project-row-tags"><span class="project-tag">SaaS</span><span class="project-tag">B2B</span></div>
-          <div class="project-row-year">2024</div>
-        </a>
-        <a href="tempo.html" class="project-row">
-          <div class="project-row-title">Tempo — Time Tracking App</div>
-          <div class="project-row-tags"><span class="project-tag">Mobile</span><span class="project-tag">iOS</span></div>
-          <div class="project-row-year">2024</div>
-        </a>
-        <a href="verdure.html" class="project-row">
-          <div class="project-row-title">Verdure — Design System</div>
-          <div class="project-row-tags"><span class="project-tag">Design System</span></div>
-          <div class="project-row-year">2023</div>
-        </a>
-        <a href="strata.html" class="project-row">
-          <div class="project-row-title">Strata — Shopping Experience</div>
-          <div class="project-row-tags"><span class="project-tag">E-Commerce</span><span class="project-tag">Web</span></div>
-          <div class="project-row-year">2023</div>
-        </a>
-      </div>
-      <img class="work-photo" src="assets/work-photo.png" alt="Project overview" />
+    <div class="projects-list fade-up">
+      <a href="#" class="project-row">
+        <div class="project-row-main">
+          <div class="project-row-title">Fælles Offentlig Platform</div>
+          <div class="project-row-desc">Internet-based therapy for the Danish psychiatric system</div>
+        </div>
+        <span class="project-tag">Digital Psychiatry</span>
+        <div class="project-row-partner"></div>
+      </a>
+      <a href="#" class="project-row">
+        <div class="project-row-main">
+          <div class="project-row-title">MinLæge & Gravitate Health</div>
+          <div class="project-row-desc">Intelligent, personalized medication leaflets</div>
+        </div>
+        <span class="project-tag">Digital Health / Pharma</span>
+        <div class="project-row-partner"></div>
+      </a>
+      <a href="#" class="project-row">
+        <div class="project-row-main">
+          <div class="project-row-title">Samblik Multisyg</div>
+          <div class="project-row-desc">Care coordination for multimorbid patients</div>
+        </div>
+        <span class="project-tag">Shared Care</span>
+        <div class="project-row-partner">Steno Diabetes Center Aarhus</div>
+      </a>
+      <a href="#" class="project-row">
+        <div class="project-row-main">
+          <div class="project-row-title">Bedside</div>
+          <div class="project-row-desc">Tablet-based electronic health record for the ward</div>
+        </div>
+        <span class="project-tag">MedTech / EHR</span>
+        <div class="project-row-partner"></div>
+      </a>
+      <a href="#" class="project-row">
+        <div class="project-row-main">
+          <div class="project-row-title">Fælles MedicinBeslutningsstøtte (FMB)</div>
+          <div class="project-row-desc">National evidence-based medication decision support system</div>
+        </div>
+        <span class="project-tag">Clinical Decision Support</span>
+        <div class="project-row-partner">Region Nordjylland</div>
+      </a>
+      <a href="#" class="project-row">
+        <div class="project-row-main">
+          <div class="project-row-title">CDSS (+prio)</div>
+          <div class="project-row-desc">AI tool helping clinicians identify patients at risk of acute hospitalization</div>
+        </div>
+        <span class="project-tag">Health AI</span>
+        <div class="project-row-partner">Region Midt / Enversion</div>
+      </a>
+      <a href="#" class="project-row">
+        <div class="project-row-main">
+          <div class="project-row-title">Jyske Bank</div>
+          <div class="project-row-desc">New digital client portal</div>
+        </div>
+        <span class="project-tag">Fintech / Banking</span>
+        <div class="project-row-partner"></div>
+      </a>
+      <a href="#" class="project-row">
+        <div class="project-row-main">
+          <div class="project-row-title">Ewii</div>
+          <div class="project-row-desc">Consumer energy management platform</div>
+        </div>
+        <span class="project-tag">Sustainable Energy</span>
+        <div class="project-row-partner"></div>
+      </a>
+      <a href="#" class="project-row">
+        <div class="project-row-main">
+          <div class="project-row-title">Arla Mat</div>
+          <div class="project-row-desc">Cooking inspiration platform for Arla in Sweden</div>
+        </div>
+        <span class="project-tag">Food / Consumer</span>
+        <div class="project-row-partner"></div>
+      </a>
+      <a href="#" class="project-row">
+        <div class="project-row-main">
+          <div class="project-row-title">Compassana</div>
+          <div class="project-row-desc">Product vision for the Swiss private healthcare market</div>
+        </div>
+        <span class="project-tag">Digital Health / Private Insurance</span>
+        <div class="project-row-partner">Bluespace Ventures</div>
+      </a>
     </div>
   </section>
 
