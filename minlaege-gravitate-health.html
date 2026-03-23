@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MinLæge & Gravitate Health · Frederik Korsgaard</title>
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --surface: #f7f7f5;
+      --border: #e8e8e4;
+      --text: #111110;
+      --muted: #888882;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --font-serif: 'Fraunces', Georgia, serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 48px;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent;
+      transition: border-color .3s;
+    }
+    nav.scrolled { border-color: var(--border); }
+    .nav-logo { font-size: 1.05rem; font-weight: 500; letter-spacing: .01em; color: var(--text); text-decoration: none; }
+    .nav-links { display: flex; gap: 36px; list-style: none; align-items: center; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 1rem; font-weight: 400; transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { color: var(--text) !important; border-bottom: 1.25px solid var(--text); padding-bottom: 1px; }
+
+    section { padding: 120px 48px; }
+    .section-tag { font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 400; margin-bottom: 24px; }
+    h2 { font-family: var(--font-serif); font-size: clamp(2.2rem, 4vw, 4rem); font-weight: 300; line-height: 1.15; letter-spacing: -.015em; }
+
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 120px 48px 96px; }
+    .hero-eyebrow { font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 400; margin-bottom: 28px; }
+    .hero h1 { font-family: var(--font-serif); font-size: clamp(3.5rem, 8vw, 8rem); font-weight: 300; line-height: 1.05; letter-spacing: -.02em; max-width: 900px; margin-bottom: 32px; }
+    .hero-tagline { color: var(--muted); font-size: 1.15rem; font-weight: 300; line-height: 1.7; max-width: 520px; margin-bottom: 64px; }
+    .hero-image { width: 100%; aspect-ratio: 16/9; object-fit: cover; object-position: top; display: block; border-radius: 4px; background: var(--surface); }
+
+    .overview { border-top: 1px solid var(--border); }
+    .overview-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 64px; }
+    .overview-label { font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 400; margin-bottom: 20px; }
+    .overview-item p { color: var(--muted); font-size: 1rem; font-weight: 300; line-height: 1.75; }
+
+    .content-section { border-top: 1px solid var(--border); display: grid; grid-template-columns: 1fr 1fr; gap: 120px; align-items: start; }
+    .content-section h2 { position: sticky; top: 120px; }
+    .content-body { padding-top: 8px; }
+    .content-body p { color: var(--muted); font-size: 1.1rem; font-weight: 300; line-height: 1.8; }
+    .content-body p + p { margin-top: 24px; }
+
+    .screenshot-strip { padding: 0 48px 120px; display: grid; gap: 16px; }
+    .screenshot-strip.cols-2 { grid-template-columns: 1fr 1fr; }
+    .screenshot-strip img { width: 100%; display: block; border-radius: 4px; border: 1px solid var(--border); }
+
+    .results { border-top: 1px solid var(--border); }
+    .results-header { margin-bottom: 80px; }
+    .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
+    .result-stat { font-family: var(--font-serif); font-size: clamp(3rem, 5vw, 5rem); font-weight: 300; line-height: 1; letter-spacing: -.02em; margin-bottom: 16px; }
+    .result-label { font-size: .9rem; color: var(--muted); font-weight: 300; line-height: 1.6; }
+
+    .next-project { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 0 48px; }
+    .next-project a { display: flex; justify-content: space-between; align-items: center; padding: 80px 0; text-decoration: none; color: var(--text); transition: opacity .2s; }
+    .next-project a:hover { opacity: .45; }
+    .next-label { font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 400; margin-bottom: 16px; }
+    .next-title { font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 4rem); font-weight: 300; font-style: italic; letter-spacing: -.015em; line-height: 1.1; }
+    .next-arrow { font-family: var(--font-serif); font-size: 3rem; font-weight: 300; color: var(--muted); flex-shrink: 0; }
+
+    footer { padding: 28px 48px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; color: var(--muted); font-size: .82rem; font-weight: 300; }
+
+    .fade-up { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
+    .fade-up.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 900px) {
+      nav { padding: 20px 24px; }
+      .nav-links { display: none; }
+      section { padding: 80px 24px; }
+      .hero { padding: 100px 24px 72px; }
+      .overview-grid { grid-template-columns: 1fr; gap: 40px; }
+      .content-section { grid-template-columns: 1fr; gap: 40px; }
+      .content-section h2 { position: static; }
+      .results-grid { grid-template-columns: 1fr; gap: 40px; }
+      .screenshot-strip { padding: 0 24px 80px; }
+      .screenshot-strip.cols-2 { grid-template-columns: 1fr; }
+      .next-project { padding: 0 24px; }
+      .next-project a { padding: 60px 0; }
+      footer { flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="nav">
+    <a href="index.html" class="nav-logo">Frederik Korsgaard</a>
+    <ul class="nav-links">
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="index.html#process">Process</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Get in touch</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div>
+      <p class="hero-eyebrow fade-up">Digital Health, Pharma &middot; 2024 –</p>
+      <h1 class="fade-up" style="transition-delay:.06s">MinLæge &<br>Gravitate Health</h1>
+      <p class="hero-tagline fade-up" style="transition-delay:.12s">Replacing the paper leaflet with intelligent, personalized medication information — designed and validated inside Denmark's most-used health app</p>
+    </div>
+    <img class="hero-image fade-up" style="transition-delay:.18s" src="assets/Gravitate/medicininformation.webp" alt="MinLæge — Medication information" />
+  </section>
+
+  <section class="overview">
+    <div class="overview-grid">
+      <div class="overview-item fade-up">
+        <div class="overview-label">The Challenge</div>
+        <p>Paper medication leaflets are one of the most important patient safety tools we have — and almost nobody reads them. Dense, multi-language documents in tiny fonts where it's nearly impossible to find what's actually relevant to you. The current format fails both patients and pharmaceutical companies.</p>
+      </div>
+      <div class="overview-item fade-up" style="transition-delay:.08s">
+        <div class="overview-label">My Role</div>
+        <p>Lead Designer — concept development, prototyping, user testing, and validation across two research rounds within the MinLæge app.</p>
+      </div>
+      <div class="overview-item fade-up" style="transition-delay:.16s">
+        <div class="overview-label">Outcome</div>
+        <p>Validated with 135 patients through unmoderated testing and surveys, achieving strong SUS and NPS scores. Designed as part of Gravitate Health, an EU-funded public-private partnership with 41 members across Europe and the US.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <h2 class="fade-up">From paper<br>to personal</h2>
+    <div class="content-body fade-up" style="transition-delay:.08s">
+      <p>The core idea is the G-Lens — a layer of intelligence on top of the standard electronic product information that filters and highlights what's relevant to you. Instead of scrolling through pages of dense text, the patient sees their leaflet adapted to their situation: their age, conditions, and other medications.</p>
+      <p>We designed and validated an implementation of the G-Lens inside MinLæge, Denmark's most widely used health app. The goal was to make the leaflet feel like something you'd actually want to read — clear, scannable, and personal.</p>
+    </div>
+  </section>
+
+  <div class="screenshot-strip cols-2">
+    <img src="assets/Gravitate/medicininformation.webp" alt="MinLæge — Medication information overview" />
+    <img src="assets/Gravitate/epi-highlight.webp" alt="MinLæge — EPI with G-Lens highlight" />
+  </div>
+
+  <section class="content-section">
+    <h2 class="fade-up">Testing with<br>real patients</h2>
+    <div class="content-body fade-up" style="transition-delay:.08s">
+      <p>We ran the project in two rounds. The first focused on concept design — exploring how personalized leaflets could work within the existing MinLæge experience. The second was a larger validation round with 135 patients using unmoderated testing and surveys to measure usability, comprehension, and trust.</p>
+      <p>The results confirmed that patients found the personalized format significantly easier to navigate and more relevant than the traditional leaflet. They actually engaged with the information instead of ignoring it.</p>
+    </div>
+  </section>
+
+  <section class="results">
+    <div class="results-header fade-up">
+      <p class="section-tag">Outcomes</p>
+      <h2>Where it landed</h2>
+    </div>
+    <div class="results-grid">
+      <div class="fade-up">
+        <div class="result-stat">135</div>
+        <div class="result-label">Patients in the validation study</div>
+      </div>
+      <div class="fade-up" style="transition-delay:.08s">
+        <div class="result-stat">Strong<br>SUS</div>
+        <div class="result-label">High usability score across patient groups</div>
+      </div>
+      <div class="fade-up" style="transition-delay:.16s">
+        <div class="result-stat">Strong<br>NPS</div>
+        <div class="result-label">Patients would recommend the digital leaflet experience</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="next-project">
+    <a href="telemedicine-business-models.html">
+      <div>
+        <p class="next-label">Next project</p>
+        <p class="next-title">Business Models for Telemedicine</p>
+      </div>
+      <span class="next-arrow" aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
+
+  <footer>
+    <span>© 2026 Frederik Korsgaard</span>
+    <span>Copenhagen, Denmark</span>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

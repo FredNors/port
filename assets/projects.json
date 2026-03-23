@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1,
+    "slug": "faelles-offentlig-platform",
+    "client": "Fælles Offentlig Platform",
+    "partner": null,
+    "domain": "Digital Psychiatry",
+    "description": "Internet-based therapy for the Danish psychiatric system",
+    "challenge": "Millions of citizens fall into a treatment gap — too unwell for general practice, but not sick enough to be referred to a psychiatric department. Denmark needed a shared national platform to deliver digital therapy at scale.",
+    "role": "Product Designer — product strategy, user research, concept development, wireframing, prototyping, and user testing across three interconnected platforms.",
+    "outcome": "Currently in development as the designated national solution for online mental health treatment in Denmark. Designed to meet WCAG and MDR requirements.",
+    "image": ""
+  },
+  {
+    "id": 2,
+    "slug": "arla-mat",
+    "client": "Arla Mat",
+    "partner": null,
+    "domain": "Food / Consumer",
+    "description": "Cooking inspiration platform for Arla in Sweden",
+    "challenge": "Arla Sweden has a huge library of recipes designed to inspire people to cook more. But the experience wasn't personal enough — and engagement and retention were declining.",
+    "role": "Design Lead — product vision and strategy, concept development, A/B testing, and analytics.",
+    "outcome": "5x increase in cooking activity, retention stabilised after a declining trend, and the app went from a ranking of 72 to 33 in the App Store.",
+    "image": ""
+  },
+  {
+    "id": 3,
+    "slug": "bedside",
+    "client": "Bedside",
+    "partner": null,
+    "domain": "MedTech / EHR",
+    "description": "Tablet-based electronic health record for the ward",
+    "challenge": "A national tender for a next-generation patient record system — designed for tablet, built on modern technology, and aimed at making clinicians' daily work easier.",
+    "role": "Design Lead — concept development, clinical narrative, interactive prototype, and pitch delivery.",
+    "outcome": "Selected as one of 2 out of 35 companies to continue the dialogue with the national health ministry.",
+    "image": ""
+  },
+  {
+    "id": 4,
+    "slug": "jyske-bank",
+    "client": "Jyske Bank",
+    "partner": null,
+    "domain": "Fintech / Banking",
+    "description": "New digital client portal",
+    "challenge": "New customers were left waiting without knowing their status, bounced between employees, and forced to chase the bank themselves. Many lost patience before they even got started.",
+    "role": "Product Designer — user research, mystery shopping, journey mapping, design sprint facilitation, prototyping, and user testing.",
+    "outcome": "The initial sprint led to a year-long engagement where the solution was developed and launched. It has since been sold to an organisation serving 8 major Danish banks.",
+    "image": ""
+  },
+  {
+    "id": 5,
+    "slug": "cdss",
+    "client": "CDSS (+prio)",
+    "partner": "Region Midt / Enversion",
+    "domain": "Health AI",
+    "description": "AI tool helping clinicians identify patients at risk of acute hospitalization",
+    "challenge": "Enversion had built an AI model that could predict the risk of acute hospitalisation. The technology worked — but when pitched to GPs, there was little interest. The model needed a real problem to solve.",
+    "role": "Product Designer — market research, literature review, fieldwork, interviews, product vision and strategy.",
+    "outcome": "Identified multiple validated use cases including triage of out-of-hours calls and resource prioritisation in emergency departments — directly impacting length of stay and admission rates.",
+    "image": ""
+  },
+  {
+    "id": 6,
+    "slug": "minlaege-gravitate-health",
+    "client": "MinLæge & Gravitate Health",
+    "partner": null,
+    "domain": "Digital Health / Pharma",
+    "description": "Intelligent, personalized medication leaflets",
+    "challenge": "Paper medication leaflets are one of the most important patient safety tools we have — and almost nobody reads them. The current format fails both patients and pharmaceutical companies.",
+    "role": "Lead Designer — concept development, prototyping, user testing, and validation across two research rounds within the MinLæge app.",
+    "outcome": "Validated with 135 patients through unmoderated testing and surveys, achieving strong SUS and NPS scores.",
+    "image": ""
+  },
+  {
+    "id": 7,
+    "slug": "telemedicine-business-models",
+    "client": "Business Models for Telemedicine",
+    "partner": "Aarhus Universitetshospital",
+    "domain": "Research / Health Economics",
+    "description": "Published research on what makes telemedicine commercially sustainable",
+    "challenge": "Denmark produces a lot of telemedicine research. But very few projects make the leap from research to a sustainable product. The question was: what separates the ones that survive?",
+    "role": "Sole Researcher — project planning, case identification, qualitative interviews, business model analysis, and peer-reviewed publication.",
+    "outcome": "Published in Health Services Management Research. Identified the business model patterns that distinguish commercially sustainable telemedicine.",
+    "image": ""
+  }
+]

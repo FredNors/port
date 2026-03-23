@@ -113,32 +113,6 @@
       font-weight: 300;
     }
 
-    .hero-actions {
-      display: flex;
-      gap: 32px;
-      margin-top: 48px;
-      align-items: center;
-    }
-
-    .btn-primary {
-      font-size: .9rem;
-      font-weight: 500;
-      color: var(--text);
-      text-decoration: none;
-      border-bottom: 1px solid var(--text);
-      padding-bottom: 2px;
-      transition: color .2s, border-color .2s;
-    }
-    .btn-primary:hover { color: var(--muted); border-color: var(--muted); }
-
-    .btn-ghost {
-      font-size: .9rem;
-      font-weight: 400;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color .2s;
-    }
-    .btn-ghost:hover { color: var(--text); }
 
     .hero-illustration {
       position: relative;
@@ -205,11 +179,11 @@
     .projects-list { display: flex; flex-direction: column; }
 
     .project-row {
-      display: grid;
-      grid-template-columns: 1fr 220px 220px;
-      align-items: center;
-      gap: 24px;
-      padding: 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 40px;
+      padding: 28px 0;
       border-bottom: 1px solid var(--border);
       border-top: 1px solid transparent;
       text-decoration: none;
@@ -221,28 +195,16 @@
 
     .project-row-title {
       font-family: var(--font-serif);
-      font-size: 1.35rem;
+      font-size: 1.6rem;
       font-weight: 300;
       letter-spacing: -.01em;
-    }
-    .project-row-desc {
-      font-size: .82rem;
-      color: var(--muted);
-      margin-top: 3px;
-      font-weight: 300;
     }
     .project-tag {
       font-size: .72rem;
       letter-spacing: .06em;
       text-transform: uppercase;
       color: var(--muted);
-    }
-    .project-row-partner {
-      font-size: .82rem;
-      color: var(--muted);
-      text-align: right;
       white-space: nowrap;
-      font-weight: 300;
     }
 
 
@@ -320,34 +282,6 @@
       font-weight: 300;
     }
 
-    /* ── Testimonials ── */
-    #testimonials { border-top: 1px solid var(--border); }
-
-    .testimonials-header { margin-bottom: 80px; }
-
-    .testimonials-list { display: flex; flex-direction: column; }
-
-    .testimonial-row {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 48px;
-      padding: 48px 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .testimonial-row:first-child { border-top: 1px solid var(--border); }
-
-    .testimonial-author-name { font-size: .95rem; font-weight: 500; }
-    .testimonial-author-role { font-size: .85rem; color: var(--muted); margin-top: 4px; font-weight: 300; }
-
-    .testimonial-quote {
-      font-family: var(--font-serif);
-      font-size: 1.4rem;
-      font-weight: 300;
-      line-height: 1.65;
-      color: var(--text);
-      font-style: italic;
-    }
-
     /* ── Contact ── */
     #contact { border-top: 1px solid var(--border); }
 
@@ -417,8 +351,7 @@
     @media (max-width: 1024px) {
       .hero { grid-template-columns: 1fr; }
       .hero-illustration { display: none; }
-      .project-row { grid-template-columns: 1fr; gap: 6px; }
-      .project-row-partner { text-align: left; }
+      .project-row { flex-direction: column; align-items: flex-start; gap: 4px; }
     }
     @media (max-width: 900px) {
       nav { padding: 20px 24px; }
@@ -457,10 +390,6 @@
       <p class="hero-sub">
         I craft thoughtful digital experiences — from early strategy through pixel-perfect delivery — for startups and scale-ups.
       </p>
-      <div class="hero-actions">
-        <a href="#work" class="btn-primary">View my work</a>
-        <a href="#about" class="btn-ghost">About me</a>
-      </div>
     </div>
     <div class="hero-illustration" aria-hidden="true">
       <img class="img-sun" src="assets/sun.svg" alt="" />
@@ -480,85 +409,37 @@
     </div>
 
     <div class="projects-list fade-up">
-      <a href="#" class="project-row">
-        <div class="project-row-main">
-          <div class="project-row-title">Fælles Offentlig Platform</div>
-          <div class="project-row-desc">Internet-based therapy for the Danish psychiatric system</div>
-        </div>
+      <a href="faelles-offentlig-platform.html" class="project-row">
+        <div class="project-row-title">Fælles Offentlig Platform</div>
         <span class="project-tag">Digital Psychiatry</span>
-        <div class="project-row-partner"></div>
       </a>
-      <a href="#" class="project-row">
-        <div class="project-row-main">
-          <div class="project-row-title">MinLæge & Gravitate Health</div>
-          <div class="project-row-desc">Intelligent, personalized medication leaflets</div>
-        </div>
-        <span class="project-tag">Digital Health / Pharma</span>
-        <div class="project-row-partner"></div>
-      </a>
-      <a href="#" class="project-row">
-        <div class="project-row-main">
-          <div class="project-row-title">Samblik Multisyg</div>
-          <div class="project-row-desc">Care coordination for multimorbid patients</div>
-        </div>
-        <span class="project-tag">Shared Care</span>
-        <div class="project-row-partner">Steno Diabetes Center Aarhus</div>
-      </a>
-      <a href="#" class="project-row">
-        <div class="project-row-main">
-          <div class="project-row-title">Bedside</div>
-          <div class="project-row-desc">Tablet-based electronic health record for the ward</div>
-        </div>
-        <span class="project-tag">MedTech / EHR</span>
-        <div class="project-row-partner"></div>
-      </a>
-      <a href="#" class="project-row">
-        <div class="project-row-main">
-          <div class="project-row-title">Fælles MedicinBeslutningsstøtte (FMB)</div>
-          <div class="project-row-desc">National evidence-based medication decision support system</div>
-        </div>
-        <span class="project-tag">Clinical Decision Support</span>
-        <div class="project-row-partner">Region Nordjylland</div>
-      </a>
-      <a href="#" class="project-row">
-        <div class="project-row-main">
-          <div class="project-row-title">CDSS (+prio)</div>
-          <div class="project-row-desc">AI tool helping clinicians identify patients at risk of acute hospitalization</div>
-        </div>
-        <span class="project-tag">Health AI</span>
-        <div class="project-row-partner">Region Midt / Enversion</div>
-      </a>
-      <a href="#" class="project-row">
-        <div class="project-row-main">
-          <div class="project-row-title">Jyske Bank</div>
-          <div class="project-row-desc">New digital client portal</div>
-        </div>
-        <span class="project-tag">Fintech / Banking</span>
-        <div class="project-row-partner"></div>
-      </a>
-      <a href="#" class="project-row">
-        <div class="project-row-main">
-          <div class="project-row-title">Ewii</div>
-          <div class="project-row-desc">Consumer energy management platform</div>
-        </div>
-        <span class="project-tag">Sustainable Energy</span>
-        <div class="project-row-partner"></div>
-      </a>
-      <a href="#" class="project-row">
-        <div class="project-row-main">
-          <div class="project-row-title">Arla Mat</div>
-          <div class="project-row-desc">Cooking inspiration platform for Arla in Sweden</div>
-        </div>
+      <a href="arla-mat.html" class="project-row">
+        <div class="project-row-title">Arla Mat</div>
         <span class="project-tag">Food / Consumer</span>
-        <div class="project-row-partner"></div>
       </a>
-      <a href="#" class="project-row">
-        <div class="project-row-main">
-          <div class="project-row-title">Compassana</div>
-          <div class="project-row-desc">Product vision for the Swiss private healthcare market</div>
-        </div>
-        <span class="project-tag">Digital Health / Private Insurance</span>
-        <div class="project-row-partner">Bluespace Ventures</div>
+      <a href="bedside.html" class="project-row">
+        <div class="project-row-title">Bedside</div>
+        <span class="project-tag">MedTech / EHR</span>
+      </a>
+      <a href="jyske-bank.html" class="project-row">
+        <div class="project-row-title">Jyske Bank</div>
+        <span class="project-tag">Fintech / Banking</span>
+      </a>
+      <a href="cdss.html" class="project-row">
+        <div class="project-row-title">CDSS (+prio)</div>
+        <span class="project-tag">Health AI</span>
+      </a>
+      <a href="ewii.html" class="project-row">
+        <div class="project-row-title">Ewii</div>
+        <span class="project-tag">Sustainable Energy</span>
+      </a>
+      <a href="minlaege-gravitate-health.html" class="project-row">
+        <div class="project-row-title">MinLæge & Gravitate Health</div>
+        <span class="project-tag">Digital Health / Pharma</span>
+      </a>
+      <a href="telemedicine-business-models.html" class="project-row">
+        <div class="project-row-title">Business Models for Telemedicine</div>
+        <span class="project-tag">Research / Health Economics</span>
       </a>
     </div>
   </section>
@@ -629,37 +510,6 @@
       <div class="meta-block">
         <div class="meta-block-label">Languages</div>
         <div class="meta-block-value">Danish, English</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Testimonials ── -->
-  <section id="testimonials">
-    <div class="testimonials-header fade-up">
-      <p class="section-tag">Kind words</p>
-      <h2>What collaborators say</h2>
-    </div>
-    <div class="testimonials-list">
-      <div class="testimonial-row fade-up">
-        <div>
-          <div class="testimonial-author-name">Jamie Lee</div>
-          <div class="testimonial-author-role">CPO at Orbit</div>
-        </div>
-        <p class="testimonial-quote">Frederik has a rare ability to cut through ambiguity and produce designs that feel obvious in hindsight. The analytics redesign shipped on time and immediately moved our core metrics.</p>
-      </div>
-      <div class="testimonial-row fade-up" style="transition-delay:.08s">
-        <div>
-          <div class="testimonial-author-name">Sam Rivera</div>
-          <div class="testimonial-author-role">Engineering Lead at Verdure</div>
-        </div>
-        <p class="testimonial-quote">The design system Frederik built for us is the foundation every new team member learns from. It saved us months of back-and-forth and made our product feel cohesive for the first time.</p>
-      </div>
-      <div class="testimonial-row fade-up" style="transition-delay:.16s">
-        <div>
-          <div class="testimonial-author-name">Priya Kapoor</div>
-          <div class="testimonial-author-role">Founder at Tempo</div>
-        </div>
-        <p class="testimonial-quote">Working with Frederik felt less like hiring a contractor and more like having a co-founder who happened to be a world-class designer. Deeply invested in outcomes, not just deliverables.</p>
       </div>
     </div>
   </section>
