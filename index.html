@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Frederik Korsgaard — Product Designer</title>
+  <title>Frederik Haug Korsgaard — Product Designer</title>
   <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -114,29 +114,22 @@
     }
 
 
-    .hero-illustration {
-      position: relative;
-      width: 480px;
-      height: 480px;
+    .hero-portrait {
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      overflow: hidden;
       align-self: center;
-      margin-bottom: 40px;
       flex-shrink: 0;
+      margin-bottom: 40px;
     }
-    .hero-illustration img {
-      position: absolute;
-      object-fit: contain;
-    }
-    .hero-illustration .img-sun {
-      top: 5%; left: 2%;
-      width: 36%; height: 35%;
-    }
-    .hero-illustration .img-elements {
-      bottom: 5%; right: 2%;
-      width: 76%; height: 48%;
-    }
-    .hero-illustration .img-plane {
-      top: 40%; left: 10%;
-      width: 85%; height: 38%;
+    .hero-portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      filter: grayscale(100%);
     }
 
     /* ── Section commons ── */
@@ -350,7 +343,7 @@
     /* ── Responsive ── */
     @media (max-width: 1024px) {
       .hero { grid-template-columns: 1fr; }
-      .hero-illustration { display: none; }
+      .hero-portrait { display: none; }
       .project-row { flex-direction: column; align-items: flex-start; gap: 4px; }
     }
     @media (max-width: 900px) {
@@ -370,7 +363,7 @@
 
   <!-- ── Nav ── -->
   <nav id="nav">
-    <a href="#" class="nav-logo">Frederik Korsgaard</a>
+    <a href="#" class="nav-logo">Frederik Haug Korsgaard</a>
     <ul class="nav-links">
       <li><a href="#work">Work</a></li>
       <li><a href="#process">Process</a></li>
@@ -383,18 +376,15 @@
   <section class="hero">
     <div class="hero-text">
       <h1>
-        Designing products<br>
-        people <em>actually</em><br>
-        love to use
+        MD × Product<br>
+        <em>Designer</em>
       </h1>
       <p class="hero-sub">
-        I craft thoughtful digital experiences — from early strategy through pixel-perfect delivery — for startups and scale-ups.
+        I've treated patients in the ER and designed the software clinicians use every day. That perspective changes how I approach every product.
       </p>
     </div>
-    <div class="hero-illustration" aria-hidden="true">
-      <img class="img-sun" src="assets/sun.svg" alt="" />
-      <img class="img-plane" src="assets/plane.svg" alt="" />
-      <img class="img-elements" src="assets/elements.svg" alt="" />
+    <div class="hero-portrait">
+      <img src="assets/hero/portrait.jpeg" alt="Frederik Haug Korsgaard" />
     </div>
   </section>
 
@@ -448,30 +438,30 @@
   <section id="process">
     <div class="process-header fade-up">
       <p class="section-tag">How I work</p>
-      <h2>A process built for clarity</h2>
-      <p>Great design is the result of a disciplined, collaborative process — not happy accidents.</p>
+      <h2>From understanding<br>to outcomes</h2>
+      <p>I start with the business, the market, and the people — then work towards a product that delivers measurable results.</p>
     </div>
 
     <div class="process-steps">
       <div class="process-step fade-up">
         <div class="step-num">01</div>
-        <div class="step-title">Discover</div>
-        <div class="step-desc">Deep-dive into user research, competitive analysis, and stakeholder interviews to align on the real problem.</div>
+        <div class="step-title">Understand</div>
+        <div class="step-desc">Get to know the business, its market, and its users. What's the opportunity? What are the constraints? Build a clear foundation before anything else.</div>
       </div>
       <div class="process-step fade-up" style="transition-delay:.08s">
         <div class="step-num">02</div>
-        <div class="step-title">Define</div>
-        <div class="step-desc">Synthesise findings into clear problem statements, user journeys, and success metrics everyone agrees on.</div>
+        <div class="step-title">Vision & Strategy</div>
+        <div class="step-desc">Define where the product needs to go and why. Align stakeholders around a shared direction so every decision that follows has a rationale.</div>
       </div>
       <div class="process-step fade-up" style="transition-delay:.16s">
         <div class="step-num">03</div>
-        <div class="step-title">Design</div>
-        <div class="step-desc">Rapid ideation, wireframes, and high-fidelity prototypes tested with real users at every iteration.</div>
+        <div class="step-title">Discover & Design</div>
+        <div class="step-desc">Run a structured discovery process — research, ideation, prototyping, and testing with real users. Move fast, but validate before you commit.</div>
       </div>
       <div class="process-step fade-up" style="transition-delay:.24s">
         <div class="step-num">04</div>
-        <div class="step-title">Deliver</div>
-        <div class="step-desc">Polished specs, design tokens, and close collaboration with engineers until the product ships perfectly.</div>
+        <div class="step-title">Deliver & Measure</div>
+        <div class="step-desc">Ship, track, and learn. Design doesn't end at handoff — it ends when the outcomes show it's working.</div>
       </div>
     </div>
   </section>
@@ -480,36 +470,29 @@
   <section id="about">
     <div class="about-content fade-up">
       <p class="section-tag">About me</p>
-      <h2>Designer, systems thinker, and occasional ceramicist</h2>
-      <p>I'm Frederik — a product designer based in Copenhagen with six years of experience turning fuzzy briefs into polished, shipped products. I've worked with early-stage startups, Series B companies, and in-house design teams across fintech, productivity, and consumer goods.</p>
-      <p>My superpower is bridging the gap between user needs and business outcomes. I speak both fluent designer and developer, which means hand-offs are actually smooth.</p>
+      <h2>From diagnosis to product strategy — I figure out what's worth building</h2>
+      <p>I'm Frederik — a medical doctor turned product designer based in Aarhus. I specialise in digital health, but I've also shipped products in fintech, energy, and food.</p>
+      <p>My background in medicine means I don't just design for users — I've been one. I've worked night shifts in the ER, consulted in general practice, and spent weeks doing fieldwork in hospital wards. That clinical experience shapes how I think about products: start with a real understanding of the problem, then design something that actually holds up in practice.</p>
+      <p>When I'm not working, I'm usually chasing waves, chasing kids, or planning the next ski trip. Married to a Norwegian, father of two.</p>
       <div class="about-skills">
-        <span class="skill-tag">User Research</span>
         <span class="skill-tag">Product Strategy</span>
-        <span class="skill-tag">Interaction Design</span>
-        <span class="skill-tag">Figma</span>
-        <span class="skill-tag">Design Systems</span>
+        <span class="skill-tag">User Research</span>
+        <span class="skill-tag">Concept Development</span>
         <span class="skill-tag">Prototyping</span>
-        <span class="skill-tag">Accessibility</span>
-        <span class="skill-tag">Usability Testing</span>
+        <span class="skill-tag">Workshop Facilitation</span>
+        <span class="skill-tag">Design Sprints</span>
+        <span class="skill-tag">Health Domain</span>
+        <span class="skill-tag">Stakeholder Management</span>
       </div>
     </div>
     <div class="about-meta fade-up" style="transition-delay:.1s">
       <div class="meta-block">
         <div class="meta-block-label">Based in</div>
-        <div class="meta-block-value">Copenhagen, Denmark</div>
-      </div>
-      <div class="meta-block">
-        <div class="meta-block-label">Experience</div>
-        <div class="meta-block-value">6+ years</div>
-      </div>
-      <div class="meta-block">
-        <div class="meta-block-label">Availability</div>
-        <div class="meta-block-value">Open to new projects</div>
+        <div class="meta-block-value">Aarhus, Denmark</div>
       </div>
       <div class="meta-block">
         <div class="meta-block-label">Languages</div>
-        <div class="meta-block-value">Danish, English</div>
+        <div class="meta-block-value">Danish, English, Norwegian</div>
       </div>
     </div>
   </section>
@@ -518,19 +501,18 @@
   <section id="contact">
     <div class="contact-inner">
       <p class="section-tag fade-up">Get in touch</p>
-      <h2 class="fade-up" style="transition-delay:.05s">Got a project in mind?<br>Let's make it real.</h2>
-      <p class="lead fade-up" style="transition-delay:.1s">I take on a limited number of projects each quarter. If you'd like to work together, reach out and let's explore it.</p>
-      <a href="mailto:awesome@frederikkorsgaard.com" class="contact-email fade-up" style="transition-delay:.15s">awesome@frederikkorsgaard.com</a>
-      <div class="social-links fade-up" style="transition-delay:.2s">
-        <a href="#" class="social-link">LinkedIn</a>
+      <h2 class="fade-up" style="transition-delay:.05s">Let's talk.</h2>
+      <a href="mailto:frednors@proton.me" class="contact-email fade-up" style="transition-delay:.1s">frednors@proton.me</a>
+      <div class="social-links fade-up" style="transition-delay:.15s">
+        <a href="https://www.linkedin.com/in/fredkors/" class="social-link" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
   </section>
 
   <!-- ── Footer ── -->
   <footer>
-    <span>© 2026 Frederik Korsgaard</span>
-    <span>Copenhagen, Denmark</span>
+    <span>© 2026 Frederik Haug Korsgaard</span>
+    <span>Aarhus, Denmark</span>
   </footer>
 
   <script>
