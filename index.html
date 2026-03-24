@@ -117,19 +117,17 @@
       width: 100%;
       max-width: 520px;
       aspect-ratio: 4/3;
-      border-radius: 4px;
-      overflow: hidden;
-      background: #fafafa;
-      border: 1px solid var(--border);
       position: relative;
       align-self: end;
-      justify-self: end;
       user-select: none;
+    }
+    @media (min-width: 1025px) {
+      .hero-viz { justify-self: end; }
     }
     .hero-viz svg { position: absolute; inset: 0; width: 100%; height: 100%; }
 
     @media (max-width: 1024px) {
-      .hero-viz { display: none; }
+      .hero-viz { align-self: start; }
     }
 
     /* ── Section commons ── */
@@ -353,7 +351,9 @@
 
     /* ── Responsive ── */
     @media (max-width: 1024px) {
-      .hero { grid-template-columns: 1fr; }
+      .hero { grid-template-columns: 1fr; align-items: start; padding-bottom: 72px; }
+      .hero-viz { grid-row: 1; max-width: 400px; }
+      .hero-text { grid-row: 2; }
       .projects-list { grid-template-columns: 1fr; }
       .project-row { flex-direction: column; align-items: flex-start; gap: 4px; }
     }
@@ -395,7 +395,6 @@
       </p>
     </div>
     <div class="hero-viz" id="hero-viz">
-      <svg id="hviz-grid" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
       <svg id="hviz-particles" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet"></svg>
     </div>
   </section>
@@ -610,19 +609,6 @@
         return document.createElementNS(NS,'g');
       }
 
-      // Grid
-      const gridSvg = document.getElementById('hviz-grid');
-      for (let i = 0; i <= COLS; i++) {
-        const l = document.createElementNS(NS,'line'), x = (i/COLS)*100;
-        l.setAttribute('x1',x); l.setAttribute('y1',0); l.setAttribute('x2',x); l.setAttribute('y2',100);
-        l.setAttribute('stroke','#000'); l.setAttribute('stroke-width',.12); gridSvg.appendChild(l);
-      }
-      for (let i = 0; i <= ROWS; i++) {
-        const l = document.createElementNS(NS,'line'), y = (i/ROWS)*100;
-        l.setAttribute('x1',0); l.setAttribute('y1',y); l.setAttribute('x2',100); l.setAttribute('y2',y);
-        l.setAttribute('stroke','#000'); l.setAttribute('stroke-width',.12); gridSvg.appendChild(l);
-      }
-      gridSvg.style.opacity = 0;
 
       // Particles
       const particlesSvg = document.getElementById('hviz-particles');
@@ -634,11 +620,13 @@
         const accent = accents[Math.floor(rng() * accents.length)];
         const size  = 7 + rng() * 12;
         const sz    = size / 10;
+        const ox = ((col+.5)/COLS)*100, oy = ((row+.5)/ROWS)*100;
         const p = {
           grey, accent, size, sz,
-          chaotic: { x: rng()*100, y: rng()*100, rot: rng()*360, scale: .3+rng()*1.4, opacity: .12+rng()*.3 },
-          ordered: { x: ((col+.5)/COLS)*100, y: ((row+.5)/ROWS)*100, rot: 0, scale: 1, opacity: .9 },
-          delay: rng()*.3, speed: .7+rng()*.6,
+          chaotic: { x: ox+(rng()-.5)*44, y: oy+(rng()-.5)*44, rot: (rng()-.5)*60, scale: .7+rng()*.5, opacity: 0 },
+          ordered: { x: ox, y: oy, rot: 0, scale: 1, opacity: .78 },
+          delay: rng()*.55, speed: .35+rng()*.35,
+          idle: { rx: .25+rng()*.4, ry: .25+rng()*.4, fx: .00006+rng()*.00007, fy: .00006+rng()*.00007, px: rng()*Math.PI*2, py: rng()*Math.PI*2 },
         };
         const g = document.createElementNS(NS,'g');
         const inner = document.createElementNS(NS,'svg');
@@ -654,18 +642,23 @@
         parts.push(p);
       }
 
-      const DURATION = 2800;
+      const DURATION = 9500;
       let startTime = null;
+      let idleStart = null;
 
       function render(ts) {
         if (!startTime) startTime = ts;
         const prog = clamp((ts - startTime) / DURATION, 0, 1);
+        if (prog >= 0.35 && !idleStart) idleStart = ts;
+        const idleElapsed = idleStart ? ts - idleStart : 0;
+        const idleW = ease(clamp(idleElapsed / 8000, 0, 1));
 
-        gridSvg.style.opacity = prog * .18;
         parts.forEach(p => {
           const t = ease(clamp((prog - p.delay) / p.speed, 0, 1));
-          const x = lerp(p.chaotic.x, p.ordered.x, t);
-          const y = lerp(p.chaotic.y, p.ordered.y, t);
+          const ix = p.idle.rx * Math.sin(idleElapsed * p.idle.fx + p.idle.px) * idleW;
+          const iy = p.idle.ry * Math.cos(idleElapsed * p.idle.fy + p.idle.py) * idleW;
+          const x = lerp(p.chaotic.x, p.ordered.x, t) + ix;
+          const y = lerp(p.chaotic.y, p.ordered.y, t) + iy;
           const rot = lerp(p.chaotic.rot, p.ordered.rot, t);
           const sc  = lerp(p.chaotic.scale, p.ordered.scale, t);
           const op  = lerp(p.chaotic.opacity, p.ordered.opacity, t);
@@ -677,7 +670,7 @@
           else { el.setAttribute('fill', col); }
         });
 
-        if (prog < 1) requestAnimationFrame(render);
+        requestAnimationFrame(render);
       }
 
       requestAnimationFrame(render);
