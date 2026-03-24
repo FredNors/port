@@ -81,7 +81,7 @@
     .hero {
       min-height: 100vh;
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: 1fr 1.4fr;
       align-items: end;
       padding: 140px 48px 96px;
       position: relative;
@@ -114,29 +114,17 @@
     }
 
     .hero-viz {
-      width: 480px;
+      width: 100%;
       aspect-ratio: 4/3;
       border-radius: 4px;
       overflow: hidden;
-      cursor: crosshair;
       background: #fafafa;
       border: 1px solid var(--border);
       position: relative;
-      flex-shrink: 0;
       align-self: end;
       user-select: none;
     }
     .hero-viz svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-    .hero-viz-labels {
-      position: absolute; bottom: 14px; left: 20px; right: 20px;
-      display: flex; justify-content: space-between; pointer-events: none;
-      font-size: 10px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
-    }
-    .hero-viz-hint {
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-      pointer-events: none; font-size: 11px; font-weight: 500; letter-spacing: .05em;
-      color: rgba(0,0,0,.3); white-space: nowrap; transition: opacity .6s;
-    }
 
     @media (max-width: 1024px) {
       .hero-viz { display: none; }
@@ -407,11 +395,6 @@
     <div class="hero-viz" id="hero-viz">
       <svg id="hviz-grid" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
       <svg id="hviz-particles" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet"></svg>
-      <div class="hero-viz-labels">
-        <span id="hviz-label-l" style="color:rgba(0,0,0,.4)">Complexity</span>
-        <span id="hviz-label-r" style="color:rgba(0,0,0,.2)">Clarity</span>
-      </div>
-      <div class="hero-viz-hint" id="hviz-hint">← move across →</div>
     </div>
   </section>
 
@@ -557,12 +540,12 @@
 
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-    /* ── Hero viz animation ── */
+    /* ── Hero viz v2 (scroll-driven) ── */
     (function () {
       const viz = document.getElementById('hero-viz');
       if (!viz) return;
       const NS = 'http://www.w3.org/2000/svg';
-      const COLS = 8, ROWS = 6, COUNT = 48;
+      const COLS = 8, ROWS = 6, COUNT = COLS * ROWS;
 
       function seeded(seed) {
         let s = seed;
@@ -570,6 +553,7 @@
       }
       function lerp(a, b, t) { return a + (b - a) * t; }
       function ease(t) { return t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2; }
+      function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
       function hexRgb(h) {
         return { r: parseInt(h.slice(1,3),16), g: parseInt(h.slice(3,5),16), b: parseInt(h.slice(5,7),16) };
       }
@@ -581,7 +565,7 @@
       const accents = ['#C9553A','#2A7A7A','#C4943D','#4A6BB5','#9E4D72'];
       const greys   = ['#B0B0B0','#9A9A9A','#C2C2C2','#A8A8A8','#BFBFBF'];
       const shapes  = ['circle','square','triangle','line','diamond','cross'];
-      const rng = seeded(42);
+      const rng = seeded(113);
 
       function makeShapeEl(shape, color, size) {
         const h = size / 2;
@@ -624,25 +608,21 @@
         return document.createElementNS(NS,'g');
       }
 
-      // Build grid SVG
+      // Grid
       const gridSvg = document.getElementById('hviz-grid');
       for (let i = 0; i <= COLS; i++) {
-        const l = document.createElementNS(NS,'line');
-        const x = (i/COLS)*100;
+        const l = document.createElementNS(NS,'line'), x = (i/COLS)*100;
         l.setAttribute('x1',x); l.setAttribute('y1',0); l.setAttribute('x2',x); l.setAttribute('y2',100);
-        l.setAttribute('stroke','#000'); l.setAttribute('stroke-width',.12);
-        gridSvg.appendChild(l);
+        l.setAttribute('stroke','#000'); l.setAttribute('stroke-width',.12); gridSvg.appendChild(l);
       }
       for (let i = 0; i <= ROWS; i++) {
-        const l = document.createElementNS(NS,'line');
-        const y = (i/ROWS)*100;
+        const l = document.createElementNS(NS,'line'), y = (i/ROWS)*100;
         l.setAttribute('x1',0); l.setAttribute('y1',y); l.setAttribute('x2',100); l.setAttribute('y2',y);
-        l.setAttribute('stroke','#000'); l.setAttribute('stroke-width',.12);
-        gridSvg.appendChild(l);
+        l.setAttribute('stroke','#000'); l.setAttribute('stroke-width',.12); gridSvg.appendChild(l);
       }
       gridSvg.style.opacity = 0;
 
-      // Build particles
+      // Particles
       const particlesSvg = document.getElementById('hviz-particles');
       const parts = [];
       for (let i = 0; i < COUNT; i++) {
@@ -656,14 +636,13 @@
           grey, accent, size, sz,
           chaotic: { x: rng()*100, y: rng()*100, rot: rng()*360, scale: .3+rng()*1.4, opacity: .12+rng()*.3 },
           ordered: { x: ((col+.5)/COLS)*100, y: ((row+.5)/ROWS)*100, rot: 0, scale: 1, opacity: .9 },
-          delay: rng()*.3,
-          speed: .7+rng()*.6,
+          delay: rng()*.3, speed: .7+rng()*.6,
         };
         const g = document.createElementNS(NS,'g');
         const inner = document.createElementNS(NS,'svg');
-        inner.setAttribute('x', -sz/2); inner.setAttribute('y', -sz/2);
-        inner.setAttribute('width', sz); inner.setAttribute('height', sz);
-        inner.setAttribute('viewBox', `0 0 ${size} ${size}`);
+        inner.setAttribute('x',-sz/2); inner.setAttribute('y',-sz/2);
+        inner.setAttribute('width',sz); inner.setAttribute('height',sz);
+        inner.setAttribute('viewBox',`0 0 ${size} ${size}`);
         inner.setAttribute('overflow','visible');
         p.shapeEl = makeShapeEl(shape, grey, size);
         inner.appendChild(p.shapeEl);
@@ -673,53 +652,35 @@
         parts.push(p);
       }
 
-      const hint    = document.getElementById('hviz-hint');
-      const labelL  = document.getElementById('hviz-label-l');
-      const labelR  = document.getElementById('hviz-label-r');
-      let targetP = 0, currentP = 0;
+      let prog = 0;
 
-      viz.addEventListener('mousemove', e => {
-        const r = viz.getBoundingClientRect();
-        targetP = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));
-      });
-      viz.addEventListener('mouseleave', () => { targetP = 0; });
-      viz.addEventListener('touchmove', e => {
-        const r = viz.getBoundingClientRect();
-        targetP = Math.max(0, Math.min(1, (e.touches[0].clientX - r.left) / r.width));
-      }, { passive: true });
-      viz.addEventListener('touchend', () => { targetP = 0; });
-
-      function tick() {
-        currentP += (targetP - currentP) * .06;
-        const prog = currentP;
-
-        gridSvg.style.opacity = prog * .18;
-        hint.style.opacity    = prog < .05 ? .4 : 0;
-        labelL.style.color    = `rgba(0,0,0,${.15 + (1-prog)*.25})`;
-        labelR.style.color    = `rgba(0,0,0,${.15 + prog*.25})`;
-
-        parts.forEach(p => {
-          const rawT = Math.max(0, Math.min(1, (prog - p.delay) / p.speed));
-          const t = ease(rawT);
-          const x       = lerp(p.chaotic.x, p.ordered.x, t);
-          const y       = lerp(p.chaotic.y, p.ordered.y, t);
-          const rot     = lerp(p.chaotic.rot, p.ordered.rot, t);
-          const scale   = lerp(p.chaotic.scale, p.ordered.scale, t);
-          const opacity = lerp(p.chaotic.opacity, p.ordered.opacity, t);
-          const color   = lerpCol(p.grey, p.accent, t);
-
-          p.g.setAttribute('transform', `translate(${x},${y}) rotate(${rot}) scale(${scale})`);
-          p.g.setAttribute('opacity', opacity);
-
-          const el = p.shapeEl;
-          if (el.tagName === 'line') { el.setAttribute('stroke', color); }
-          else if (el.tagName === 'g') { el.setAttribute('stroke', color); }
-          else { el.setAttribute('fill', color); }
-        });
-
-        requestAnimationFrame(tick);
+      function updateScroll() {
+        const rect = viz.getBoundingClientRect();
+        const wH = window.innerHeight;
+        prog = clamp((wH - rect.top) / (wH - wH * .15), 0, 1);
       }
-      requestAnimationFrame(tick);
+
+      function render() {
+        gridSvg.style.opacity = prog * .18;
+        parts.forEach(p => {
+          const t = ease(clamp((prog - p.delay) / p.speed, 0, 1));
+          const x = lerp(p.chaotic.x, p.ordered.x, t);
+          const y = lerp(p.chaotic.y, p.ordered.y, t);
+          const rot = lerp(p.chaotic.rot, p.ordered.rot, t);
+          const sc  = lerp(p.chaotic.scale, p.ordered.scale, t);
+          const op  = lerp(p.chaotic.opacity, p.ordered.opacity, t);
+          const col = lerpCol(p.grey, p.accent, t);
+          p.g.setAttribute('transform', `translate(${x},${y}) rotate(${rot}) scale(${sc})`);
+          p.g.setAttribute('opacity', op);
+          const el = p.shapeEl;
+          if (el.tagName === 'line' || el.tagName === 'g') { el.setAttribute('stroke', col); }
+          else { el.setAttribute('fill', col); }
+        });
+      }
+
+      window.addEventListener('scroll', () => { updateScroll(); render(); }, { passive: true });
+      updateScroll();
+      render();
     })();
   </script>
 </body>
