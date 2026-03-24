@@ -113,20 +113,33 @@
       font-weight: 300;
     }
 
-    .hero-canvas-wrap {
-      width: 440px;
-      height: 440px;
-      background: var(--surface);
+    .hero-viz {
+      width: 480px;
+      aspect-ratio: 4/3;
       border-radius: 4px;
       overflow: hidden;
+      cursor: crosshair;
+      background: #fafafa;
+      border: 1px solid var(--border);
+      position: relative;
       flex-shrink: 0;
       align-self: end;
+      user-select: none;
+    }
+    .hero-viz svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .hero-viz-labels {
+      position: absolute; bottom: 14px; left: 20px; right: 20px;
+      display: flex; justify-content: space-between; pointer-events: none;
+      font-size: 10px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
+    }
+    .hero-viz-hint {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      pointer-events: none; font-size: 11px; font-weight: 500; letter-spacing: .05em;
+      color: rgba(0,0,0,.3); white-space: nowrap; transition: opacity .6s;
     }
 
-    #hero-canvas { width: 100%; height: 100%; display: block; }
-
     @media (max-width: 1024px) {
-      .hero-canvas-wrap { display: none; }
+      .hero-viz { display: none; }
     }
 
     /* ── Section commons ── */
@@ -384,15 +397,21 @@
   <section class="hero">
     <div class="hero-text">
       <h1>
-        MD × Product<br>
-        <em>Designer</em>
+        Medical doctor turned<br>
+        <em>Product Designer</em>
       </h1>
       <p class="hero-sub">
-        I've treated patients in the ER and designed the software clinicians use every day. That perspective changes how I approach every product.
+        I build products that create measurable outcomes for people and business in Health, FinTech, and Energy.
       </p>
     </div>
-    <div class="hero-canvas-wrap">
-      <canvas id="hero-canvas"></canvas>
+    <div class="hero-viz" id="hero-viz">
+      <svg id="hviz-grid" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
+      <svg id="hviz-particles" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet"></svg>
+      <div class="hero-viz-labels">
+        <span id="hviz-label-l" style="color:rgba(0,0,0,.4)">Complexity</span>
+        <span id="hviz-label-r" style="color:rgba(0,0,0,.2)">Clarity</span>
+      </div>
+      <div class="hero-viz-hint" id="hviz-hint">← move across →</div>
     </div>
   </section>
 
@@ -445,30 +464,30 @@
   <section id="process">
     <div class="process-header fade-up">
       <p class="section-tag">How I work</p>
-      <h2>From understanding<br>to outcomes</h2>
-      <p>I start with the business, the market, and the people — then work towards a product that delivers measurable results.</p>
+      <h2>From understanding<br>to measurable impact</h2>
+      <p>I start with the business, the market, and the people — then work towards a solution that delivers real outcomes.</p>
     </div>
 
     <div class="process-steps">
       <div class="process-step fade-up">
         <div class="step-num">01</div>
         <div class="step-title">Understand</div>
-        <div class="step-desc">Get to know the business, its market, and its users. What's the opportunity? What are the constraints? Build a clear foundation before anything else.</div>
+        <div class="step-desc">Map the business, the market, and the users. Identify what's actually worth solving — and what isn't. In regulated industries, understanding the constraints is half the work.</div>
       </div>
       <div class="process-step fade-up" style="transition-delay:.08s">
         <div class="step-num">02</div>
         <div class="step-title">Vision & Strategy</div>
-        <div class="step-desc">Define where the product needs to go and why. Align stakeholders around a shared direction so every decision that follows has a rationale.</div>
+        <div class="step-desc">Define where the product needs to go and build the case for why. Align stakeholders around a shared direction so every decision that follows has a rationale — and a business logic.</div>
       </div>
       <div class="process-step fade-up" style="transition-delay:.16s">
         <div class="step-num">03</div>
         <div class="step-title">Discover & Design</div>
-        <div class="step-desc">Run a structured discovery process — research, ideation, prototyping, and testing with real users. Move fast, but validate before you commit.</div>
+        <div class="step-desc">Research, ideation, prototyping, and testing with real users. Move fast, but validate before you commit. The goal isn't a beautiful prototype — it's confidence that you're building the right thing.</div>
       </div>
       <div class="process-step fade-up" style="transition-delay:.24s">
         <div class="step-num">04</div>
         <div class="step-title">Deliver & Measure</div>
-        <div class="step-desc">Ship, track, and learn. Design doesn't end at handoff — it ends when the outcomes show it's working.</div>
+        <div class="step-desc">Ship, track, and learn. Design doesn't end at handoff — it ends when the numbers show it's working. If the impact isn't measurable, it isn't real.</div>
       </div>
     </div>
   </section>
@@ -478,10 +497,9 @@
     <div class="about-content fade-up">
       <p class="section-tag">About me</p>
       <h2>From diagnosis to product strategy — I figure out what's worth building</h2>
-      <p>I'm Frederik — a medical doctor turned product designer based in Aarhus. I specialise in digital health, but I've also shipped products in fintech, energy, and food.</p>
-      <p>My background in medicine means I don't just design for users — I've been one. I've worked night shifts in the ER, consulted in general practice, and spent weeks doing fieldwork in hospital wards. That clinical experience shapes how I think about products: start with a real understanding of the problem, then design something that actually holds up in practice.</p>
-      <p>At work, I'm the AI go-to person. I created the classification and risk assessment framework that got ChatGPT approved at the highest company level — across all 1,200 employees — and I spend a lot of time helping colleagues make the most of new tools as they arrive. I also started a design and product book club, because I think the best designers never stop being curious about how other people think about the craft.</p>
-      <p>When I'm not working, I'm usually chasing waves, chasing kids, or planning the next ski trip. Married to a Norwegian, father of two.</p>
+      <p>Medical doctor turned product designer based in Aarhus. I made the switch because I realised that the biggest problems in healthcare wouldn't be solved one patient at a time. They'd be solved through technology and design — at scale.</p>
+      <p>That shift taught me something I didn't expect: the skills that make you good at healthcare products make you good at any complex, regulated industry. Health, fintech, energy — they all involve multiple user groups with intertwined journeys, sensitive data, heavy regulation, and real consequences when you get it wrong. The complexity is the same. So is the opportunity to make a meaningful difference for a lot of people.</p>
+      <p>But understanding a problem and designing a solution isn't enough. If the impact is going to last, it has to be tied to a viable business. That's the part I care about most — building products that create measurable outcomes for people and for the organisations behind them. A great product that can't sustain itself isn't great. It's a pilot that ends.</p>
       <div class="about-skills">
         <span class="skill-tag">Product Strategy</span>
         <span class="skill-tag">User Research</span>
@@ -539,54 +557,168 @@
 
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-    /* ── Hero canvas animation ── */
+    /* ── Hero viz animation ── */
     (function () {
-      const canvas = document.getElementById('hero-canvas');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      let W, H, dpr;
+      const viz = document.getElementById('hero-viz');
+      if (!viz) return;
+      const NS = 'http://www.w3.org/2000/svg';
+      const COLS = 8, ROWS = 6, COUNT = 48;
 
-      function resize() {
-        dpr = window.devicePixelRatio || 1;
-        const rect = canvas.getBoundingClientRect();
-        W = canvas.width = rect.width * dpr;
-        H = canvas.height = rect.height * dpr;
+      function seeded(seed) {
+        let s = seed;
+        return () => { s = (s * 16807) % 2147483647; return (s - 1) / 2147483646; };
       }
-      resize();
-      window.addEventListener('resize', resize);
+      function lerp(a, b, t) { return a + (b - a) * t; }
+      function ease(t) { return t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2; }
+      function hexRgb(h) {
+        return { r: parseInt(h.slice(1,3),16), g: parseInt(h.slice(3,5),16), b: parseInt(h.slice(5,7),16) };
+      }
+      function lerpCol(gh, ah, t) {
+        const g = hexRgb(gh), a = hexRgb(ah);
+        return `rgb(${Math.round(lerp(g.r,a.r,t))},${Math.round(lerp(g.g,a.g,t))},${Math.round(lerp(g.b,a.b,t))})`;
+      }
 
-      const SPAWN_INTERVAL = 1800;
-      const RING_DURATION  = 5400;
-      const rings = [];
-      let lastSpawn = -SPAWN_INTERVAL;
+      const accents = ['#C9553A','#2A7A7A','#C4943D','#4A6BB5','#9E4D72'];
+      const greys   = ['#B0B0B0','#9A9A9A','#C2C2C2','#A8A8A8','#BFBFBF'];
+      const shapes  = ['circle','square','triangle','line','diamond','cross'];
+      const rng = seeded(42);
 
-      function tick(t) {
-        if (t - lastSpawn >= SPAWN_INTERVAL) {
-          rings.push({ born: t });
-          lastSpawn = t;
+      function makeShapeEl(shape, color, size) {
+        const h = size / 2;
+        if (shape === 'circle') {
+          const e = document.createElementNS(NS,'circle');
+          e.setAttribute('cx',h); e.setAttribute('cy',h);
+          e.setAttribute('r',h*.85); e.setAttribute('fill',color); return e;
         }
-
-        ctx.clearRect(0, 0, W, H);
-
-        const cx = W / 2, cy = H / 2;
-        const maxR = Math.min(W, H) * 0.42;
-
-        for (let i = rings.length - 1; i >= 0; i--) {
-          const age = t - rings[i].born;
-          if (age > RING_DURATION) { rings.splice(i, 1); continue; }
-          const p = age / RING_DURATION;
-          const r = maxR * p;
-          const alpha = (1 - p) * 0.18;
-          ctx.beginPath();
-          ctx.arc(cx, cy, r, 0, Math.PI * 2);
-          ctx.strokeStyle = `rgba(100, 100, 95, ${alpha})`;
-          ctx.lineWidth = dpr;
-          ctx.stroke();
+        if (shape === 'square') {
+          const ins = size*.1, e = document.createElementNS(NS,'rect');
+          e.setAttribute('x',ins); e.setAttribute('y',ins);
+          e.setAttribute('width',size-ins*2); e.setAttribute('height',size-ins*2);
+          e.setAttribute('fill',color); e.setAttribute('rx',2); return e;
         }
+        if (shape === 'triangle') {
+          const e = document.createElementNS(NS,'polygon');
+          e.setAttribute('points',`${h},${size*.1} ${size*.9},${size*.85} ${size*.1},${size*.85}`);
+          e.setAttribute('fill',color); return e;
+        }
+        if (shape === 'line') {
+          const e = document.createElementNS(NS,'line');
+          e.setAttribute('x1',size*.1); e.setAttribute('y1',h);
+          e.setAttribute('x2',size*.9); e.setAttribute('y2',h);
+          e.setAttribute('stroke',color); e.setAttribute('stroke-width',3);
+          e.setAttribute('stroke-linecap','round'); return e;
+        }
+        if (shape === 'diamond') {
+          const e = document.createElementNS(NS,'polygon');
+          e.setAttribute('points',`${h},${size*.08} ${size*.92},${h} ${h},${size*.92} ${size*.08},${h}`);
+          e.setAttribute('fill',color); return e;
+        }
+        if (shape === 'cross') {
+          const g = document.createElementNS(NS,'g');
+          g.setAttribute('stroke',color); g.setAttribute('stroke-width',3); g.setAttribute('stroke-linecap','round');
+          const l1 = document.createElementNS(NS,'line'), l2 = document.createElementNS(NS,'line');
+          l1.setAttribute('x1',size*.2); l1.setAttribute('y1',size*.2); l1.setAttribute('x2',size*.8); l1.setAttribute('y2',size*.8);
+          l2.setAttribute('x1',size*.8); l2.setAttribute('y1',size*.2); l2.setAttribute('x2',size*.2); l2.setAttribute('y2',size*.8);
+          g.appendChild(l1); g.appendChild(l2); return g;
+        }
+        return document.createElementNS(NS,'g');
+      }
+
+      // Build grid SVG
+      const gridSvg = document.getElementById('hviz-grid');
+      for (let i = 0; i <= COLS; i++) {
+        const l = document.createElementNS(NS,'line');
+        const x = (i/COLS)*100;
+        l.setAttribute('x1',x); l.setAttribute('y1',0); l.setAttribute('x2',x); l.setAttribute('y2',100);
+        l.setAttribute('stroke','#000'); l.setAttribute('stroke-width',.12);
+        gridSvg.appendChild(l);
+      }
+      for (let i = 0; i <= ROWS; i++) {
+        const l = document.createElementNS(NS,'line');
+        const y = (i/ROWS)*100;
+        l.setAttribute('x1',0); l.setAttribute('y1',y); l.setAttribute('x2',100); l.setAttribute('y2',y);
+        l.setAttribute('stroke','#000'); l.setAttribute('stroke-width',.12);
+        gridSvg.appendChild(l);
+      }
+      gridSvg.style.opacity = 0;
+
+      // Build particles
+      const particlesSvg = document.getElementById('hviz-particles');
+      const parts = [];
+      for (let i = 0; i < COUNT; i++) {
+        const col = i % COLS, row = Math.floor(i / COLS);
+        const shape = shapes[Math.floor(rng() * shapes.length)];
+        const grey  = greys[Math.floor(rng() * greys.length)];
+        const accent = accents[Math.floor(rng() * accents.length)];
+        const size  = 10 + rng() * 18;
+        const sz    = size / 10;
+        const p = {
+          grey, accent, size, sz,
+          chaotic: { x: rng()*100, y: rng()*100, rot: rng()*360, scale: .3+rng()*1.4, opacity: .12+rng()*.3 },
+          ordered: { x: ((col+.5)/COLS)*100, y: ((row+.5)/ROWS)*100, rot: 0, scale: 1, opacity: .9 },
+          delay: rng()*.3,
+          speed: .7+rng()*.6,
+        };
+        const g = document.createElementNS(NS,'g');
+        const inner = document.createElementNS(NS,'svg');
+        inner.setAttribute('x', -sz/2); inner.setAttribute('y', -sz/2);
+        inner.setAttribute('width', sz); inner.setAttribute('height', sz);
+        inner.setAttribute('viewBox', `0 0 ${size} ${size}`);
+        inner.setAttribute('overflow','visible');
+        p.shapeEl = makeShapeEl(shape, grey, size);
+        inner.appendChild(p.shapeEl);
+        g.appendChild(inner);
+        particlesSvg.appendChild(g);
+        p.g = g;
+        parts.push(p);
+      }
+
+      const hint    = document.getElementById('hviz-hint');
+      const labelL  = document.getElementById('hviz-label-l');
+      const labelR  = document.getElementById('hviz-label-r');
+      let targetP = 0, currentP = 0;
+
+      viz.addEventListener('mousemove', e => {
+        const r = viz.getBoundingClientRect();
+        targetP = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));
+      });
+      viz.addEventListener('mouseleave', () => { targetP = 0; });
+      viz.addEventListener('touchmove', e => {
+        const r = viz.getBoundingClientRect();
+        targetP = Math.max(0, Math.min(1, (e.touches[0].clientX - r.left) / r.width));
+      }, { passive: true });
+      viz.addEventListener('touchend', () => { targetP = 0; });
+
+      function tick() {
+        currentP += (targetP - currentP) * .06;
+        const prog = currentP;
+
+        gridSvg.style.opacity = prog * .18;
+        hint.style.opacity    = prog < .05 ? .4 : 0;
+        labelL.style.color    = `rgba(0,0,0,${.15 + (1-prog)*.25})`;
+        labelR.style.color    = `rgba(0,0,0,${.15 + prog*.25})`;
+
+        parts.forEach(p => {
+          const rawT = Math.max(0, Math.min(1, (prog - p.delay) / p.speed));
+          const t = ease(rawT);
+          const x       = lerp(p.chaotic.x, p.ordered.x, t);
+          const y       = lerp(p.chaotic.y, p.ordered.y, t);
+          const rot     = lerp(p.chaotic.rot, p.ordered.rot, t);
+          const scale   = lerp(p.chaotic.scale, p.ordered.scale, t);
+          const opacity = lerp(p.chaotic.opacity, p.ordered.opacity, t);
+          const color   = lerpCol(p.grey, p.accent, t);
+
+          p.g.setAttribute('transform', `translate(${x},${y}) rotate(${rot}) scale(${scale})`);
+          p.g.setAttribute('opacity', opacity);
+
+          const el = p.shapeEl;
+          if (el.tagName === 'line') { el.setAttribute('stroke', color); }
+          else if (el.tagName === 'g') { el.setAttribute('stroke', color); }
+          else { el.setAttribute('fill', color); }
+        });
 
         requestAnimationFrame(tick);
       }
-
       requestAnimationFrame(tick);
     })();
   </script>
