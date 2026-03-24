@@ -81,7 +81,7 @@
     .hero {
       min-height: 100vh;
       display: grid;
-      grid-template-columns: 1fr 1.4fr;
+      grid-template-columns: 1fr 1fr;
       align-items: end;
       padding: 140px 48px 96px;
       position: relative;
@@ -115,6 +115,7 @@
 
     .hero-viz {
       width: 100%;
+      max-width: 520px;
       aspect-ratio: 4/3;
       border-radius: 4px;
       overflow: hidden;
@@ -122,6 +123,7 @@
       border: 1px solid var(--border);
       position: relative;
       align-self: end;
+      justify-self: end;
       user-select: none;
     }
     .hero-viz svg { position: absolute; inset: 0; width: 100%; height: 100%; }
@@ -563,7 +565,7 @@
       }
 
       const accents = ['#C9553A','#2A7A7A','#C4943D','#4A6BB5','#9E4D72'];
-      const greys   = ['#B0B0B0','#9A9A9A','#C2C2C2','#A8A8A8','#BFBFBF'];
+      const greys   = ['#C8C8C4','#B8B8B4','#D0D0CC','#C0C0BC','#CACAC6'];
       const shapes  = ['circle','square','triangle','line','diamond','cross'];
       const rng = seeded(113);
 
@@ -630,7 +632,7 @@
         const shape = shapes[Math.floor(rng() * shapes.length)];
         const grey  = greys[Math.floor(rng() * greys.length)];
         const accent = accents[Math.floor(rng() * accents.length)];
-        const size  = 10 + rng() * 18;
+        const size  = 7 + rng() * 12;
         const sz    = size / 10;
         const p = {
           grey, accent, size, sz,
@@ -652,15 +654,13 @@
         parts.push(p);
       }
 
-      let prog = 0;
+      const DURATION = 2800;
+      let startTime = null;
 
-      function updateScroll() {
-        const rect = viz.getBoundingClientRect();
-        const wH = window.innerHeight;
-        prog = clamp((wH - rect.top) / (wH - wH * .15), 0, 1);
-      }
+      function render(ts) {
+        if (!startTime) startTime = ts;
+        const prog = clamp((ts - startTime) / DURATION, 0, 1);
 
-      function render() {
         gridSvg.style.opacity = prog * .18;
         parts.forEach(p => {
           const t = ease(clamp((prog - p.delay) / p.speed, 0, 1));
@@ -676,11 +676,11 @@
           if (el.tagName === 'line' || el.tagName === 'g') { el.setAttribute('stroke', col); }
           else { el.setAttribute('fill', col); }
         });
+
+        if (prog < 1) requestAnimationFrame(render);
       }
 
-      window.addEventListener('scroll', () => { updateScroll(); render(); }, { passive: true });
-      updateScroll();
-      render();
+      requestAnimationFrame(render);
     })();
   </script>
 </body>
