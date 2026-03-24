@@ -113,7 +113,21 @@
       font-weight: 300;
     }
 
+    .hero-canvas-wrap {
+      width: 440px;
+      height: 440px;
+      background: var(--surface);
+      border-radius: 4px;
+      overflow: hidden;
+      flex-shrink: 0;
+      align-self: end;
+    }
 
+    #hero-canvas { width: 100%; height: 100%; display: block; }
+
+    @media (max-width: 1024px) {
+      .hero-canvas-wrap { display: none; }
+    }
 
     /* ── Section commons ── */
     section { padding: 120px 48px; }
@@ -152,7 +166,7 @@
     }
     .work-header a:hover { color: var(--text); }
 
-    .projects-list { display: flex; flex-direction: column; }
+    .projects-list { display: grid; grid-template-columns: 1fr 1fr; column-gap: 80px; }
 
     .project-row {
       display: flex;
@@ -160,13 +174,11 @@
       align-items: baseline;
       gap: 40px;
       padding: 28px 0;
-      border-bottom: 1px solid var(--border);
-      border-top: 1px solid transparent;
+      border-top: 1px solid var(--border);
       text-decoration: none;
       color: inherit;
       transition: opacity .2s;
     }
-    .projects-list .project-row:first-child { border-top: 1px solid var(--border); }
     .project-row:hover { opacity: .45; }
 
     .project-row-title {
@@ -339,6 +351,7 @@
     /* ── Responsive ── */
     @media (max-width: 1024px) {
       .hero { grid-template-columns: 1fr; }
+      .projects-list { grid-template-columns: 1fr; }
       .project-row { flex-direction: column; align-items: flex-start; gap: 4px; }
     }
     @media (max-width: 900px) {
@@ -378,6 +391,9 @@
         I've treated patients in the ER and designed the software clinicians use every day. That perspective changes how I approach every product.
       </p>
     </div>
+    <div class="hero-canvas-wrap">
+      <canvas id="hero-canvas"></canvas>
+    </div>
   </section>
 
   <!-- ── Work ── -->
@@ -387,7 +403,6 @@
         <p class="section-tag">Selected work</p>
         <h2>Projects I'm proud of</h2>
       </div>
-      <a href="#">View all</a>
     </div>
 
     <div class="projects-list fade-up">
@@ -497,11 +512,7 @@
   <section id="contact">
     <div class="contact-inner">
       <p class="section-tag fade-up">Get in touch</p>
-      <h2 class="fade-up" style="transition-delay:.05s">Let's talk.</h2>
-      <a href="mailto:frednors@proton.me" class="contact-email fade-up" style="transition-delay:.1s">frednors@proton.me</a>
-      <div class="social-links fade-up" style="transition-delay:.15s">
-        <a href="https://www.linkedin.com/in/fredkors/" class="social-link" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
+      <a href="https://www.linkedin.com/in/fredkors/" class="contact-email fade-up" style="transition-delay:.1s" target="_blank" rel="noopener">Connect on LinkedIn</a>
     </div>
   </section>
 
@@ -527,6 +538,57 @@
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    /* ── Hero canvas animation ── */
+    (function () {
+      const canvas = document.getElementById('hero-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let W, H, dpr;
+
+      function resize() {
+        dpr = window.devicePixelRatio || 1;
+        const rect = canvas.getBoundingClientRect();
+        W = canvas.width = rect.width * dpr;
+        H = canvas.height = rect.height * dpr;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      const SPAWN_INTERVAL = 1800;
+      const RING_DURATION  = 5400;
+      const rings = [];
+      let lastSpawn = -SPAWN_INTERVAL;
+
+      function tick(t) {
+        if (t - lastSpawn >= SPAWN_INTERVAL) {
+          rings.push({ born: t });
+          lastSpawn = t;
+        }
+
+        ctx.clearRect(0, 0, W, H);
+
+        const cx = W / 2, cy = H / 2;
+        const maxR = Math.min(W, H) * 0.42;
+
+        for (let i = rings.length - 1; i >= 0; i--) {
+          const age = t - rings[i].born;
+          if (age > RING_DURATION) { rings.splice(i, 1); continue; }
+          const p = age / RING_DURATION;
+          const r = maxR * p;
+          const alpha = (1 - p) * 0.18;
+          ctx.beginPath();
+          ctx.arc(cx, cy, r, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(100, 100, 95, ${alpha})`;
+          ctx.lineWidth = dpr;
+          ctx.stroke();
+        }
+
+        requestAnimationFrame(tick);
+      }
+
+      requestAnimationFrame(tick);
+    })();
   </script>
 </body>
 </html>

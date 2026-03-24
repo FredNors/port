@@ -56,11 +56,13 @@
     .section-tag { font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 400; margin-bottom: 24px; }
     h2 { font-family: var(--font-serif); font-size: clamp(2.2rem, 4vw, 4rem); font-weight: 300; line-height: 1.15; letter-spacing: -.015em; }
 
-    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 120px 48px 96px; }
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 120px 48px 0; }
     .hero-eyebrow { font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 400; margin-bottom: 28px; }
     .hero h1 { font-family: var(--font-serif); font-size: clamp(3.5rem, 8vw, 8rem); font-weight: 300; line-height: 1.05; letter-spacing: -.02em; max-width: 900px; margin-bottom: 32px; }
     .hero-tagline { color: var(--muted); font-size: 1.15rem; font-weight: 300; line-height: 1.7; max-width: 520px; margin-bottom: 64px; }
-    .hero-image { width: 100%; aspect-ratio: 16/9; object-fit: cover; object-position: top; display: block; border-radius: 4px; background: var(--surface); }
+    .hero-phones { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .hero-phone { overflow: hidden; border-radius: 4px 4px 0 0; aspect-ratio: 9/16; }
+    .hero-phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
 
     .overview { border-top: 1px solid var(--border); }
     .overview-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 64px; }
@@ -76,7 +78,9 @@
     .screenshot-strip { padding: 0 48px 120px; display: grid; gap: 16px; }
     .screenshot-strip.cols-2 { grid-template-columns: 1fr 1fr; }
     .screenshot-strip.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .screenshot-strip.cols-4 { grid-template-columns: repeat(4, 1fr); }
     .screenshot-strip img { width: 100%; display: block; border-radius: 4px; border: 1px solid var(--border); }
+    .screenshot-strip.cols-4 img { border: none; }
 
     .results { border-top: 1px solid var(--border); }
     .results-header { margin-bottom: 80px; }
@@ -100,13 +104,14 @@
       nav { padding: 20px 24px; }
       .nav-links { display: none; }
       section { padding: 80px 24px; }
-      .hero { padding: 100px 24px 72px; }
+      .hero { padding: 100px 24px 0; }
+      .hero-phones { grid-template-columns: repeat(2, 1fr); }
       .overview-grid { grid-template-columns: 1fr; gap: 40px; }
       .content-section { grid-template-columns: 1fr; gap: 40px; }
       .content-section h2 { position: static; }
       .results-grid { grid-template-columns: 1fr; gap: 40px; }
       .screenshot-strip { padding: 0 24px 80px; }
-      .screenshot-strip.cols-2, .screenshot-strip.cols-3 { grid-template-columns: 1fr; }
+      .screenshot-strip.cols-2, .screenshot-strip.cols-3, .screenshot-strip.cols-4 { grid-template-columns: 1fr 1fr; }
       .next-project { padding: 0 24px; }
       .next-project a { padding: 60px 0; }
       footer { flex-direction: column; gap: 8px; text-align: center; }
@@ -127,11 +132,16 @@
 
   <section class="hero">
     <div>
-      <p class="hero-eyebrow fade-up">Fintech, Banking &middot; 2023 – 2024</p>
+      <p class="hero-eyebrow fade-up">Fintech, Banking</p>
       <h1 class="fade-up" style="transition-delay:.06s">Jyske Bank</h1>
       <p class="hero-tagline fade-up" style="transition-delay:.12s">Redesigning the new customer experience — from a frustrating black box to a smooth, transparent onboarding journey</p>
     </div>
-    <img class="hero-image fade-up" style="transition-delay:.18s" src="assets/Jyskebank/s1.webp" alt="Jyske Bank — Customer portal" />
+    <div class="hero-phones fade-up" style="transition-delay:.18s">
+      <div class="hero-phone"><img src="assets/Jyskebank/s1.webp" alt="Jyske Bank — Customer portal" /></div>
+      <div class="hero-phone"><img src="assets/Jyskebank/s2.webp" alt="Jyske Bank — Onboarding status" /></div>
+      <div class="hero-phone"><img src="assets/Jyskebank/s3.webp" alt="Jyske Bank — Document upload" /></div>
+      <div class="hero-phone"><img src="assets/Jyskebank/s4.webp" alt="Jyske Bank — Progress overview" /></div>
+    </div>
   </section>
 
   <section class="overview">
@@ -159,11 +169,6 @@
     </div>
   </section>
 
-  <div class="screenshot-strip cols-2">
-    <img src="assets/Jyskebank/s2.webp" alt="Jyske Bank — Onboarding status" />
-    <img src="assets/Jyskebank/s3.webp" alt="Jyske Bank — Document upload" />
-  </div>
-
   <section class="content-section">
     <h2 class="fade-up">From sprint<br>to scale</h2>
     <div class="content-body fade-up" style="transition-delay:.08s">
@@ -171,11 +176,6 @@
       <p>The solution was developed, launched, and ultimately sold to an organisation serving 8 of Denmark's largest banks — turning a single client project into a product with much broader reach.</p>
     </div>
   </section>
-
-  <div class="screenshot-strip cols-2">
-    <img src="assets/Jyskebank/s4.webp" alt="Jyske Bank — Progress overview" />
-    <img src="assets/Jyskebank/s1.webp" alt="Jyske Bank — Customer portal" />
-  </div>
 
   <section class="results">
     <div class="results-header fade-up">
