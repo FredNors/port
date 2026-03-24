@@ -114,23 +114,6 @@
     }
 
 
-    .hero-portrait {
-      width: 340px;
-      height: 340px;
-      border-radius: 50%;
-      overflow: hidden;
-      align-self: center;
-      flex-shrink: 0;
-      margin-bottom: 40px;
-    }
-    .hero-portrait img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-      filter: grayscale(100%);
-    }
 
     /* ── Section commons ── */
     section { padding: 120px 48px; }
@@ -262,6 +245,19 @@
       gap: 40px;
       padding-top: 8px;
     }
+
+    .about-portrait {
+      width: 240px;
+      aspect-ratio: 3 / 4;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .about-portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
     .meta-block-label {
       font-size: .8rem;
       letter-spacing: .1em;
@@ -343,7 +339,6 @@
     /* ── Responsive ── */
     @media (max-width: 1024px) {
       .hero { grid-template-columns: 1fr; }
-      .hero-portrait { display: none; }
       .project-row { flex-direction: column; align-items: flex-start; gap: 4px; }
     }
     @media (max-width: 900px) {
@@ -382,9 +377,6 @@
       <p class="hero-sub">
         I've treated patients in the ER and designed the software clinicians use every day. That perspective changes how I approach every product.
       </p>
-    </div>
-    <div class="hero-portrait">
-      <img src="assets/hero/portrait.jpeg" alt="Frederik Haug Korsgaard" />
     </div>
   </section>
 
@@ -473,6 +465,7 @@
       <h2>From diagnosis to product strategy — I figure out what's worth building</h2>
       <p>I'm Frederik — a medical doctor turned product designer based in Aarhus. I specialise in digital health, but I've also shipped products in fintech, energy, and food.</p>
       <p>My background in medicine means I don't just design for users — I've been one. I've worked night shifts in the ER, consulted in general practice, and spent weeks doing fieldwork in hospital wards. That clinical experience shapes how I think about products: start with a real understanding of the problem, then design something that actually holds up in practice.</p>
+      <p>At work, I'm the AI go-to person. I created the classification and risk assessment framework that got ChatGPT approved at the highest company level — across all 1,200 employees — and I spend a lot of time helping colleagues make the most of new tools as they arrive. I also started a design and product book club, because I think the best designers never stop being curious about how other people think about the craft.</p>
       <p>When I'm not working, I'm usually chasing waves, chasing kids, or planning the next ski trip. Married to a Norwegian, father of two.</p>
       <div class="about-skills">
         <span class="skill-tag">Product Strategy</span>
@@ -486,6 +479,9 @@
       </div>
     </div>
     <div class="about-meta fade-up" style="transition-delay:.1s">
+      <div class="about-portrait">
+        <img src="assets/hero/portrait.webp" alt="Frederik Haug Korsgaard" />
+      </div>
       <div class="meta-block">
         <div class="meta-block-label">Based in</div>
         <div class="meta-block-value">Aarhus, Denmark</div>

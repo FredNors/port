@@ -59,14 +59,26 @@
     /* Hero — no image, full height with large quote */
     .hero {
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 80px;
+      align-items: end;
       padding: 120px 48px 96px;
     }
     .hero-eyebrow { font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 400; margin-bottom: 28px; }
-    .hero h1 { font-family: var(--font-serif); font-size: clamp(3.5rem, 8vw, 8rem); font-weight: 300; line-height: 1.05; letter-spacing: -.02em; max-width: 900px; margin-bottom: 32px; }
-    .hero-tagline { color: var(--muted); font-size: 1.15rem; font-weight: 300; line-height: 1.7; max-width: 520px; margin-bottom: 0; }
+    .hero h1 { font-family: var(--font-serif); font-size: clamp(3.5rem, 8vw, 8rem); font-weight: 300; line-height: 1.05; letter-spacing: -.02em; margin-bottom: 32px; }
+    .hero-tagline { color: var(--muted); font-size: 1.15rem; font-weight: 300; line-height: 1.7; max-width: 480px; margin-bottom: 0; }
+    .hero-paper {
+      display: block;
+      width: 380px;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 3px;
+      background: var(--surface);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+      flex-shrink: 0;
+    }
 
     /* Pull quote — replaces hero image for text-only cases */
     .pull-quote {
@@ -126,6 +138,8 @@
     @media (max-width: 900px) {
       nav { padding: 20px 24px; }
       .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-paper { width: 100%; aspect-ratio: 4/3; margin-top: 48px; }
       section { padding: 80px 24px; }
       .hero { padding: 100px 24px 72px; }
       .pull-quote { padding: 80px 24px; }
@@ -153,32 +167,33 @@
 
   <section class="hero">
     <div>
-      <p class="hero-eyebrow fade-up">Research, Health Economics &middot; 2017</p>
+      <p class="hero-eyebrow fade-up">Research, Health Economics &middot; 2021</p>
       <h1 class="fade-up" style="transition-delay:.06s">Business Models<br>for Telemedicine</h1>
-      <p class="hero-tagline fade-up" style="transition-delay:.12s">Why do most telemedicine projects die after the research phase? I studied the ones that didn't — and published what makes them commercially sustainable</p>
+      <p class="hero-tagline fade-up" style="transition-delay:.12s">Why do most telemedicine projects die after the research phase? We interviewed the companies that didn't — and found that personal relationships matter more than clinical evidence</p>
     </div>
+    <img class="hero-paper fade-up" style="transition-delay:.18s" src="assets/telemedicin/paper.webp" alt="Business Models for Telemedicine — paper" />
   </section>
 
   <div class="pull-quote fade-up">
     <blockquote>
-      A good clinical outcome is not enough. Without a viable business model, even the best telemedicine solution won't survive beyond the pilot phase.
+      Telemedicine companies with the ability to establish strong personal connections could be favoured over companies which provide strong clinical and economic evidence.
     </blockquote>
-    <cite>— Finding from the research</cite>
+    <cite>— Korsgaard, Hasenkam &amp; Vesterby, Health Services Management Research, 2021</cite>
   </div>
 
   <section class="overview">
     <div class="overview-grid">
       <div class="overview-item fade-up">
         <div class="overview-label">The Challenge</div>
-        <p>Denmark produces a lot of telemedicine research. But very few projects make the leap from research to a sustainable product. Most die when the funding runs out. The question was: what separates the telemedicine solutions that actually survive?</p>
+        <p>Despite proven clinical validity, telemedicine consistently fails to transition from research projects into daily clinical practice. Providers are typically funded to build and test — but once the project phase ends, a sustainable business model is rarely in place.</p>
       </div>
       <div class="overview-item fade-up" style="transition-delay:.08s">
         <div class="overview-label">My Role</div>
-        <p>Sole Researcher — project planning, identification and inclusion of cases, qualitative interviews, business model analysis, and peer-reviewed publication.</p>
+        <p>Lead researcher and first author — study design, case identification, structured interviews, Business Model Canvas analysis, and peer-reviewed publication. Co-authored with John Michael Hasenkam and Martin Vesterby, Aarhus University.</p>
       </div>
       <div class="overview-item fade-up" style="transition-delay:.16s">
         <div class="overview-label">Outcome</div>
-        <p>Published in Health Services Management Research. Identified the business model patterns that distinguish commercially sustainable telemedicine from projects that remain stuck in the research phase.</p>
+        <p>Published in Health Services Management Research (SAGE, 2021). The study identified personal relationships between company representatives and healthcare providers as the single most important factor in sustainable telemedicine implementation.</p>
       </div>
     </div>
   </section>
@@ -186,16 +201,24 @@
   <section class="content-section">
     <h2 class="fade-up">Finding<br>the survivors</h2>
     <div class="content-body fade-up" style="transition-delay:.08s">
-      <p>I started by scanning the Danish telemedicine landscape to identify solutions that had successfully made the transition from research project to commercially sustainable product — running on operational budgets, not grant funding. These were rare, which made them interesting.</p>
-      <p>For each case, I interviewed key people from the companies behind the products and mapped their business models using the Business Model Canvas framework. The goal was to find patterns — what did these companies do differently?</p>
+      <p>We started from all 418 Danish telemedicine initiatives registered in 2017, narrowing the field to home telemonitoring services that had been in continuous clinical operation — not project funding — for the longest period. Seven companies met the criteria, with operational track records ranging from three to eight years.</p>
+      <p>Each company was interviewed using a structured guide built around Osterwalder's Business Model Canvas, covering nine elements: customer segments, value propositions, channels, customer relationships, revenue streams, key resources, key activities, key partners, and cost structure. Interviews ran 90–120 minutes and were analysed using thematic coding.</p>
     </div>
   </section>
 
   <section class="content-section">
-    <h2 class="fade-up">From interviews<br>to publication</h2>
+    <h2 class="fade-up">It's about<br>relationships</h2>
     <div class="content-body fade-up" style="transition-delay:.08s">
-      <p>I ran the entire project solo over six months: case identification, inclusion criteria, interviews, analysis, and writing. The findings were published in a peer-reviewed journal, contributing an evidence base for how telemedicine ventures can be designed for commercial viability from the start — not just clinical effectiveness.</p>
-      <p>The research challenged a common assumption in Danish healthcare innovation: that a good clinical outcome is enough. It's not. Without a viable business model, even the best telemedicine solution won't survive beyond the pilot phase.</p>
+      <p>The central finding was that personal relationships between company representatives and healthcare providers drove everything else. They secured access to clinical ambassadors and lead users, enabled co-creation of value propositions, facilitated user education and support, and established indirect routes to the decision makers who actually controlled purchasing — but were rarely visible or reachable directly.</p>
+      <p>Value propositions focused on healthcare providers rather than patients: better use of clinical resources, ease of use, and employee satisfaction. Revenue came primarily from licensing. Strikingly, clinical and economic evidence — despite most companies having peer-reviewed documentation — was rarely cited as a reason for adoption. Relationships mattered more than evidence.</p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <h2 class="fade-up">What the model<br>doesn't solve</h2>
+    <div class="content-body fade-up" style="transition-delay:.08s">
+      <p>The research also identified structural blind spots in these business models. Patients — despite being the primary customer segment — were almost entirely absent from value propositions, channels, and customer relationships. Their needs were interpreted indirectly, through clinicians acting as 'patient experts'. None of the companies reported using patient data or automated analysis to improve their products.</p>
+      <p>A business model built on personal relationships is hard to scale. And in a publicly funded healthcare system, the person paying for the product is rarely the person using it — making it genuinely difficult to identify who needs to be convinced, and on what terms.</p>
     </div>
   </section>
 
@@ -206,16 +229,16 @@
     </div>
     <div class="results-grid">
       <div class="fade-up">
-        <div class="result-stat">Published</div>
-        <div class="result-label">Peer-reviewed article in Health Services Management Research</div>
+        <div class="result-stat">418 → 7</div>
+        <div class="result-label">Telemedicine initiatives screened down to long-term operational providers included for interview</div>
       </div>
       <div class="fade-up" style="transition-delay:.08s">
-        <div class="result-stat">Solo</div>
-        <div class="result-label">End-to-end research over 6 months — from design to publication</div>
+        <div class="result-stat">HSMR</div>
+        <div class="result-label">Published in Health Services Management Research, SAGE, 2021</div>
       </div>
       <div class="fade-up" style="transition-delay:.16s">
-        <div class="result-stat">Actionable</div>
-        <div class="result-label">Business model patterns for sustainable telemedicine</div>
+        <div class="result-stat">#1 finding</div>
+        <div class="result-label">Personal relationships outweigh clinical and economic evidence as a driver of adoption</div>
       </div>
     </div>
   </section>

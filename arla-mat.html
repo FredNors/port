@@ -143,6 +143,24 @@
       background: var(--surface);
     }
 
+    .hero-phone-wrap {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border-radius: 4px;
+      background: #f2f5f1;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-phone-wrap img {
+      position: absolute;
+      width: 28%;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -8%;
+      display: block;
+    }
+
     /* ── Overview ── */
     .overview { border-top: 1px solid var(--border); }
 
@@ -334,12 +352,9 @@
       <h1 class="fade-up" style="transition-delay:.06s">Arla Mat</h1>
       <p class="hero-tagline fade-up" style="transition-delay:.12s">Helping Arla Sweden turn a recipe library into a personal cooking experience — with measurable impact on engagement, retention, and app store ranking</p>
     </div>
-    <img
-      class="hero-image fade-up"
-      style="transition-delay:.18s"
-      src="assets/arla/full.webp"
-      alt="Arla Mat — Recipes tab"
-    />
+    <div class="hero-phone-wrap fade-up" style="transition-delay:.18s">
+      <img src="assets/arla/welcome.webp" alt="Arla Mat — Onboarding welcome" />
+    </div>
   </section>
 
   <!-- ── Overview ── -->
@@ -371,8 +386,8 @@
 
   <!-- ── Screenshots: onboarding ── -->
   <div class="screenshot-strip cols-2">
-    <img src="assets/arla/welcome.webp" alt="Arla Mat — Onboarding welcome" />
     <img src="assets/arla/loading.webp" alt="Arla Mat — Onboarding loading" />
+    <img src="assets/arla/full.webp" alt="Arla Mat — Recipes tab" style="border: none;" />
   </div>
 
   <!-- ── Content Section 2 ── -->

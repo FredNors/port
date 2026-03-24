@@ -56,11 +56,28 @@
     .section-tag { font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 400; margin-bottom: 24px; }
     h2 { font-family: var(--font-serif); font-size: clamp(2.2rem, 4vw, 4rem); font-weight: 300; line-height: 1.15; letter-spacing: -.015em; }
 
-    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 120px 48px 96px; }
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      padding: 120px 48px 96px;
+    }
     .hero-eyebrow { font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 400; margin-bottom: 28px; }
-    .hero h1 { font-family: var(--font-serif); font-size: clamp(3.5rem, 8vw, 8rem); font-weight: 300; line-height: 1.05; letter-spacing: -.02em; max-width: 900px; margin-bottom: 32px; }
-    .hero-tagline { color: var(--muted); font-size: 1.15rem; font-weight: 300; line-height: 1.7; max-width: 520px; margin-bottom: 64px; }
-    .hero-image { width: 100%; aspect-ratio: 16/9; object-fit: cover; object-position: top; display: block; border-radius: 4px; background: var(--surface); }
+    .hero h1 { font-family: var(--font-serif); font-size: clamp(3.5rem, 8vw, 8rem); font-weight: 300; line-height: 1.05; letter-spacing: -.02em; margin-bottom: 32px; }
+    .hero-tagline { color: var(--muted); font-size: 1.15rem; font-weight: 300; line-height: 1.7; max-width: 480px; margin-bottom: 0; }
+    .hero-phone-wrap {
+      border-radius: 4px;
+      background: var(--surface);
+      overflow: hidden;
+      aspect-ratio: 1/1;
+    }
+    .hero-phone-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
 
     .overview { border-top: 1px solid var(--border); }
     .overview-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 64px; }
@@ -98,6 +115,8 @@
     @media (max-width: 900px) {
       nav { padding: 20px 24px; }
       .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-phone-wrap { aspect-ratio: 4/3; }
       section { padding: 80px 24px; }
       .hero { padding: 100px 24px 72px; }
       .overview-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -130,7 +149,9 @@
       <h1 class="fade-up" style="transition-delay:.06s">MinLæge &<br>Gravitate Health</h1>
       <p class="hero-tagline fade-up" style="transition-delay:.12s">Replacing the paper leaflet with intelligent, personalized medication information — designed and validated inside Denmark's most-used health app</p>
     </div>
-    <img class="hero-image fade-up" style="transition-delay:.18s" src="assets/Gravitate/medicininformation.webp" alt="MinLæge — Medication information" />
+    <div class="hero-phone-wrap fade-up" style="transition-delay:.18s">
+      <img src="assets/Gravitate/Medicinkort.webp" alt="MinLæge — Medication card" />
+    </div>
   </section>
 
   <section class="overview">
