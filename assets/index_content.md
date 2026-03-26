@@ -54,4 +54,4 @@ But understanding a problem and designing a solution isn't enough. If the impact
 | | |
 |---|---|
 | Based in | Aarhus, Denmark |
-| Languages | Danish, English, Norwegian |
+| Languages | Danish (native), English (fluent), Norwegian (full comprehension, conversational) |
