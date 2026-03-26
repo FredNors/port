@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Frederik Haug Korsgaard — Product Designer</title>
+  <title>Frederik Haug Korsgaard | Product Designer</title>
   <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -226,64 +226,6 @@
     .step-title { font-size: 1.05rem; font-weight: 500; margin-bottom: 10px; }
     .step-desc { font-size: 1rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
 
-    /* ── About ── */
-    #about {
-      border-top: 1px solid var(--border);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 120px;
-      align-items: start;
-    }
-
-    .about-content h2 { margin-bottom: 28px; }
-    .about-content p { color: var(--muted); margin-bottom: 20px; line-height: 1.8; font-size: 1.1rem; font-weight: 300; }
-
-    .about-skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 28px;
-    }
-    .skill-tag {
-      background: var(--surface);
-      border-radius: 4px;
-      padding: 5px 12px;
-      font-size: .9rem;
-      color: var(--muted);
-    }
-
-    .about-meta {
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-      padding-top: 8px;
-    }
-
-    .about-portrait {
-      width: 240px;
-      aspect-ratio: 3 / 4;
-      border-radius: 4px;
-      overflow: hidden;
-    }
-    .about-portrait img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top;
-    }
-    .meta-block-label {
-      font-size: .8rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 10px;
-    }
-    .meta-block-value {
-      font-size: 1.05rem;
-      line-height: 1.6;
-      font-weight: 300;
-    }
-
     /* ── Contact ── */
     #contact { border-top: 1px solid var(--border); }
 
@@ -298,18 +240,26 @@
       margin-bottom: 48px;
     }
 
+    .contact-email-wrap {
+      position: relative;
+      display: inline-block;
+    }
     .contact-email {
       font-family: var(--font-serif);
       font-size: clamp(1.8rem, 3.5vw, 3rem);
       font-weight: 300;
       color: var(--text);
       text-decoration: none;
-      border-bottom: 1.25px solid var(--border);
-      padding-bottom: 4px;
       display: inline-block;
-      transition: border-color .2s;
+      position: relative;
     }
-    .contact-email:hover { border-color: var(--text); }
+    .contact-underline {
+      display: block;
+      width: 100%;
+      height: 8px;
+      margin-top: 6px;
+      overflow: visible;
+    }
 
     .social-links {
       display: flex;
@@ -363,7 +313,6 @@
       section { padding: 80px 24px; }
       .hero { padding: 120px 24px 72px; }
       .process-steps { grid-template-columns: 1fr 1fr; gap: 40px; }
-      #about { grid-template-columns: 1fr; gap: 56px; }
       .testimonial-row { grid-template-columns: 1fr; gap: 20px; }
       .work-header { flex-direction: column; align-items: flex-start; gap: 16px; }
       footer { flex-direction: column; gap: 8px; text-align: center; }
@@ -378,7 +327,6 @@
     <ul class="nav-links">
       <li><a href="#work">Work</a></li>
       <li><a href="#process">Process</a></li>
-      <li><a href="#about">About</a></li>
       <li><a href="#contact" class="nav-cta">Get in touch</a></li>
     </ul>
   </nav>
@@ -391,7 +339,7 @@
         <em>Product Designer</em>
       </h1>
       <p class="hero-sub">
-        I build products that create measurable outcomes for people and business in Health, FinTech, and Energy.
+        I build products that create measurable outcomes for people and business in Health, FinTech, Energy, and beyond.
       </p>
     </div>
     <div class="hero-viz" id="hero-viz">
@@ -449,63 +397,29 @@
     <div class="process-header fade-up">
       <p class="section-tag">How I work</p>
       <h2>From understanding<br>to measurable impact</h2>
-      <p>I start with the business, the market, and the people — then work towards a solution that delivers real outcomes.</p>
+      <p>I start with the business, the market, and the people, then work towards a solution that delivers real outcomes.</p>
     </div>
 
     <div class="process-steps">
       <div class="process-step fade-up">
         <div class="step-num">01</div>
         <div class="step-title">Understand</div>
-        <div class="step-desc">Map the business, the market, and the users. Identify what's actually worth solving — and what isn't. In regulated industries, understanding the constraints is half the work.</div>
+        <div class="step-desc">Map the business, the market, and the users. Identify what's actually worth solving, and what isn't. In regulated industries, understanding the constraints is half the work.</div>
       </div>
       <div class="process-step fade-up" style="transition-delay:.08s">
         <div class="step-num">02</div>
         <div class="step-title">Vision & Strategy</div>
-        <div class="step-desc">Define where the product needs to go and build the case for why. Align stakeholders around a shared direction so every decision that follows has a rationale — and a business logic.</div>
+        <div class="step-desc">Define where the product needs to go and build the case for why. Align stakeholders around a shared direction so every decision that follows has a rationale and a business logic.</div>
       </div>
       <div class="process-step fade-up" style="transition-delay:.16s">
         <div class="step-num">03</div>
         <div class="step-title">Discover & Design</div>
-        <div class="step-desc">Research, ideation, prototyping, and testing with real users. Move fast, but validate before you commit. The goal isn't a beautiful prototype — it's confidence that you're building the right thing.</div>
+        <div class="step-desc">Research, ideation, prototyping, and testing with real users. Move fast, but validate before you commit. The goal isn't a beautiful prototype. It's confidence that you're building the right thing.</div>
       </div>
       <div class="process-step fade-up" style="transition-delay:.24s">
         <div class="step-num">04</div>
         <div class="step-title">Deliver & Measure</div>
-        <div class="step-desc">Ship, track, and learn. Design doesn't end at handoff — it ends when the numbers show it's working. If the impact isn't measurable, it isn't real.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── About ── -->
-  <section id="about">
-    <div class="about-content fade-up">
-      <p class="section-tag">About me</p>
-      <h2>From diagnosis to product strategy — I figure out what's worth building</h2>
-      <p>Medical doctor turned product designer based in Aarhus. I made the switch because I realised that the biggest problems in healthcare wouldn't be solved one patient at a time. They'd be solved through technology and design — at scale.</p>
-      <p>That shift taught me something I didn't expect: the skills that make you good at healthcare products make you good at any complex, regulated industry. Health, fintech, energy — they all involve multiple user groups with intertwined journeys, sensitive data, heavy regulation, and real consequences when you get it wrong. The complexity is the same. So is the opportunity to make a meaningful difference for a lot of people.</p>
-      <p>But understanding a problem and designing a solution isn't enough. If the impact is going to last, it has to be tied to a viable business. That's the part I care about most — building products that create measurable outcomes for people and for the organisations behind them. A great product that can't sustain itself isn't great. It's a pilot that ends.</p>
-      <div class="about-skills">
-        <span class="skill-tag">Product Strategy</span>
-        <span class="skill-tag">User Research</span>
-        <span class="skill-tag">Concept Development</span>
-        <span class="skill-tag">Prototyping</span>
-        <span class="skill-tag">Workshop Facilitation</span>
-        <span class="skill-tag">Design Sprints</span>
-        <span class="skill-tag">Health Domain</span>
-        <span class="skill-tag">Stakeholder Management</span>
-      </div>
-    </div>
-    <div class="about-meta fade-up" style="transition-delay:.1s">
-      <div class="about-portrait">
-        <img src="assets/hero/portrait.webp" alt="Frederik Haug Korsgaard" />
-      </div>
-      <div class="meta-block">
-        <div class="meta-block-label">Based in</div>
-        <div class="meta-block-value">Aarhus, Denmark</div>
-      </div>
-      <div class="meta-block">
-        <div class="meta-block-label">Languages</div>
-        <div class="meta-block-value">Danish (native), English (fluent), Norwegian (full comprehension, conversational)</div>
+        <div class="step-desc">Ship, track, and learn. Design doesn't end at handoff. It ends when the numbers show it's working. If the impact isn't measurable, it isn't real.</div>
       </div>
     </div>
   </section>
@@ -514,7 +428,10 @@
   <section id="contact">
     <div class="contact-inner">
       <p class="section-tag fade-up">Get in touch</p>
-      <a href="https://www.linkedin.com/in/fredkors/" class="contact-email fade-up" style="transition-delay:.1s" target="_blank" rel="noopener">Connect on LinkedIn</a>
+      <div class="contact-email-wrap fade-up" style="transition-delay:.1s">
+        <a href="https://www.linkedin.com/in/fredkors/" class="contact-email" target="_blank" rel="noopener">Connect on LinkedIn</a>
+        <svg class="contact-underline" id="contact-underline" viewBox="0 0 400 8" preserveAspectRatio="none"></svg>
+      </div>
     </div>
   </section>
 
@@ -674,6 +591,163 @@
       }
 
       requestAnimationFrame(render);
+    })();
+
+    /* ── Contact underline particles ── */
+    (function () {
+      const svg = document.getElementById('contact-underline');
+      if (!svg) return;
+      const NS = 'http://www.w3.org/2000/svg';
+      const COUNT = 28;
+
+      function seeded(seed) {
+        let s = seed;
+        return () => { s = (s * 16807) % 2147483647; return (s - 1) / 2147483646; };
+      }
+      function lerp(a, b, t) { return a + (b - a) * t; }
+      function ease(t) { return t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2; }
+      function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
+      function hexRgb(h) {
+        return { r: parseInt(h.slice(1,3),16), g: parseInt(h.slice(3,5),16), b: parseInt(h.slice(5,7),16) };
+      }
+      function lerpCol(gh, ah, t) {
+        const g = hexRgb(gh), a = hexRgb(ah);
+        return `rgb(${Math.round(lerp(g.r,a.r,t))},${Math.round(lerp(g.g,a.g,t))},${Math.round(lerp(g.b,a.b,t))})`;
+      }
+
+      const accents = ['#C9553A','#2A7A7A','#C4943D','#4A6BB5','#9E4D72'];
+      const greys   = ['#C8C8C4','#B8B8B4','#D0D0CC','#C0C0BC','#CACAC6'];
+      const shapes  = ['circle','square','triangle','diamond','cross'];
+      const rng = seeded(907);
+
+      function makeShape(shape, color, size) {
+        const h = size / 2;
+        if (shape === 'circle') {
+          const e = document.createElementNS(NS,'circle');
+          e.setAttribute('cx',0); e.setAttribute('cy',0);
+          e.setAttribute('r', size * .42); e.setAttribute('fill', color); return e;
+        }
+        if (shape === 'square') {
+          const s2 = size * .38;
+          const e = document.createElementNS(NS,'rect');
+          e.setAttribute('x', -s2); e.setAttribute('y', -s2);
+          e.setAttribute('width', s2*2); e.setAttribute('height', s2*2);
+          e.setAttribute('fill', color); e.setAttribute('rx', 1); return e;
+        }
+        if (shape === 'triangle') {
+          const e = document.createElementNS(NS,'polygon');
+          const r = size * .42;
+          e.setAttribute('points', `0,${-r} ${r*.87},${r*.5} ${-r*.87},${r*.5}`);
+          e.setAttribute('fill', color); return e;
+        }
+        if (shape === 'diamond') {
+          const r = size * .42;
+          const e = document.createElementNS(NS,'polygon');
+          e.setAttribute('points', `0,${-r} ${r},0 0,${r} ${-r},0`);
+          e.setAttribute('fill', color); return e;
+        }
+        if (shape === 'cross') {
+          const g = document.createElementNS(NS,'g');
+          g.setAttribute('stroke', color); g.setAttribute('stroke-width', 1.5); g.setAttribute('stroke-linecap','round');
+          const r = size * .35;
+          const l1 = document.createElementNS(NS,'line');
+          const l2 = document.createElementNS(NS,'line');
+          l1.setAttribute('x1',-r); l1.setAttribute('y1',-r); l1.setAttribute('x2',r); l1.setAttribute('y2',r);
+          l2.setAttribute('x1',r); l2.setAttribute('y1',-r); l2.setAttribute('x2',-r); l2.setAttribute('y2',r);
+          g.appendChild(l1); g.appendChild(l2); return g;
+        }
+        return document.createElementNS(NS,'g');
+      }
+
+      const particles = [];
+      for (let i = 0; i < COUNT; i++) {
+        const shape = shapes[Math.floor(rng() * shapes.length)];
+        const grey  = greys[Math.floor(rng() * greys.length)];
+        const accent = accents[Math.floor(rng() * accents.length)];
+        const size = 3 + rng() * 4;
+        const targetX = (i + .5) / COUNT * 400;
+        const targetY = 4;
+
+        const p = {
+          grey, accent,
+          start: {
+            x: targetX + (rng() - .5) * 60,
+            y: targetY + (rng() - .5) * 30,
+            rot: (rng() - .5) * 90,
+            scale: .3 + rng() * .4,
+            opacity: 0
+          },
+          end: {
+            x: targetX,
+            y: targetY + (rng() - .5) * 2,
+            rot: 0,
+            scale: .8 + rng() * .4,
+            opacity: .6 + rng() * .3
+          },
+          delay: rng() * .4,
+          speed: .3 + rng() * .3,
+          idle: {
+            rx: .3 + rng() * .5,
+            ry: .2 + rng() * .3,
+            fx: .0008 + rng() * .001,
+            fy: .0008 + rng() * .001,
+            px: rng() * Math.PI * 2,
+            py: rng() * Math.PI * 2
+          }
+        };
+
+        const g = document.createElementNS(NS, 'g');
+        g.setAttribute('opacity', 0);
+        const shapeEl = makeShape(shape, grey, size);
+        g.appendChild(shapeEl);
+        svg.appendChild(g);
+        p.g = g;
+        p.shapeEl = shapeEl;
+        particles.push(p);
+      }
+
+      let animStart = null;
+      let triggered = false;
+      const ANIM_DURATION = 2500;
+
+      function animate(ts) {
+        if (!animStart) animStart = ts;
+        const elapsed = ts - animStart;
+        const prog = clamp(elapsed / ANIM_DURATION, 0, 1);
+        const idleElapsed = elapsed;
+
+        particles.forEach(p => {
+          const t = ease(clamp((prog - p.delay) / p.speed, 0, 1));
+          const idleW = ease(clamp((elapsed - 1200) / 3000, 0, 1));
+          const ix = p.idle.rx * Math.sin(idleElapsed * p.idle.fx + p.idle.px) * idleW;
+          const iy = p.idle.ry * Math.cos(idleElapsed * p.idle.fy + p.idle.py) * idleW;
+          const x = lerp(p.start.x, p.end.x, t) + ix;
+          const y = lerp(p.start.y, p.end.y, t) + iy;
+          const rot = lerp(p.start.rot, p.end.rot, t);
+          const sc  = lerp(p.start.scale, p.end.scale, t);
+          const op  = lerp(p.start.opacity, p.end.opacity, t);
+          const col = lerpCol(p.grey, p.accent, t);
+          p.g.setAttribute('transform', `translate(${x},${y}) rotate(${rot}) scale(${sc})`);
+          p.g.setAttribute('opacity', op);
+          const el = p.shapeEl;
+          if (el.tagName === 'g') { el.setAttribute('stroke', col); }
+          else { el.setAttribute('fill', col); }
+        });
+
+        requestAnimationFrame(animate);
+      }
+
+      const contactObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting && !triggered) {
+            triggered = true;
+            requestAnimationFrame(animate);
+            contactObs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      contactObs.observe(svg.closest('section') || svg);
     })();
   </script>
 </body>
