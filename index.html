@@ -226,6 +226,99 @@
     .step-title { font-size: 1.05rem; font-weight: 500; margin-bottom: 10px; }
     .step-desc { font-size: 1rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
 
+    /* ── About ── */
+    #about { border-top: 1px solid var(--border); }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .about-portrait {
+      position: sticky;
+      top: 140px;
+    }
+    .about-portrait img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 12px;
+      filter: grayscale(0.1);
+    }
+    .about-portrait-caption {
+      margin-top: 20px;
+      font-size: .85rem;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    .about-content { max-width: 600px; }
+
+    .about-text {
+      color: var(--muted);
+      font-size: 1.05rem;
+      font-weight: 300;
+      line-height: 1.85;
+    }
+    .about-text p + p { margin-top: 20px; }
+
+    .about-skills {
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+    .about-skills-title {
+      font-size: .8rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .about-skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .about-skill-tag {
+      background: var(--surface);
+      border-radius: 4px;
+      padding: 6px 14px;
+      font-size: .88rem;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    @media (max-width: 900px) {
+      .about-layout {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      .about-portrait {
+        position: static;
+        max-width: 220px;
+      }
+    }
+
+    /* ── About CTA link ── */
+    .about-cta {
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+    .about-cta a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 1.05rem;
+      font-weight: 400;
+      border-bottom: 1.25px solid var(--text);
+      padding-bottom: 2px;
+      transition: opacity .2s;
+    }
+    .about-cta a:hover { opacity: .5; }
+
     /* ── Contact ── */
     #contact { border-top: 1px solid var(--border); }
 
@@ -327,6 +420,7 @@
     <ul class="nav-links">
       <li><a href="#work">Work</a></li>
       <li><a href="#process">Process</a></li>
+      <li><a href="#about">About</a></li>
       <li><a href="#contact" class="nav-cta">Get in touch</a></li>
     </ul>
   </nav>
@@ -420,6 +514,44 @@
         <div class="step-num">04</div>
         <div class="step-title">Deliver & Measure</div>
         <div class="step-desc">Ship, track, and learn. Design doesn't end at handoff. It ends when the numbers show it's working. If the impact isn't measurable, it isn't real.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── About ── -->
+  <section id="about">
+    <p class="section-tag fade-up">About me</p>
+    <h2 class="fade-up" style="margin-bottom: 64px;">From diagnosis to<br>product strategy</h2>
+
+    <div class="about-layout">
+      <div class="about-portrait fade-up">
+        <img src="assets/hero/portrait.webp" alt="Frederik Haug Korsgaard" />
+        <p class="about-portrait-caption">Medical doctor turned product designer. Based in Aarhus, Denmark.</p>
+      </div>
+
+      <div class="about-content">
+        <div class="about-text fade-up">
+          <p>5+ years of experience at the intersection of healthcare, design, and technology. I specialise in product vision and strategy, aligning business objectives with user needs through rigorous research, prototyping, and data-driven validation.</p>
+          <p>I made the switch from medical doctor to product designer, because I realised that the biggest problems in healthcare wouldn't be solved one patient at a time. They'd be solved through technology and design.</p>
+          <p>That shift taught me that the skills that make you good at healthcare products make you good at any complex, regulated industry. Health, fintech, energy. They all involve multiple user groups with intertwined journeys, sensitive data, heavy regulation, and real consequences when you get it wrong. The complexity is the same. So is the opportunity to make a meaningful difference for a lot of people.</p>
+          <p>But understanding a problem and designing a solution isn't enough. If the impact is going to last, it has to be tied to a viable business. That's the part I care about most. Building products that create measurable outcomes for people and for the organisations behind them. A great product that can't sustain itself isn't great. It's a pilot that ends.</p>
+        </div>
+        <div class="about-skills fade-up">
+          <div class="about-skills-title">Core skills</div>
+          <div class="about-skill-tags">
+            <span class="about-skill-tag">Product Strategy</span>
+            <span class="about-skill-tag">User Research</span>
+            <span class="about-skill-tag">Concept Development</span>
+            <span class="about-skill-tag">Prototyping</span>
+            <span class="about-skill-tag">Workshop Facilitation</span>
+            <span class="about-skill-tag">Design Sprints</span>
+            <span class="about-skill-tag">Health Domain</span>
+            <span class="about-skill-tag">Stakeholder Management</span>
+          </div>
+        </div>
+        <div class="about-cta fade-up">
+          <a href="experience.html">Experience, education & publications &rarr;</a>
+        </div>
       </div>
     </div>
   </section>

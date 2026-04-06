@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Experience · Frederik Haug Korsgaard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --surface: #f7f7f5;
+      --border: #e8e8e4;
+      --text: #111110;
+      --muted: #888882;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --font-serif: 'Fraunces', Georgia, serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 48px;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent;
+      transition: border-color .3s;
+    }
+    nav.scrolled { border-color: var(--border); }
+    .nav-logo { font-size: 1.05rem; font-weight: 500; letter-spacing: .01em; color: var(--text); text-decoration: none; }
+    .nav-links { display: flex; gap: 36px; list-style: none; align-items: center; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 1rem; font-weight: 400; transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { color: var(--text) !important; border-bottom: 1.25px solid var(--text); padding-bottom: 1px; }
+
+    /* ── Layout ── */
+    .wrapper {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    section { padding: 80px 0; }
+
+    .section-tag {
+      font-size: .8rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 400;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      font-weight: 300;
+      line-height: 1.15;
+      letter-spacing: -.015em;
+      margin-bottom: 56px;
+    }
+
+    /* ── Hero ── */
+    .page-hero {
+      padding: 140px 0 80px;
+    }
+    .page-hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 6vw, 6rem);
+      font-weight: 300;
+      line-height: 1.08;
+      letter-spacing: -.02em;
+    }
+    .page-hero h1 em {
+      font-style: italic;
+      color: var(--muted);
+    }
+    .page-hero-sub {
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 1.1rem;
+      font-weight: 300;
+      line-height: 1.75;
+      max-width: 520px;
+    }
+
+    /* ── Experience ── */
+    .exp-grid {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 40px;
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+    }
+    .exp-item:first-child { border-top: none; }
+
+    .exp-date {
+      font-size: .82rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-top: 4px;
+    }
+
+    .exp-company {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 300;
+      letter-spacing: -.01em;
+      margin-bottom: 4px;
+    }
+
+    .exp-role {
+      font-size: .95rem;
+      font-weight: 500;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .exp-desc {
+      font-size: .95rem;
+      color: var(--muted);
+      line-height: 1.7;
+      font-weight: 300;
+      max-width: 560px;
+    }
+
+    .exp-tag {
+      display: inline-block;
+      background: var(--surface);
+      border-radius: 3px;
+      padding: 3px 10px;
+      font-size: .75rem;
+      color: var(--muted);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      margin-top: 12px;
+      margin-right: 6px;
+    }
+
+    /* ── Education ── */
+    .edu-item {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 40px;
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+    }
+    .edu-item:first-child { border-top: none; }
+
+    .edu-institution {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      font-weight: 300;
+      letter-spacing: -.01em;
+    }
+
+    .edu-degree {
+      font-size: .95rem;
+      color: var(--muted);
+      font-weight: 300;
+      margin-top: 4px;
+    }
+
+    /* ── Publications ── */
+    .pub-item {
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+    }
+    .pub-item:first-child { border-top: none; }
+
+    .pub-title {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 300;
+      line-height: 1.5;
+      letter-spacing: -.01em;
+    }
+
+    .pub-meta {
+      font-size: .85rem;
+      color: var(--muted);
+      font-weight: 300;
+      margin-top: 6px;
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--muted);
+      font-size: .82rem;
+      font-weight: 300;
+    }
+
+    /* ── Animations ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      nav { padding: 20px 24px; }
+      .nav-links { display: none; }
+      .wrapper { padding: 0 24px; }
+      .page-hero { padding: 120px 0 56px; }
+      .exp-item, .edu-item { grid-template-columns: 1fr; gap: 8px; }
+      footer { flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Nav ── -->
+  <nav id="nav">
+    <a href="index.html" class="nav-logo">Frederik Haug Korsgaard</a>
+    <ul class="nav-links">
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="index.html#process">Process</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Get in touch</a></li>
+    </ul>
+  </nav>
+
+  <div class="wrapper">
+
+    <!-- ── Hero ── -->
+    <div class="page-hero fade-up">
+      <p class="section-tag">Experience & Education</p>
+      <h1>Where I've made<br><em>an impact</em></h1>
+      <p class="page-hero-sub">From clinical practice to product design. A path shaped by healthcare, technology, and a drive to build things that matter.</p>
+    </div>
+
+    <!-- ── Experience ── -->
+    <section style="border-top: 1px solid var(--border);">
+      <p class="section-tag fade-up">Experience</p>
+      <h2 class="fade-up">Career</h2>
+
+      <div class="exp-grid">
+
+        <div class="exp-item fade-up">
+          <div class="exp-date">2022 — Present</div>
+          <div>
+            <div class="exp-company">Duckwise</div>
+            <div class="exp-role">Product Designer</div>
+            <div class="exp-desc">Leading product design across multiple client engagements in health, fintech, and energy. Responsible for end-to-end product discovery, from market analysis and user research through prototyping, testing, and delivery.</div>
+            <span class="exp-tag">Product Strategy</span>
+            <span class="exp-tag">UX Research</span>
+            <span class="exp-tag">Prototyping</span>
+          </div>
+        </div>
+
+        <div class="exp-item fade-up">
+          <div class="exp-date">2019</div>
+          <div>
+            <div class="exp-company">Enversion A/S</div>
+            <div class="exp-role">UX Designer & Medical Advisor</div>
+            <div class="exp-desc">Applied clinical insights, research experience, and UX design to AI health solutions. Helped build '+prio', an intelligent triage tool helping clinicians prioritise patients. Winner of the Health Tech Adoption Awards 2021.</div>
+            <span class="exp-tag">Health AI</span>
+            <span class="exp-tag">Clinical UX</span>
+            <span class="exp-tag">Award-winning</span>
+          </div>
+        </div>
+
+        <div class="exp-item fade-up">
+          <div class="exp-date">2017</div>
+          <div>
+            <div class="exp-company">Aarhus University</div>
+            <div class="exp-role">Research Assistant, Telemedicine & INNO-X Healthcare</div>
+            <div class="exp-desc">Investigated business models of successful telemedicine implementations. Research published in peer-reviewed journal, contributing to the evidence base for scaling digital health solutions.</div>
+            <span class="exp-tag">Research</span>
+            <span class="exp-tag">Telemedicine</span>
+          </div>
+        </div>
+
+        <div class="exp-item fade-up">
+          <div class="exp-date">2015 — 2017</div>
+          <div>
+            <div class="exp-company">APPlab, Aarhus University Hospital</div>
+            <div class="exp-role">User Experience Designer</div>
+            <div class="exp-desc">Designed digital health applications at the hospital's innovation lab. Combined medical domain knowledge with UX methodology to improve patient and clinician workflows.</div>
+            <span class="exp-tag">Digital Health</span>
+            <span class="exp-tag">UX Design</span>
+          </div>
+        </div>
+
+        <div class="exp-item fade-up">
+          <div class="exp-date">2019 — 2021</div>
+          <div>
+            <div class="exp-company">Clinical Practice</div>
+            <div class="exp-role">Junior Doctor, Emergency Medicine, Orthopaedics, General Practice</div>
+            <div class="exp-desc">Clinical rotations across emergency medicine, orthopaedic surgery, and general practice in Denmark. Developed first-hand understanding of healthcare delivery, clinical decision-making, and the systems that support, or hinder, good patient outcomes.</div>
+            <span class="exp-tag">Emergency Medicine</span>
+            <span class="exp-tag">Clinical</span>
+          </div>
+        </div>
+
+        <div class="exp-item fade-up">
+          <div class="exp-date">Summer 2016</div>
+          <div>
+            <div class="exp-company">Mandal Kommune, Norway</div>
+            <div class="exp-role">Nurse Substitute</div>
+            <div class="exp-desc">Provided hands-on patient care in a Norwegian municipal healthcare setting. Gained cross-cultural clinical experience and first-hand exposure to the Norwegian healthcare system.</div>
+            <span class="exp-tag">Patient Care</span>
+            <span class="exp-tag">Norway</span>
+          </div>
+        </div>
+
+        <div class="exp-item fade-up">
+          <div class="exp-date">2012 — 2015</div>
+          <div>
+            <div class="exp-company">FADL</div>
+            <div class="exp-role">Nurse Substitute</div>
+            <div class="exp-desc">Worked as a nurse substitute through FADL (Danish Medical Students' Association) across various hospital departments. Built practical clinical skills and patient empathy alongside medical studies.</div>
+            <span class="exp-tag">Patient Care</span>
+            <span class="exp-tag">Hospital</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Education ── -->
+    <section style="border-top: 1px solid var(--border);">
+      <p class="section-tag fade-up">Education</p>
+      <h2 class="fade-up">Academic foundation</h2>
+
+      <div>
+        <div class="edu-item fade-up">
+          <div class="exp-date">2021 — 2022</div>
+          <div>
+            <div class="edu-institution">BioMedical Design</div>
+            <div class="edu-degree">Novo Nordisk Foundation Fellowship Programme</div>
+            <div class="exp-desc" style="margin-top:8px;">Intensive fellowship focused on identifying unmet clinical needs and developing medtech solutions. Worked in multidisciplinary teams across clinical, engineering, and business disciplines to bring healthcare innovations from concept to viable product.</div>
+          </div>
+        </div>
+
+        <div class="edu-item fade-up">
+          <div class="exp-date">2014 — 2018</div>
+          <div>
+            <div class="edu-institution">Aarhus University</div>
+            <div class="edu-degree">Doctor of Medicine (MD)</div>
+          </div>
+        </div>
+
+        <div class="edu-item fade-up">
+          <div class="exp-date">2011 — 2014</div>
+          <div>
+            <div class="edu-institution">Aarhus University</div>
+            <div class="edu-degree">Bachelor of Science (BSc), Medicine</div>
+          </div>
+        </div>
+
+        <div class="edu-item fade-up">
+          <div class="exp-date">Certification</div>
+          <div>
+            <div class="edu-institution">UX Certificate, Nielsen Norman Group</div>
+            <div class="edu-degree" style="margin-top:6px; padding-left:16px;">UX Vision & Strategy</div>
+            <div class="edu-degree" style="padding-left:16px;">Measuring ROI</div>
+            <div class="edu-degree" style="padding-left:16px;">Statistics for UX</div>
+          </div>
+        </div>
+
+        <div class="edu-item fade-up">
+          <div class="exp-date">Continuing Ed.</div>
+          <div>
+            <div class="edu-institution">Engineering & Software Courses</div>
+            <div class="edu-degree">Pervasive Healthcare, Aarhus University School of Engineering</div>
+            <div class="edu-degree">Mathematical Modelling of Linear Systems, Aarhus University School of Engineering</div>
+            <div class="edu-degree">Applied Linear Algebra, Aarhus University School of Engineering</div>
+            <div class="edu-degree">Introduction to Computer Science and Programming Using Python, MITx 6.00.1x</div>
+          </div>
+        </div>
+
+        <div class="edu-item fade-up">
+          <div class="exp-date">2006 — 2007</div>
+          <div>
+            <div class="edu-institution">Paxon School for Advanced Studies</div>
+            <div class="edu-degree">Rotary Youth Exchange, Jacksonville, Florida</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Publications ── -->
+    <section style="border-top: 1px solid var(--border);">
+      <p class="section-tag fade-up">Publications</p>
+      <h2 class="fade-up">Research</h2>
+
+      <div>
+        <div class="pub-item fade-up">
+          <div class="pub-title">Successful implementation of telemedicine depends on personal relations between company representatives and healthcare providers: A qualitative study of business models for Danish home telemonitoring</div>
+          <div class="pub-meta">Peer-reviewed publication, Telemedicine & Health Economics</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Footer ── -->
+    <footer>
+      <span>&copy; 2026 Frederik Haug Korsgaard</span>
+      <span>Aarhus, Denmark</span>
+    </footer>
+
+  </div>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
