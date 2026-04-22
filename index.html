@@ -3,884 +3,461 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Frederik Haug Korsgaard | Product Designer</title>
-  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <title>Frederik Haug Korsgaard · Product Designer</title>
+  <meta name="description" content="Medical doctor turned product designer. I build products that create measurable outcomes for people and business in Health, FinTech, Energy, and beyond." />
+  <meta property="og:title" content="Frederik Haug Korsgaard · Product Designer" />
+  <meta property="og:description" content="Medical doctor turned product designer. I build products that create measurable outcomes for people and business in Health, FinTech, Energy, and beyond." />
+  <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/site.css" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg: #ffffff;
-      --surface: #f7f7f5;
-      --border: #e8e8e4;
-      --text: #111110;
-      --muted: #888882;
-      --font-sans: 'Inter', system-ui, sans-serif;
-      --font-serif: 'Fraunces', Georgia, serif;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-sans);
-      font-size: 16px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* ── Nav ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 48px;
-      background: rgba(255,255,255,0.9);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid transparent;
-      transition: border-color .3s;
-    }
-    nav.scrolled { border-color: var(--border); }
-
-    .nav-logo {
-      font-size: 1.05rem;
-      font-weight: 500;
-      letter-spacing: .01em;
-      color: var(--text);
-      text-decoration: none;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 36px;
-      list-style: none;
-      align-items: center;
-    }
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 1rem;
-      font-weight: 400;
-      transition: color .2s;
-    }
-    .nav-links a:hover { color: var(--text); }
-
-    .nav-cta {
-      color: var(--text) !important;
-      border-bottom: 1.25px solid var(--text);
-      padding-bottom: 1px;
-    }
-
-    /* ── Hero ── */
-    .hero {
-      min-height: 100vh;
+    /* Hero — split layout: text left, video right */
+    .hero { padding: 140px 0 100px; border-bottom: .5px solid var(--border); }
+    .hero-inner {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: end;
-      padding: 140px 48px 96px;
-      position: relative;
-      overflow: hidden;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 72px;
+      align-items: center;
     }
-
-    .hero-text { padding-bottom: 0; }
-
-    .hero h1 {
+    .hero-text h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4.75rem);
+      font-weight: 700;
+      line-height: .98;
+      letter-spacing: -.035em;
+    }
+    .hero-text h1 em {
       font-family: var(--font-serif);
-      font-size: clamp(3.5rem, 8vw, 8.75rem);
-      font-weight: 300;
-      line-height: 1.05;
-      letter-spacing: -.02em;
-      max-width: 860px;
-    }
-
-    .hero h1 em {
       font-style: italic;
+      font-weight: 300;
       color: var(--muted);
+      letter-spacing: -.02em;
     }
-
     .hero-sub {
-      margin-top: 40px;
-      max-width: 400px;
+      margin-top: 36px;
+      max-width: 440px;
       color: var(--muted);
-      font-size: 1.1rem;
-      line-height: 1.75;
+      font-size: 17px;
       font-weight: 300;
+      line-height: 1.75;
     }
-
     .hero-viz {
-      width: 100%;
-      max-width: 520px;
-      aspect-ratio: 4/3;
       position: relative;
-      align-self: end;
+      width: 100%;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      border-radius: 6px;
+      background-color: #0a0a08;
       user-select: none;
+      margin-top: -30px;
     }
-    @media (min-width: 1025px) {
-      .hero-viz { justify-self: end; }
-    }
-    .hero-viz svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-
-    @media (max-width: 1024px) {
-      .hero-viz { align-self: start; }
-    }
-
-    /* ── Section commons ── */
-    section { padding: 120px 48px; }
-
-    .section-tag {
-      font-size: .8rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      font-weight: 400;
-      margin-bottom: 24px;
+    .hero-viz video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
+    /* Section layout (home-specific: border-bottom instead of case-study borders) */
+    section { padding: 96px 0; border-bottom: .5px solid var(--border); }
     h2 {
-      font-family: var(--font-serif);
-      font-size: clamp(2.2rem, 4vw, 4rem);
+      font-size: clamp(1.9rem, 3.8vw, 3.4rem);
+      margin-bottom: 56px;
+      max-width: 20ch;
+    }
+    .section-sub {
+      margin-top: -32px;
+      margin-bottom: 56px;
+      max-width: 460px;
+      color: var(--muted);
+      font-size: 17px;
       font-weight: 300;
-      line-height: 1.15;
-      letter-spacing: -.015em;
-    }
-
-    /* ── Work ── */
-    #work { border-top: 1px solid var(--border); }
-
-    .work-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 80px;
-    }
-    .work-header a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: .85rem;
-      transition: color .2s;
-    }
-    .work-header a:hover { color: var(--text); }
-
-    .projects-list { display: grid; grid-template-columns: 1fr 1fr; column-gap: 80px; }
-
-    .project-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 40px;
-      padding: 28px 0;
-      border-top: 1px solid var(--border);
-      text-decoration: none;
-      color: inherit;
-      transition: opacity .2s;
-    }
-    .project-row:hover { opacity: .45; }
-
-    .project-row-title {
-      font-family: var(--font-serif);
-      font-size: 1.6rem;
-      font-weight: 300;
-      letter-spacing: -.01em;
-    }
-    .project-tag {
-      font-size: .72rem;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      color: var(--muted);
-      white-space: nowrap;
-    }
-
-
-    /* ── Process ── */
-    #process { border-top: 1px solid var(--border); }
-
-    .process-header { margin-bottom: 80px; }
-    .process-header p {
-      color: var(--muted);
-      max-width: 420px;
-      margin-top: 20px;
       line-height: 1.75;
-      font-size: 1.1rem;
-      font-weight: 300;
     }
 
-    .process-steps {
+    /* Work — editorial grid */
+    .work-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 48px;
+      gap: 40px 28px;
+      padding-top: 32px;
+      border-top: .5px solid var(--border-strong);
     }
+    .work-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .work-thumb {
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      border-radius: 3px;
+      margin-bottom: 18px;
+      transition: opacity .25s, transform .5s cubic-bezier(.2,.8,.2,1);
+      background-color: #f4f2ec;
+    }
+    .work-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .work-thumb video {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      display: block;
+      background-color: #f4f2ec;
+    }
+    .work-card:hover .work-thumb { opacity: .88; transform: translateY(-3px); }
 
-    .step-num {
+    .ratio-34 { aspect-ratio: 3/4; }
+    .ratio-45 { aspect-ratio: 4/5; }
+    .ratio-11 { aspect-ratio: 1/1; }
+    .ratio-54 { aspect-ratio: 5/4; }
+    .ratio-43 { aspect-ratio: 4/3; }
+
+    .work-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: -.015em;
+      line-height: 1.15;
+      margin-bottom: 6px;
+    }
+    .work-sub {
       font-family: var(--font-serif);
-      font-size: 1rem;
+      font-style: italic;
       font-weight: 300;
-      color: var(--muted);
-      margin-bottom: 20px;
+      font-size: 13.5px;
+      line-height: 1.45;
+      color: #666;
+      margin-bottom: 12px;
+      max-width: 34ch;
     }
-    .step-title { font-size: 1.05rem; font-weight: 500; margin-bottom: 10px; }
-    .step-desc { font-size: 1rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
+    .work-tag {
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
 
-    /* ── About ── */
-    #about { border-top: 1px solid var(--border); }
+    /* Process */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 36px;
+      border-top: .5px solid var(--border-strong);
+      padding-top: 36px;
+    }
+    .process-step .num {
+      font-size: 11px;
+      color: var(--accent);
+      font-weight: 500;
+      letter-spacing: .04em;
+      margin-bottom: 14px;
+    }
+    .process-step .title {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.4rem;
+      font-weight: 400;
+      letter-spacing: -.015em;
+      margin-bottom: 14px;
+      color: var(--text);
+    }
+    .process-step .desc { font-size: 13.5px; line-height: 1.65; color: #444; }
 
-    .about-layout {
+    /* About — sticky portrait + editorial prose */
+    .about-grid {
       display: grid;
       grid-template-columns: 280px 1fr;
       gap: 80px;
       align-items: start;
+      border-top: .5px solid var(--border-strong);
+      padding-top: 40px;
     }
-
-    .about-portrait {
-      position: sticky;
-      top: 140px;
-    }
+    .about-portrait { position: sticky; top: 110px; }
     .about-portrait img {
       width: 100%;
       aspect-ratio: 1;
       object-fit: cover;
       border-radius: 12px;
-      filter: grayscale(0.1);
+      filter: grayscale(.15);
     }
-    .about-portrait-caption {
-      margin-top: 20px;
-      font-size: .85rem;
-      color: var(--muted);
+    .about-portrait-cap {
+      margin-top: 18px;
+      font-family: var(--font-serif);
+      font-style: italic;
       font-weight: 300;
-      line-height: 1.6;
-    }
-
-    .about-content { max-width: 600px; }
-
-    .about-text {
+      font-size: 13.5px;
       color: var(--muted);
-      font-size: 1.05rem;
-      font-weight: 300;
-      line-height: 1.85;
+      line-height: 1.55;
     }
-    .about-text p + p { margin-top: 20px; }
-
-    .about-skills {
-      margin-top: 48px;
-      padding-top: 32px;
-      border-top: 1px solid var(--border);
-    }
+    .about-content { max-width: 620px; }
+    .about-text { color: var(--text); font-size: 16px; font-weight: 400; line-height: 1.7; }
+    .about-text p + p { margin-top: 18px; }
+    .about-skills { margin-top: 48px; padding-top: 32px; border-top: .5px solid var(--border); }
     .about-skills-title {
-      font-size: .8rem;
-      letter-spacing: .1em;
+      font-size: 10.5px;
+      letter-spacing: .14em;
       text-transform: uppercase;
       color: var(--muted);
-      margin-bottom: 14px;
+      font-weight: 500;
+      margin-bottom: 16px;
     }
-    .about-skill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
+    .about-skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
     .about-skill-tag {
       background: var(--surface);
-      border-radius: 4px;
       padding: 6px 14px;
-      font-size: .88rem;
+      border-radius: 4px;
+      font-size: 13px;
       color: var(--muted);
-      font-weight: 300;
+      font-weight: 400;
     }
-
-    @media (max-width: 900px) {
-      .about-layout {
-        grid-template-columns: 1fr;
-        gap: 48px;
-      }
-      .about-portrait {
-        position: static;
-        max-width: 220px;
-      }
-    }
-
-    /* ── About CTA link ── */
-    .about-cta {
-      margin-top: 48px;
-      padding-top: 32px;
-      border-top: 1px solid var(--border);
-    }
+    .about-cta { margin-top: 48px; padding-top: 32px; border-top: .5px solid var(--border); }
     .about-cta a {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.2vw, 2rem);
+      font-weight: 500;
+      letter-spacing: -.02em;
+      line-height: 1.15;
       color: var(--text);
       text-decoration: none;
-      font-size: 1.05rem;
-      font-weight: 400;
-      border-bottom: 1.25px solid var(--text);
-      padding-bottom: 2px;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 4px;
       transition: opacity .2s;
     }
-    .about-cta a:hover { opacity: .5; }
+    .about-cta a:hover { opacity: .55; }
 
-    /* ── Contact ── */
-    #contact { border-top: 1px solid var(--border); }
-
-    .contact-inner { max-width: 680px; }
-
-    #contact h2 { margin-bottom: 20px; }
-    #contact .lead {
-      color: var(--muted);
-      font-size: 1.1rem;
-      font-weight: 300;
-      line-height: 1.75;
-      margin-bottom: 48px;
-    }
-
-    .contact-email-wrap {
-      position: relative;
-      display: inline-block;
-    }
-    .contact-email {
-      font-family: var(--font-serif);
-      font-size: clamp(1.8rem, 3.5vw, 3rem);
-      font-weight: 300;
-      color: var(--text);
-      text-decoration: none;
-      display: inline-block;
-      position: relative;
-    }
-    .contact-underline {
-      display: block;
-      width: 100%;
-      height: 8px;
-      margin-top: 6px;
-      overflow: visible;
-    }
-
-    .social-links {
-      display: flex;
-      gap: 28px;
-      margin-top: 56px;
-    }
-    .social-link {
-      font-size: .88rem;
-      letter-spacing: .05em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color .2s;
-    }
-    .social-link:hover { color: var(--text); }
-
-    /* ── Footer ── */
-    footer {
-      padding: 28px 48px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
+    /* Contact */
+    .contact { padding: 120px 0 48px; border-bottom: none; }
+    .contact-link {
+      display: inline-flex;
       align-items: center;
-      color: var(--muted);
-      font-size: .82rem;
-      font-weight: 300;
+      gap: 20px;
+      padding: 22px 34px 22px 36px;
+      background-color: #1a2e2a;
+      background-image:
+        radial-gradient(circle at 78% 30%, rgba(217,59,42,.16) 0%, transparent 55%),
+        radial-gradient(rgba(255,255,255,.045) 1px, transparent 1px);
+      background-size: auto, 18px 18px;
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 2.2vw, 1.85rem);
+      font-weight: 500;
+      letter-spacing: -.015em;
+      line-height: 1.1;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: transform .35s cubic-bezier(.2,.8,.2,1), background-color .3s;
     }
+    .contact-link:hover { background-color: #244b45; transform: translateY(-3px); }
+    .contact-link-arrow {
+      display: inline-block;
+      font-size: .9em;
+      transition: transform .3s cubic-bezier(.2,.8,.2,1);
+      opacity: .85;
+    }
+    .contact-link:hover .contact-link-arrow { transform: translateX(5px); opacity: 1; }
 
-    /* ── Animations ── */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity .7s ease, transform .7s ease;
-    }
-    .fade-up.visible {
-      opacity: 1;
-      transform: none;
-    }
-
-    /* ── Responsive ── */
-    @media (max-width: 1024px) {
-      .hero { grid-template-columns: 1fr; align-items: start; padding-bottom: 72px; }
-      .hero-viz { grid-row: 1; max-width: 400px; }
-      .hero-text { grid-row: 2; }
-      .projects-list { grid-template-columns: 1fr; }
-      .project-row { flex-direction: column; align-items: flex-start; gap: 4px; }
-    }
     @media (max-width: 900px) {
-      nav { padding: 20px 24px; }
-      .nav-links { display: none; }
-      section { padding: 80px 24px; }
-      .hero { padding: 120px 24px 72px; }
-      .process-steps { grid-template-columns: 1fr 1fr; gap: 40px; }
-      .testimonial-row { grid-template-columns: 1fr; gap: 20px; }
-      .work-header { flex-direction: column; align-items: flex-start; gap: 16px; }
-      footer { flex-direction: column; gap: 8px; text-align: center; }
+      .hero { padding: 100px 0 72px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-viz { max-width: 420px; margin-left: auto; margin-right: auto; }
+      section { padding: 72px 0; }
+      .section-label { margin-bottom: 20px; }
+      .work-grid { grid-template-columns: 1fr 1fr; gap: 28px 18px; }
+      .work-title { font-size: 1.05rem; }
+      .work-sub { font-size: 12.5px; }
+      .process-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-portrait { max-width: 220px; position: static; top: auto; }
+    }
+    @media (max-width: 520px) {
+      .work-grid { grid-template-columns: 1fr; gap: 40px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ── Nav ── -->
   <nav id="nav">
-    <a href="#" class="nav-logo">Frederik Haug Korsgaard</a>
-    <ul class="nav-links">
-      <li><a href="#work">Work</a></li>
-      <li><a href="#process">Process</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact" class="nav-cta">Get in touch</a></li>
-    </ul>
+    <div class="nav-inner">
+      <a href="#" class="nav-name">Frederik Haug Korsgaard</a>
+      <ul class="nav-links">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="#contact" class="nav-cta">Get in touch</a></li>
+      </ul>
+    </div>
   </nav>
 
-  <!-- ── Hero ── -->
-  <section class="hero">
-    <div class="hero-text">
-      <h1>
-        Medical doctor turned<br>
-        <em>Product Designer</em>
-      </h1>
-      <p class="hero-sub">
-        I build products that create measurable outcomes for people and business in Health, FinTech, Energy, and beyond.
-      </p>
-    </div>
-    <div class="hero-viz" id="hero-viz">
-      <svg id="hviz-particles" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet"></svg>
-    </div>
-  </section>
+  <div class="container">
 
-  <!-- ── Work ── -->
-  <section id="work">
-    <div class="work-header fade-up">
-      <div>
-        <p class="section-tag">Selected work</p>
-        <h2>Projects I'm proud of</h2>
-      </div>
-    </div>
-
-    <div class="projects-list fade-up">
-      <a href="faelles-offentlig-platform.html" class="project-row">
-        <div class="project-row-title">Fælles Offentlig Platform</div>
-        <span class="project-tag">Digital Psychiatry</span>
-      </a>
-      <a href="arla-mat.html" class="project-row">
-        <div class="project-row-title">Arla Mat</div>
-        <span class="project-tag">Food / Consumer</span>
-      </a>
-      <a href="bedside.html" class="project-row">
-        <div class="project-row-title">Bedside</div>
-        <span class="project-tag">MedTech / EHR</span>
-      </a>
-      <a href="jyske-bank.html" class="project-row">
-        <div class="project-row-title">Jyske Bank</div>
-        <span class="project-tag">Fintech / Banking</span>
-      </a>
-      <a href="cdss.html" class="project-row">
-        <div class="project-row-title">CDSS (+prio)</div>
-        <span class="project-tag">Health AI</span>
-      </a>
-      <a href="ewii.html" class="project-row">
-        <div class="project-row-title">Ewii</div>
-        <span class="project-tag">Sustainable Energy</span>
-      </a>
-      <a href="minlaege-gravitate-health.html" class="project-row">
-        <div class="project-row-title">MinLæge & Gravitate Health</div>
-        <span class="project-tag">Digital Health / Pharma</span>
-      </a>
-      <a href="telemedicine-business-models.html" class="project-row">
-        <div class="project-row-title">Business Models for Telemedicine</div>
-        <span class="project-tag">Research / Health Economics</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- ── Process ── -->
-  <section id="process">
-    <div class="process-header fade-up">
-      <p class="section-tag">How I work</p>
-      <h2>From understanding<br>to measurable impact</h2>
-      <p>I start with the business, the market, and the people, then work towards a solution that delivers real outcomes.</p>
-    </div>
-
-    <div class="process-steps">
-      <div class="process-step fade-up">
-        <div class="step-num">01</div>
-        <div class="step-title">Understand</div>
-        <div class="step-desc">Map the business, the market, and the users. Identify what's actually worth solving, and what isn't. In regulated industries, understanding the constraints is half the work.</div>
-      </div>
-      <div class="process-step fade-up" style="transition-delay:.08s">
-        <div class="step-num">02</div>
-        <div class="step-title">Vision & Strategy</div>
-        <div class="step-desc">Define where the product needs to go and build the case for why. Align stakeholders around a shared direction so every decision that follows has a rationale and a business logic.</div>
-      </div>
-      <div class="process-step fade-up" style="transition-delay:.16s">
-        <div class="step-num">03</div>
-        <div class="step-title">Discover & Design</div>
-        <div class="step-desc">Research, ideation, prototyping, and testing with real users. Move fast, but validate before you commit. The goal isn't a beautiful prototype. It's confidence that you're building the right thing.</div>
-      </div>
-      <div class="process-step fade-up" style="transition-delay:.24s">
-        <div class="step-num">04</div>
-        <div class="step-title">Deliver & Measure</div>
-        <div class="step-desc">Ship, track, and learn. Design doesn't end at handoff. It ends when the numbers show it's working. If the impact isn't measurable, it isn't real.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── About ── -->
-  <section id="about">
-    <p class="section-tag fade-up">About me</p>
-    <h2 class="fade-up" style="margin-bottom: 64px;">From diagnosis to<br>product strategy</h2>
-
-    <div class="about-layout">
-      <div class="about-portrait fade-up">
-        <img src="assets/hero/portrait.webp" alt="Frederik Haug Korsgaard" />
-        <p class="about-portrait-caption">Medical doctor turned product designer. Based in Aarhus, Denmark.</p>
-      </div>
-
-      <div class="about-content">
-        <div class="about-text fade-up">
-          <p>5+ years of experience at the intersection of healthcare, design, and technology. I specialise in product vision and strategy, aligning business objectives with user needs through rigorous research, prototyping, and data-driven validation.</p>
-          <p>I made the switch from medical doctor to product designer, because I realised that the biggest problems in healthcare wouldn't be solved one patient at a time. They'd be solved through technology and design.</p>
-          <p>That shift taught me that the skills that make you good at healthcare products make you good at any complex, regulated industry. Health, fintech, energy. They all involve multiple user groups with intertwined journeys, sensitive data, heavy regulation, and real consequences when you get it wrong. The complexity is the same. So is the opportunity to make a meaningful difference for a lot of people.</p>
-          <p>But understanding a problem and designing a solution isn't enough. If the impact is going to last, it has to be tied to a viable business. That's the part I care about most. Building products that create measurable outcomes for people and for the organisations behind them. A great product that can't sustain itself isn't great. It's a pilot that ends.</p>
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <h1>Medical doctor turned<br><em>Product Designer</em></h1>
+          <p class="hero-sub">I build products that create measurable outcomes for people and business in Health, FinTech, Energy, and beyond.</p>
         </div>
-        <div class="about-skills fade-up">
-          <div class="about-skills-title">Core skills</div>
-          <div class="about-skill-tags">
-            <span class="about-skill-tag">Product Strategy</span>
-            <span class="about-skill-tag">User Research</span>
-            <span class="about-skill-tag">Concept Development</span>
-            <span class="about-skill-tag">Prototyping</span>
-            <span class="about-skill-tag">Workshop Facilitation</span>
-            <span class="about-skill-tag">Design Sprints</span>
-            <span class="about-skill-tag">Health Domain</span>
-            <span class="about-skill-tag">Stakeholder Management</span>
+        <div class="hero-viz">
+          <video src="assets/hero/hero.mp4" poster="assets/hero/hero-poster.jpg" autoplay muted loop playsinline preload="metadata"></video>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <p class="section-label">Selected work</p>
+      <h2>Projects I'm <em>proud of</em></h2>
+      <div class="work-grid">
+        <a href="faelles-offentlig-platform.html" class="work-card">
+          <div class="work-thumb ratio-11"><img src="assets/thumbs/thumb_fob.webp" alt="Fælles Offentlig Behandlingsplatform" loading="lazy" decoding="async" /></div>
+          <div class="work-title">Fælles Offentlig Behandlingsplatform</div>
+          <div class="work-sub">A national platform for Denmark's digital psychiatry services.</div>
+          <div class="work-tag">Digital psychiatry</div>
+        </a>
+        <a href="jyske-bank.html" class="work-card">
+          <div class="work-thumb ratio-54"><img src="assets/thumbs/thumb_jyskebank.webp" alt="Jyske Bank" loading="lazy" decoding="async" /></div>
+          <div class="work-title">Jyske Bank</div>
+          <div class="work-sub">Rethinking investment flows for Denmark's second-largest bank.</div>
+          <div class="work-tag">Fintech · Banking</div>
+        </a>
+        <a href="bedside.html" class="work-card">
+          <div class="work-thumb ratio-43"><img src="assets/Bedside/panel.png" alt="Bedside EHR" loading="lazy" decoding="async" /></div>
+          <div class="work-title">Bedside</div>
+          <div class="work-sub">An electronic health record built from the clinician's desk, outward.</div>
+          <div class="work-tag">MedTech · EHR</div>
+        </a>
+        <a href="ewii.html" class="work-card">
+          <div class="work-thumb ratio-54"><img src="assets/thumbs/thumb_ewii.webp" alt="Ewii" loading="lazy" decoding="async" /></div>
+          <div class="work-title">Ewii</div>
+          <div class="work-sub">Turning kilowatt-hours into something people actually understand.</div>
+          <div class="work-tag">Sustainable energy</div>
+        </a>
+        <a href="cdss.html" class="work-card">
+          <div class="work-thumb ratio-11"><img src="assets/CDSS/hero.webp" alt="CDSS +prio" loading="lazy" decoding="async" /></div>
+          <div class="work-title">CDSS (+prio)</div>
+          <div class="work-sub">Clinical decision support that triages, instead of alerting.</div>
+          <div class="work-tag">Health AI</div>
+        </a>
+        <a href="arla-mat.html" class="work-card">
+          <div class="work-thumb ratio-45"><video src="assets/arla/arla2.mp4" poster="assets/arla/arla2-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Arla Mat"></video></div>
+          <div class="work-title">Arla Mat</div>
+          <div class="work-sub">A consumer food concept for a dairy co-op thinking beyond dairy.</div>
+          <div class="work-tag">Food · Consumer</div>
+        </a>
+        <a href="minlaege-gravitate-health.html" class="work-card">
+          <div class="work-thumb ratio-43"><img src="assets/thumbs/thumb_gravitate.webp" alt="MinLæge & Gravitate Health" loading="lazy" decoding="async" /></div>
+          <div class="work-title">MinLæge &amp; Gravitate Health</div>
+          <div class="work-sub">Patient-facing pharma information, designed for the people it's for.</div>
+          <div class="work-tag">Digital health · Pharma</div>
+        </a>
+        <a href="telemedicine-business-models.html" class="work-card">
+          <div class="work-thumb ratio-54"><img src="assets/thumbs/thumbs_telemedicine.webp" alt="Telemedicine Business Models" loading="lazy" decoding="async" /></div>
+          <div class="work-title">Business Models for Telemedicine</div>
+          <div class="work-sub">Where the research began, and the first lesson in health economics.</div>
+          <div class="work-tag">Research · Health economics</div>
+        </a>
+      </div>
+    </section>
+
+    <section id="process">
+      <p class="section-label">How I work</p>
+      <h2>From understanding<br>to <em>measurable</em> impact</h2>
+      <p class="section-sub">I start with the business, the market, and the people, then work towards a solution that delivers real outcomes.</p>
+      <div class="process-grid">
+        <div class="process-step">
+          <div class="num">01</div>
+          <div class="title">Understand</div>
+          <div class="desc">Map the business, the market, and the users. Identify what's actually worth solving, and what isn't. In regulated industries, understanding the constraints is half the work.</div>
+        </div>
+        <div class="process-step">
+          <div class="num">02</div>
+          <div class="title">Vision &amp; Strategy</div>
+          <div class="desc">Define where the product needs to go and build the case for why. Align stakeholders around a shared direction so every decision that follows has a rationale and a business logic.</div>
+        </div>
+        <div class="process-step">
+          <div class="num">03</div>
+          <div class="title">Discover &amp; Design</div>
+          <div class="desc">Research, ideation, prototyping, and testing with real users. Move fast, but validate before you commit. The goal isn't a beautiful prototype. It's confidence that you're building the right thing.</div>
+        </div>
+        <div class="process-step">
+          <div class="num">04</div>
+          <div class="title">Deliver &amp; Measure</div>
+          <div class="desc">Ship, track, and learn. Design doesn't end at handoff. It ends when the numbers show it's working. If the impact isn't measurable, it isn't real.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <p class="section-label">About me</p>
+      <h2>From <em>diagnosis</em><br>to product strategy</h2>
+      <div class="about-grid">
+        <div class="about-portrait">
+          <img src="assets/hero/portrait.webp" alt="Frederik Haug Korsgaard" decoding="async" />
+          <div class="about-portrait-cap">Medical doctor turned product designer. Based in Aarhus, Denmark.</div>
+        </div>
+        <div class="about-content">
+          <div class="about-text">
+            <p>5+ years of experience at the intersection of healthcare, design, and technology. I specialise in product vision and strategy, aligning business objectives with user needs through rigorous research, prototyping, and data-driven validation.</p>
+            <p>I made the switch from medical doctor to product designer, because I realised that the biggest problems in healthcare wouldn't be solved one patient at a time. They'd be solved through technology and design.</p>
+            <p>That shift taught me that the skills that make you good at healthcare products make you good at any complex, regulated industry. Health, fintech, energy. They all involve multiple user groups with intertwined journeys, sensitive data, heavy regulation, and real consequences when you get it wrong. The complexity is the same. So is the opportunity to make a meaningful difference for a lot of people.</p>
+            <p>But understanding a problem and designing a solution isn't enough. If the impact is going to last, it has to be tied to a viable business. That's the part I care about most. Building products that create measurable outcomes for people and for the organisations behind them. A great product that can't sustain itself isn't great. It's a pilot that ends.</p>
+          </div>
+          <div class="about-skills">
+            <div class="about-skills-title">Core skills</div>
+            <div class="about-skill-tags">
+              <span class="about-skill-tag">Product Strategy</span>
+              <span class="about-skill-tag">User Research</span>
+              <span class="about-skill-tag">Concept Development</span>
+              <span class="about-skill-tag">Prototyping</span>
+              <span class="about-skill-tag">Workshop Facilitation</span>
+              <span class="about-skill-tag">Design Sprints</span>
+              <span class="about-skill-tag">Health Domain</span>
+              <span class="about-skill-tag">Stakeholder Management</span>
+            </div>
+          </div>
+          <div class="about-skills">
+            <div class="about-skills-title">My toolbox</div>
+            <div class="about-skill-tags">
+              <span class="about-skill-tag">Figma Design</span>
+              <span class="about-skill-tag">Figma Make</span>
+              <span class="about-skill-tag">Figma Weave</span>
+              <span class="about-skill-tag">Claude Code</span>
+              <span class="about-skill-tag">Claude Design</span>
+              <span class="about-skill-tag">Miro</span>
+              <span class="about-skill-tag">Dovetail</span>
+              <span class="about-skill-tag">Maze</span>
+              <span class="about-skill-tag">Google Analytics</span>
+            </div>
+          </div>
+          <div class="about-cta">
+            <a href="experience.html">Experience, education &amp; publications &rarr;</a>
           </div>
         </div>
-        <div class="about-cta fade-up">
-          <a href="experience.html">Experience, education & publications &rarr;</a>
-        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ── Contact ── -->
-  <section id="contact">
-    <div class="contact-inner">
-      <p class="section-tag fade-up">Get in touch</p>
-      <div class="contact-email-wrap fade-up" style="transition-delay:.1s">
-        <a href="https://www.linkedin.com/in/fredkors/" class="contact-email" target="_blank" rel="noopener">Connect on LinkedIn</a>
-        <svg class="contact-underline" id="contact-underline" viewBox="0 0 400 8" preserveAspectRatio="none"></svg>
-      </div>
-    </div>
-  </section>
+    <section id="contact" class="contact">
+      <p class="section-label">Get in touch</p>
+      <a href="https://www.linkedin.com/in/fredkors/" class="contact-link" target="_blank" rel="noopener">
+        Connect on LinkedIn
+        <span class="contact-link-arrow">→</span>
+      </a>
+    </section>
 
-  <!-- ── Footer ── -->
-  <footer>
-    <span>© 2026 Frederik Haug Korsgaard</span>
-    <span>Aarhus, Denmark</span>
-  </footer>
+    <footer>
+      <span>© 2026 Frederik Haug Korsgaard</span>
+      <span>Aarhus, Denmark</span>
+    </footer>
 
-  <script>
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 20);
-    }, { passive: true });
+  </div>
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          observer.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-    /* ── Hero viz v2 (scroll-driven) ── */
-    (function () {
-      const viz = document.getElementById('hero-viz');
-      if (!viz) return;
-      const NS = 'http://www.w3.org/2000/svg';
-      const COLS = 8, ROWS = 6, COUNT = COLS * ROWS;
-
-      function seeded(seed) {
-        let s = seed;
-        return () => { s = (s * 16807) % 2147483647; return (s - 1) / 2147483646; };
-      }
-      function lerp(a, b, t) { return a + (b - a) * t; }
-      function ease(t) { return t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2; }
-      function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
-      function hexRgb(h) {
-        return { r: parseInt(h.slice(1,3),16), g: parseInt(h.slice(3,5),16), b: parseInt(h.slice(5,7),16) };
-      }
-      function lerpCol(gh, ah, t) {
-        const g = hexRgb(gh), a = hexRgb(ah);
-        return `rgb(${Math.round(lerp(g.r,a.r,t))},${Math.round(lerp(g.g,a.g,t))},${Math.round(lerp(g.b,a.b,t))})`;
-      }
-
-      const accents = ['#C9553A','#2A7A7A','#C4943D','#4A6BB5','#9E4D72'];
-      const greys   = ['#C8C8C4','#B8B8B4','#D0D0CC','#C0C0BC','#CACAC6'];
-      const shapes  = ['circle','square','triangle','line','diamond','cross'];
-      const rng = seeded(113);
-
-      function makeShapeEl(shape, color, size) {
-        const h = size / 2;
-        if (shape === 'circle') {
-          const e = document.createElementNS(NS,'circle');
-          e.setAttribute('cx',h); e.setAttribute('cy',h);
-          e.setAttribute('r',h*.85); e.setAttribute('fill',color); return e;
-        }
-        if (shape === 'square') {
-          const ins = size*.1, e = document.createElementNS(NS,'rect');
-          e.setAttribute('x',ins); e.setAttribute('y',ins);
-          e.setAttribute('width',size-ins*2); e.setAttribute('height',size-ins*2);
-          e.setAttribute('fill',color); e.setAttribute('rx',2); return e;
-        }
-        if (shape === 'triangle') {
-          const e = document.createElementNS(NS,'polygon');
-          e.setAttribute('points',`${h},${size*.1} ${size*.9},${size*.85} ${size*.1},${size*.85}`);
-          e.setAttribute('fill',color); return e;
-        }
-        if (shape === 'line') {
-          const e = document.createElementNS(NS,'line');
-          e.setAttribute('x1',size*.1); e.setAttribute('y1',h);
-          e.setAttribute('x2',size*.9); e.setAttribute('y2',h);
-          e.setAttribute('stroke',color); e.setAttribute('stroke-width',3);
-          e.setAttribute('stroke-linecap','round'); return e;
-        }
-        if (shape === 'diamond') {
-          const e = document.createElementNS(NS,'polygon');
-          e.setAttribute('points',`${h},${size*.08} ${size*.92},${h} ${h},${size*.92} ${size*.08},${h}`);
-          e.setAttribute('fill',color); return e;
-        }
-        if (shape === 'cross') {
-          const g = document.createElementNS(NS,'g');
-          g.setAttribute('stroke',color); g.setAttribute('stroke-width',3); g.setAttribute('stroke-linecap','round');
-          const l1 = document.createElementNS(NS,'line'), l2 = document.createElementNS(NS,'line');
-          l1.setAttribute('x1',size*.2); l1.setAttribute('y1',size*.2); l1.setAttribute('x2',size*.8); l1.setAttribute('y2',size*.8);
-          l2.setAttribute('x1',size*.8); l2.setAttribute('y1',size*.2); l2.setAttribute('x2',size*.2); l2.setAttribute('y2',size*.8);
-          g.appendChild(l1); g.appendChild(l2); return g;
-        }
-        return document.createElementNS(NS,'g');
-      }
-
-
-      // Particles
-      const particlesSvg = document.getElementById('hviz-particles');
-      const parts = [];
-      for (let i = 0; i < COUNT; i++) {
-        const col = i % COLS, row = Math.floor(i / COLS);
-        const shape = shapes[Math.floor(rng() * shapes.length)];
-        const grey  = greys[Math.floor(rng() * greys.length)];
-        const accent = accents[Math.floor(rng() * accents.length)];
-        const size  = 7 + rng() * 12;
-        const sz    = size / 10;
-        const ox = ((col+.5)/COLS)*100, oy = ((row+.5)/ROWS)*100;
-        const p = {
-          grey, accent, size, sz,
-          chaotic: { x: ox+(rng()-.5)*44, y: oy+(rng()-.5)*44, rot: (rng()-.5)*60, scale: .7+rng()*.5, opacity: 0 },
-          ordered: { x: ox, y: oy, rot: 0, scale: 1, opacity: .78 },
-          delay: rng()*.3, speed: .35+rng()*.35,
-          idle: { rx: .25+rng()*.4, ry: .25+rng()*.4, fx: .00006+rng()*.00007, fy: .00006+rng()*.00007, px: rng()*Math.PI*2, py: rng()*Math.PI*2 },
-        };
-        const g = document.createElementNS(NS,'g');
-        const inner = document.createElementNS(NS,'svg');
-        inner.setAttribute('x',-sz/2); inner.setAttribute('y',-sz/2);
-        inner.setAttribute('width',sz); inner.setAttribute('height',sz);
-        inner.setAttribute('viewBox',`0 0 ${size} ${size}`);
-        inner.setAttribute('overflow','visible');
-        p.shapeEl = makeShapeEl(shape, grey, size);
-        inner.appendChild(p.shapeEl);
-        g.appendChild(inner);
-        particlesSvg.appendChild(g);
-        p.g = g;
-        parts.push(p);
-      }
-
-      const DURATION = 9500;
-      let startTime = null;
-      let idleStart = null;
-
-      function render(ts) {
-        if (!startTime) startTime = ts;
-        const prog = clamp((ts - startTime) / DURATION, 0, 1);
-        if (prog >= 0.35 && !idleStart) idleStart = ts;
-        const idleElapsed = idleStart ? ts - idleStart : 0;
-        const idleW = ease(clamp(idleElapsed / 8000, 0, 1));
-
-        parts.forEach(p => {
-          const t = ease(clamp((prog - p.delay) / p.speed, 0, 1));
-          const ix = p.idle.rx * Math.sin(idleElapsed * p.idle.fx + p.idle.px) * idleW;
-          const iy = p.idle.ry * Math.cos(idleElapsed * p.idle.fy + p.idle.py) * idleW;
-          const x = lerp(p.chaotic.x, p.ordered.x, t) + ix;
-          const y = lerp(p.chaotic.y, p.ordered.y, t) + iy;
-          const rot = lerp(p.chaotic.rot, p.ordered.rot, t);
-          const sc  = lerp(p.chaotic.scale, p.ordered.scale, t);
-          const op  = lerp(p.chaotic.opacity, p.ordered.opacity, t);
-          const col = lerpCol(p.grey, p.accent, t);
-          p.g.setAttribute('transform', `translate(${x},${y}) rotate(${rot}) scale(${sc})`);
-          p.g.setAttribute('opacity', op);
-          const el = p.shapeEl;
-          if (el.tagName === 'line' || el.tagName === 'g') { el.setAttribute('stroke', col); }
-          else { el.setAttribute('fill', col); }
-        });
-
-        requestAnimationFrame(render);
-      }
-
-      requestAnimationFrame(render);
-    })();
-
-    /* ── Contact underline particles ── */
-    (function () {
-      const svg = document.getElementById('contact-underline');
-      if (!svg) return;
-      const NS = 'http://www.w3.org/2000/svg';
-      const COUNT = 28;
-
-      function seeded(seed) {
-        let s = seed;
-        return () => { s = (s * 16807) % 2147483647; return (s - 1) / 2147483646; };
-      }
-      function lerp(a, b, t) { return a + (b - a) * t; }
-      function ease(t) { return t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2; }
-      function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
-      function hexRgb(h) {
-        return { r: parseInt(h.slice(1,3),16), g: parseInt(h.slice(3,5),16), b: parseInt(h.slice(5,7),16) };
-      }
-      function lerpCol(gh, ah, t) {
-        const g = hexRgb(gh), a = hexRgb(ah);
-        return `rgb(${Math.round(lerp(g.r,a.r,t))},${Math.round(lerp(g.g,a.g,t))},${Math.round(lerp(g.b,a.b,t))})`;
-      }
-
-      const accents = ['#C9553A','#2A7A7A','#C4943D','#4A6BB5','#9E4D72'];
-      const greys   = ['#C8C8C4','#B8B8B4','#D0D0CC','#C0C0BC','#CACAC6'];
-      const shapes  = ['circle','square','triangle','diamond','cross'];
-      const rng = seeded(907);
-
-      function makeShape(shape, color, size) {
-        const h = size / 2;
-        if (shape === 'circle') {
-          const e = document.createElementNS(NS,'circle');
-          e.setAttribute('cx',0); e.setAttribute('cy',0);
-          e.setAttribute('r', size * .42); e.setAttribute('fill', color); return e;
-        }
-        if (shape === 'square') {
-          const s2 = size * .38;
-          const e = document.createElementNS(NS,'rect');
-          e.setAttribute('x', -s2); e.setAttribute('y', -s2);
-          e.setAttribute('width', s2*2); e.setAttribute('height', s2*2);
-          e.setAttribute('fill', color); e.setAttribute('rx', 1); return e;
-        }
-        if (shape === 'triangle') {
-          const e = document.createElementNS(NS,'polygon');
-          const r = size * .42;
-          e.setAttribute('points', `0,${-r} ${r*.87},${r*.5} ${-r*.87},${r*.5}`);
-          e.setAttribute('fill', color); return e;
-        }
-        if (shape === 'diamond') {
-          const r = size * .42;
-          const e = document.createElementNS(NS,'polygon');
-          e.setAttribute('points', `0,${-r} ${r},0 0,${r} ${-r},0`);
-          e.setAttribute('fill', color); return e;
-        }
-        if (shape === 'cross') {
-          const g = document.createElementNS(NS,'g');
-          g.setAttribute('stroke', color); g.setAttribute('stroke-width', 1.5); g.setAttribute('stroke-linecap','round');
-          const r = size * .35;
-          const l1 = document.createElementNS(NS,'line');
-          const l2 = document.createElementNS(NS,'line');
-          l1.setAttribute('x1',-r); l1.setAttribute('y1',-r); l1.setAttribute('x2',r); l1.setAttribute('y2',r);
-          l2.setAttribute('x1',r); l2.setAttribute('y1',-r); l2.setAttribute('x2',-r); l2.setAttribute('y2',r);
-          g.appendChild(l1); g.appendChild(l2); return g;
-        }
-        return document.createElementNS(NS,'g');
-      }
-
-      const particles = [];
-      for (let i = 0; i < COUNT; i++) {
-        const shape = shapes[Math.floor(rng() * shapes.length)];
-        const grey  = greys[Math.floor(rng() * greys.length)];
-        const accent = accents[Math.floor(rng() * accents.length)];
-        const size = 3 + rng() * 4;
-        const targetX = (i + .5) / COUNT * 400;
-        const targetY = 4;
-
-        const p = {
-          grey, accent,
-          start: {
-            x: targetX + (rng() - .5) * 60,
-            y: targetY + (rng() - .5) * 30,
-            rot: (rng() - .5) * 90,
-            scale: .3 + rng() * .4,
-            opacity: 0
-          },
-          end: {
-            x: targetX,
-            y: targetY + (rng() - .5) * 2,
-            rot: 0,
-            scale: .8 + rng() * .4,
-            opacity: .6 + rng() * .3
-          },
-          delay: rng() * .4,
-          speed: .3 + rng() * .3,
-          idle: {
-            rx: .3 + rng() * .5,
-            ry: .2 + rng() * .3,
-            fx: .0008 + rng() * .001,
-            fy: .0008 + rng() * .001,
-            px: rng() * Math.PI * 2,
-            py: rng() * Math.PI * 2
-          }
-        };
-
-        const g = document.createElementNS(NS, 'g');
-        g.setAttribute('opacity', 0);
-        const shapeEl = makeShape(shape, grey, size);
-        g.appendChild(shapeEl);
-        svg.appendChild(g);
-        p.g = g;
-        p.shapeEl = shapeEl;
-        particles.push(p);
-      }
-
-      let animStart = null;
-      let triggered = false;
-      const ANIM_DURATION = 2500;
-
-      function animate(ts) {
-        if (!animStart) animStart = ts;
-        const elapsed = ts - animStart;
-        const prog = clamp(elapsed / ANIM_DURATION, 0, 1);
-        const idleElapsed = elapsed;
-
-        particles.forEach(p => {
-          const t = ease(clamp((prog - p.delay) / p.speed, 0, 1));
-          const idleW = ease(clamp((elapsed - 1200) / 3000, 0, 1));
-          const ix = p.idle.rx * Math.sin(idleElapsed * p.idle.fx + p.idle.px) * idleW;
-          const iy = p.idle.ry * Math.cos(idleElapsed * p.idle.fy + p.idle.py) * idleW;
-          const x = lerp(p.start.x, p.end.x, t) + ix;
-          const y = lerp(p.start.y, p.end.y, t) + iy;
-          const rot = lerp(p.start.rot, p.end.rot, t);
-          const sc  = lerp(p.start.scale, p.end.scale, t);
-          const op  = lerp(p.start.opacity, p.end.opacity, t);
-          const col = lerpCol(p.grey, p.accent, t);
-          p.g.setAttribute('transform', `translate(${x},${y}) rotate(${rot}) scale(${sc})`);
-          p.g.setAttribute('opacity', op);
-          const el = p.shapeEl;
-          if (el.tagName === 'g') { el.setAttribute('stroke', col); }
-          else { el.setAttribute('fill', col); }
-        });
-
-        requestAnimationFrame(animate);
-      }
-
-      const contactObs = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting && !triggered) {
-            triggered = true;
-            requestAnimationFrame(animate);
-            contactObs.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.3 });
-
-      contactObs.observe(svg.closest('section') || svg);
-    })();
-  </script>
+  <script src="assets/js/site.js" defer></script>
 </body>
 </html>
