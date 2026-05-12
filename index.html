@@ -13,6 +13,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/site.css" />
   <style>
+    /* Prevent full-bleed sections from causing horizontal scroll */
+    body { overflow-x: clip; }
+
     /* Hero — split layout: text left, video right */
     .hero { padding: 140px 0 100px; border-bottom: .5px solid var(--border); }
     .hero-inner {
@@ -23,10 +26,11 @@
     }
     .hero-text h1 {
       font-family: var(--font-display);
-      font-size: clamp(2.5rem, 5vw, 4.75rem);
+      font-size: clamp(2.5rem, 4.4vw, 4rem);
       font-weight: 700;
       line-height: .98;
       letter-spacing: -.035em;
+      text-wrap: balance;
     }
     .hero-text h1 em {
       font-family: var(--font-serif);
@@ -48,8 +52,6 @@
       width: 100%;
       aspect-ratio: 3/4;
       overflow: hidden;
-      border-radius: 6px;
-      background-color: #0a0a08;
       user-select: none;
       margin-top: -30px;
     }
@@ -169,6 +171,147 @@
       color: var(--text);
     }
     .process-step .desc { font-size: 13.5px; line-height: 1.65; color: #444; }
+    .process-step .desc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 13.5px;
+      line-height: 1.5;
+      color: #444;
+    }
+    .process-step .desc-list li {
+      padding: 8px 0;
+      border-bottom: .5px solid var(--border);
+    }
+    .process-step .desc-list li:first-child { padding-top: 0; }
+    .process-step .desc-list li:last-child { border-bottom: none; }
+    .process-step .tools {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-top: 14px;
+      letter-spacing: -.005em;
+    }
+
+    /* AI section — three sub-blocks: foundation, AI as a user, where it shows up */
+    .ai-block { margin-top: 80px; }
+    .ai-block:first-of-type { margin-top: 0; }
+    .ai-subhead {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+      font-weight: 600;
+      letter-spacing: -.025em;
+      line-height: 1.1;
+      margin-bottom: 32px;
+      color: var(--text);
+    }
+    .ai-subhead em {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--muted);
+    }
+    .ai-subhead-sub {
+      color: var(--muted);
+      font-size: 14.5px;
+      font-weight: 300;
+      line-height: 1.6;
+      margin-bottom: 36px;
+      max-width: 560px;
+    }
+    .ai-foundation-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 36px;
+      border-top: .5px solid var(--border-strong);
+      padding-top: 36px;
+    }
+    .ai-foundation-item .title {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.15rem;
+      font-weight: 400;
+      letter-spacing: -.01em;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    .ai-foundation-item p {
+      font-size: 13.5px;
+      line-height: 1.65;
+      color: #444;
+    }
+
+    /* AI section — full-bleed pure black */
+    #ai {
+      position: relative;
+      padding-top: 120px;
+      padding-bottom: 120px;
+      border-bottom: none;
+      color: #f4f1e8;
+      background-color: #000;
+      /* Full-bleed: spread shadow extends color to viewport edges, clip-path keeps it horizontal-only */
+      box-shadow: 0 0 0 100vmax #000;
+      clip-path: inset(0 -100vmax);
+    }
+    /* Two-column foundation + image layout */
+    .ai-split-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .ai-foundation-list {
+      border-top: .5px solid rgba(244, 241, 232, 0.18);
+    }
+    .ai-foundation-row {
+      padding: 22px 0;
+      border-bottom: .5px solid rgba(244, 241, 232, 0.18);
+    }
+    .ai-foundation-row h4 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 500;
+      letter-spacing: -.015em;
+      color: #f4f1e8;
+      margin: 0 0 10px;
+    }
+    .ai-foundation-row p {
+      color: #c0bdb2;
+      font-size: 14px;
+      line-height: 1.7;
+      margin: 0;
+      max-width: 95%;
+    }
+    .ai-image-placeholder {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+    }
+    .ai-image-placeholder img,
+    .ai-image-placeholder video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* AI section — text & border overrides */
+    #ai .section-label { color: #a8a59c; }
+    #ai h2 { color: #f4f1e8; margin-bottom: 24px; }
+    #ai h2 em { color: #a8a59c; }
+    #ai .section-sub { color: #c0bdb2; margin-top: 0; max-width: 560px; }
+    #ai .ai-subhead { color: #f4f1e8; }
+    #ai .ai-subhead em { color: #a8a59c; }
+    #ai .ai-foundation-grid { border-top-color: rgba(244, 241, 232, 0.18); }
+    #ai .ai-foundation-item .title { color: #f4f1e8; }
+    #ai .ai-foundation-item p { color: #c0bdb2; }
+    #ai .process-grid { border-top-color: rgba(244, 241, 232, 0.18); }
+    #ai .process-step .num { display: none; }
+    #ai .process-step .title { color: #f4f1e8; }
+    #ai .process-step .desc-list { color: #c0bdb2; }
+    #ai .process-step .desc-list li { border-bottom-color: rgba(244, 241, 232, 0.1); }
+    #ai .process-step .tools { color: #a8a59c; }
 
     /* About — sticky portrait + editorial prose */
     .about-grid {
@@ -274,6 +417,10 @@
       .work-title { font-size: 1.05rem; }
       .work-sub { font-size: 12.5px; }
       .process-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+      .ai-foundation-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+      .ai-split-grid { grid-template-columns: 1fr; gap: 48px; }
+      .ai-block { margin-top: 56px; }
+      #ai { padding-top: 80px; padding-bottom: 80px; }
       .about-grid { grid-template-columns: 1fr; gap: 40px; }
       .about-portrait { max-width: 220px; position: static; top: auto; }
     }
@@ -302,7 +449,7 @@
     <section class="hero">
       <div class="hero-inner">
         <div class="hero-text">
-          <h1>Medical doctor turned<br><em>Product Designer</em></h1>
+          <h1>Complex &amp; regulated<br>products? <em>That's me</em></h1>
           <p class="hero-sub">I build products that create measurable outcomes for people and business in Health, FinTech, Energy, and beyond.</p>
         </div>
         <div class="hero-viz">
@@ -390,6 +537,88 @@
           <div class="num">04</div>
           <div class="title">Deliver &amp; Measure</div>
           <div class="desc">Ship, track, and learn. Design doesn't end at handoff. It ends when the numbers show it's working. If the impact isn't measurable, it isn't real.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ai">
+      <p class="section-label">Working with AI</p>
+      <h2>Think &rarr; <em>AI</em> &rarr; Think</h2>
+      <p class="section-sub">I think, I delegate, I think again. The result is only as sharp as the question I ask and the judgment I bring to it.</p>
+
+      <div class="ai-block">
+        <div class="ai-split-grid">
+          <div>
+            <h3 class="ai-subhead">The right <em>foundation</em></h3>
+            <div class="ai-foundation-list">
+              <div class="ai-foundation-row">
+                <h4>Shared infrastructure</h4>
+                <p>Custom skills, hooks, and plugins versioned in GitHub. The team pulls the same toolchain. Improvements compound instead of getting trapped on someone's laptop.</p>
+              </div>
+              <div class="ai-foundation-row">
+                <h4>Aligned with tech</h4>
+                <p>Tool choices made with the engineers who ship the code. Prototypes use the real component library. Handoff is clean because the tracks were never separate.</p>
+              </div>
+              <div class="ai-foundation-row">
+                <h4>Compliance built in</h4>
+                <p>Risk assessments, DPAs, GDPR and IP respected on input and output, sandboxed models where the data demands it.</p>
+              </div>
+              <div class="ai-foundation-row">
+                <h4>AI as a user</h4>
+                <p>The newest user segment I design for. Markdown notes, structured project folders, READMEs that double as onboarding context. A model should pick up a project cold, the same way a new teammate would.</p>
+              </div>
+            </div>
+          </div>
+          <div class="ai-image-placeholder">
+            <video src="assets/cubes-move-v1.mp4" autoplay muted loop playsinline preload="metadata" aria-label="The right foundation"></video>
+          </div>
+        </div>
+      </div>
+
+      <div class="ai-block">
+        <h3 class="ai-subhead">AI in the <em>strategy &amp; design process</em></h3>
+        <div class="process-grid">
+          <div class="process-step">
+            <div class="num">01</div>
+            <div class="title">Research &amp; insights</div>
+            <ul class="desc-list">
+              <li>Desk research and market analysis</li>
+              <li>Interview transcription</li>
+              <li>Qualitative/Quantitative data analysis</li>
+              <li>API mapping</li>
+            </ul>
+            <div class="tools">Good Tape · Dovetail · Maze · Perplexity</div>
+          </div>
+          <div class="process-step">
+            <div class="num">02</div>
+            <div class="title">Concept &amp; prototyping</div>
+            <ul class="desc-list">
+              <li>Concept development</li>
+              <li>High fidelity interactive prototypes built on the real design system</li>
+              <li>AI-simulated user testing</li>
+            </ul>
+            <div class="tools">Figma Make · Claude Design · Claude Code</div>
+          </div>
+          <div class="process-step">
+            <div class="num">03</div>
+            <div class="title">Content at standard</div>
+            <ul class="desc-list">
+              <li>Copy audit across platforms</li>
+              <li>Consistent images, illustrations, and animations locked to the existing visual system</li>
+              <li>Automated user stories</li>
+            </ul>
+            <div class="tools">Claude Code · Figma MCP · Figma Weave</div>
+          </div>
+          <div class="process-step">
+            <div class="num">04</div>
+            <div class="title">Communication &amp; handoff</div>
+            <ul class="desc-list">
+              <li>Slides and presentations</li>
+              <li>Workshop materials</li>
+              <li>Reports and documentation</li>
+            </ul>
+            <div class="tools">Claude Code</div>
+          </div>
         </div>
       </div>
     </section>
