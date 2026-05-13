@@ -8,7 +8,7 @@
   --muted: #8a8880;
   --border: #e8e6e0;
   --border-strong: #0a0a0a;
-  --accent: #246F6F;
+  --accent: #0a0a0a;
   --surface: #faf9f5;
   --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
   --font-sans: 'Inter', system-ui, sans-serif;
@@ -233,17 +233,15 @@ h2 em { font-family: var(--font-serif); font-style: italic; font-weight: 300; }
   align-items: center;
   gap: 24px;
   padding: 38px 40px;
-  background-color: #1a2e2a;
-  background-image:
-    radial-gradient(circle at 78% 30%, rgba(217,59,42,.16) 0%, transparent 55%),
-    radial-gradient(rgba(255,255,255,.045) 1px, transparent 1px);
-  background-size: auto, 18px 18px;
+  background-color: #0a0a0a;
+  background-image: radial-gradient(rgba(255,255,255,.045) 1px, transparent 1px);
+  background-size: 18px 18px;
   color: #fff;
   border-radius: 6px;
   text-decoration: none;
   transition: transform .35s cubic-bezier(.2,.8,.2,1), background-color .3s;
 }
-.next-project:hover { background-color: #244b45; transform: translateY(-3px); }
+.next-project:hover { background-color: #1f1f1f; transform: translateY(-3px); }
 .next-title {
   font-family: var(--font-display);
   font-size: clamp(1.4rem, 2.4vw, 2rem);

@@ -195,15 +195,16 @@
     }
 
     /* AI section — three sub-blocks: foundation, AI as a user, where it shows up */
-    .ai-block { margin-top: 80px; }
+    .ai-block { margin-top: 96px; }
     .ai-block:first-of-type { margin-top: 0; }
     .ai-subhead {
       font-family: var(--font-display);
-      font-size: clamp(1.6rem, 2.6vw, 2.2rem);
-      font-weight: 600;
-      letter-spacing: -.025em;
-      line-height: 1.1;
-      margin-bottom: 32px;
+      font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+      font-weight: 500;
+      letter-spacing: -.02em;
+      line-height: 1.15;
+      margin-bottom: 24px;
+      max-width: 24ch;
       color: var(--text);
     }
     .ai-subhead em {
@@ -254,24 +255,28 @@
       box-shadow: 0 0 0 100vmax #000;
       clip-path: inset(0 -100vmax);
     }
-    /* Two-column foundation + image layout */
-    .ai-split-grid {
+    /* AI hero — section header + foundation list (left) beside video (right), top-aligned */
+    .ai-hero {
       display: grid;
-      grid-template-columns: 1.05fr 1fr;
-      gap: 80px;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
       align-items: start;
     }
+    .ai-hero .ai-subhead { margin-top: 72px; }
     .ai-foundation-list {
-      border-top: .5px solid rgba(244, 241, 232, 0.18);
+      border-top: .5px solid var(--border-strong);
+      padding-top: 8px;
     }
     .ai-foundation-row {
       padding: 22px 0;
       border-bottom: .5px solid rgba(244, 241, 232, 0.18);
     }
+    .ai-foundation-row:last-child { border-bottom: none; }
     .ai-foundation-row h4 {
-      font-family: var(--font-display);
-      font-size: 1.2rem;
-      font-weight: 500;
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.4rem;
+      font-weight: 400;
       letter-spacing: -.015em;
       color: #f4f1e8;
       margin: 0 0 10px;
@@ -304,6 +309,7 @@
     #ai .ai-subhead { color: #f4f1e8; }
     #ai .ai-subhead em { color: #a8a59c; }
     #ai .ai-foundation-grid { border-top-color: rgba(244, 241, 232, 0.18); }
+    #ai .ai-foundation-list { border-top-color: rgba(244, 241, 232, 0.18); }
     #ai .ai-foundation-item .title { color: #f4f1e8; }
     #ai .ai-foundation-item p { color: #c0bdb2; }
     #ai .process-grid { border-top-color: rgba(244, 241, 232, 0.18); }
@@ -383,11 +389,9 @@
       align-items: center;
       gap: 20px;
       padding: 22px 34px 22px 36px;
-      background-color: #1a2e2a;
-      background-image:
-        radial-gradient(circle at 78% 30%, rgba(217,59,42,.16) 0%, transparent 55%),
-        radial-gradient(rgba(255,255,255,.045) 1px, transparent 1px);
-      background-size: auto, 18px 18px;
+      background-color: #0a0a0a;
+      background-image: radial-gradient(rgba(255,255,255,.045) 1px, transparent 1px);
+      background-size: 18px 18px;
       color: #fff;
       font-family: var(--font-display);
       font-size: clamp(1.3rem, 2.2vw, 1.85rem);
@@ -398,7 +402,7 @@
       text-decoration: none;
       transition: transform .35s cubic-bezier(.2,.8,.2,1), background-color .3s;
     }
-    .contact-link:hover { background-color: #244b45; transform: translateY(-3px); }
+    .contact-link:hover { background-color: #1f1f1f; transform: translateY(-3px); }
     .contact-link-arrow {
       display: inline-block;
       font-size: .9em;
@@ -418,7 +422,8 @@
       .work-sub { font-size: 12.5px; }
       .process-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
       .ai-foundation-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
-      .ai-split-grid { grid-template-columns: 1fr; gap: 48px; }
+      .ai-hero { grid-template-columns: 1fr; gap: 48px; }
+      .ai-hero .ai-subhead { margin-top: 48px; }
       .ai-block { margin-top: 56px; }
       #ai { padding-top: 80px; padding-bottom: 80px; }
       .about-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -542,36 +547,34 @@
     </section>
 
     <section id="ai">
-      <p class="section-label">Working with AI</p>
-      <h2>Think &rarr; <em>AI</em> &rarr; Think</h2>
-      <p class="section-sub">I think, I delegate, I think again. The result is only as sharp as the question I ask and the judgment I bring to it.</p>
+      <div class="ai-hero">
+        <div class="ai-hero-text">
+          <p class="section-label">Working with AI</p>
+          <h2>Think &rarr; <em>AI</em> &rarr; Think</h2>
+          <p class="section-sub">I think, I delegate, I think again. The result is only as sharp as the question I ask and the judgment I bring to it.</p>
 
-      <div class="ai-block">
-        <div class="ai-split-grid">
-          <div>
-            <h3 class="ai-subhead">The right <em>foundation</em></h3>
-            <div class="ai-foundation-list">
-              <div class="ai-foundation-row">
-                <h4>Shared infrastructure</h4>
-                <p>Custom skills, hooks, and plugins versioned in GitHub. The team pulls the same toolchain. Improvements compound instead of getting trapped on someone's laptop.</p>
-              </div>
-              <div class="ai-foundation-row">
-                <h4>Aligned with tech</h4>
-                <p>Tool choices made with the engineers who ship the code. Prototypes use the real component library. Handoff is clean because the tracks were never separate.</p>
-              </div>
-              <div class="ai-foundation-row">
-                <h4>Compliance built in</h4>
-                <p>Risk assessments, DPAs, GDPR and IP respected on input and output, sandboxed models where the data demands it.</p>
-              </div>
-              <div class="ai-foundation-row">
-                <h4>AI as a user</h4>
-                <p>The newest user segment I design for. Markdown notes, structured project folders, READMEs that double as onboarding context. A model should pick up a project cold, the same way a new teammate would.</p>
-              </div>
+          <h3 class="ai-subhead">The right <em>foundation</em></h3>
+          <div class="ai-foundation-list">
+            <div class="ai-foundation-row">
+              <h4>Shared infrastructure</h4>
+              <p>Custom skills, hooks, and plugins versioned in GitHub. The team pulls the same toolchain. Improvements compound instead of getting trapped on someone's laptop.</p>
+            </div>
+            <div class="ai-foundation-row">
+              <h4>Aligned with tech</h4>
+              <p>Tool choices made with the engineers who ship the code. Prototypes use the real component library. Handoff is clean because the tracks were never separate.</p>
+            </div>
+            <div class="ai-foundation-row">
+              <h4>Compliance built in</h4>
+              <p>Risk assessments, DPAs, GDPR and IP respected on input and output, sandboxed models where the data demands it.</p>
+            </div>
+            <div class="ai-foundation-row">
+              <h4>AI as a user</h4>
+              <p>The newest user segment I design for. Markdown notes, structured project folders, READMEs that double as onboarding context. A model should pick up a project cold, the same way a new teammate would.</p>
             </div>
           </div>
-          <div class="ai-image-placeholder">
-            <video src="assets/cubes-move-v1.mp4" autoplay muted loop playsinline preload="metadata" aria-label="The right foundation"></video>
-          </div>
+        </div>
+        <div class="ai-image-placeholder">
+          <video src="assets/cubes-move-v1.mp4" autoplay muted loop playsinline preload="metadata" aria-label="The right foundation"></video>
         </div>
       </div>
 
