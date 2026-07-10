@@ -39,20 +39,60 @@
 
     a { color: inherit; }
 
-    .source-link {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      padding-bottom: 14px;
-      margin-bottom: 24px;
+    .masthead {
+      display: grid;
+      grid-template-columns: 1fr 145px;
+      gap: 56px;
+      align-items: start;
+      padding-bottom: 32px;
       border-bottom: .5px solid var(--border);
-      font-size: 10px;
-      letter-spacing: .08em;
+    }
+    .masthead-portrait img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 3px;
+      filter: grayscale(1) contrast(1.02);
+    }
+    .masthead-name {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: 3.6rem;
+      line-height: 1.04;
+      letter-spacing: -.02em;
+    }
+    .masthead-sub {
+      margin-top: 18px;
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: var(--muted);
+      max-width: 58ch;
+    }
+    .masthead-contact { margin-top: 24px; display: flex; gap: 56px; }
+    .masthead-contact .contact-label {
+      font-size: 9.5px;
+      letter-spacing: .12em;
       text-transform: uppercase;
       color: var(--muted);
       font-weight: 500;
+      margin-bottom: 4px;
     }
-    .source-link a { text-decoration: none; color: var(--text); border-bottom: 1px solid var(--border-strong); padding-bottom: 1px; }
+    .masthead-contact a {
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border-strong);
+      padding-bottom: 1px;
+    }
+    .lang-chips { display: flex; flex-wrap: wrap; gap: 7px; }
+    .lang-chip {
+      background: var(--surface);
+      padding: 6px 14px;
+      border-radius: 3px;
+      font-size: 10.5px;
+      color: #333;
+    }
 
     .section-label {
       font-size: 10px;
@@ -61,6 +101,7 @@
       color: var(--muted);
       font-weight: 500;
       margin-bottom: 12px;
+      break-after: avoid;
     }
 
     h1.hero-title {
@@ -85,42 +126,27 @@
       letter-spacing: -.02em;
       line-height: 1.1;
       margin-bottom: 16px;
+      break-after: avoid;
     }
     h2 em { font-family: var(--font-serif); font-style: italic; font-weight: 300; color: var(--muted); }
 
     section { padding: 20px 0; border-top: .5px solid var(--border); }
-    section:first-of-type { border-top: none; padding-top: 0; }
+    section:first-of-type { border-top: none; }
 
-    /* ── About hero ── */
-    .about {
+    /* ── About ── */
+    .about-grid {
       display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 36px;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 44px;
       align-items: start;
-      padding-bottom: 24px;
+      margin-top: 18px;
     }
-    .about-portrait img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 2px;
-      filter: grayscale(1) contrast(1.02);
-    }
-    .about-portrait-cap {
-      margin-top: 10px;
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 10.5px;
-      line-height: 1.45;
-      color: var(--muted);
-      font-weight: 300;
-    }
-    .about-content .section-label { margin-bottom: 8px; }
-    .about-text { margin-top: 14px; display: flex; flex-direction: column; gap: 8px; max-width: 56ch; }
+    .about-text { display: flex; flex-direction: column; gap: 8px; }
     .about-text p { font-size: 11px; line-height: 1.6; color: #222; }
     .about-text p:first-child { font-family: var(--font-serif); font-size: 12.5px; font-weight: 400; color: var(--text); line-height: 1.55; }
 
-    .about-skills { margin-top: 14px; }
+    .about-side .about-skills:first-child { margin-top: 0; }
+    .about-skills { margin-top: 16px; }
     .about-skills-title {
       font-size: 9.5px;
       letter-spacing: .1em;
@@ -139,6 +165,60 @@
       letter-spacing: .02em;
       font-weight: 500;
     }
+
+    /* ── How I work ── */
+    .section-sub {
+      font-size: 11.5px;
+      line-height: 1.6;
+      color: var(--muted);
+      max-width: 58ch;
+      margin-top: -8px;
+    }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      margin-top: 20px;
+    }
+    .process-step { page-break-inside: avoid; break-inside: avoid; }
+    .process-step .num {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .process-step .title {
+      font-family: var(--font-display);
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: -.01em;
+      margin-bottom: 5px;
+      padding-bottom: 5px;
+      border-bottom: .5px solid var(--border);
+    }
+    .process-step .desc { font-size: 10.5px; color: #444; line-height: 1.55; }
+
+    /* ── Working with AI ── */
+    .ai-condensed {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      margin-top: 16px;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+    .ai-condensed h4 {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: -.01em;
+      margin-bottom: 3px;
+      padding-bottom: 4px;
+      border-bottom: .5px solid var(--border);
+    }
+    .ai-condensed p { font-size: 10.5px; color: #444; line-height: 1.6; }
 
     /* ── Experience / Education items ── */
     .exp-item, .edu-item {
@@ -187,6 +267,15 @@
       font-weight: 500;
     }
     .edu-list-inline { margin-top: 3px; color: #444; font-size: 11px; line-height: 1.55; }
+    .exp-case { margin-top: 6px; font-size: 10px; }
+    .exp-case a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      letter-spacing: .02em;
+      border-bottom: 1px solid var(--border-strong);
+      padding-bottom: 1px;
+    }
 
     .pub-item { padding: 12px 0; border-top: .5px solid var(--border); page-break-inside: avoid; break-inside: avoid; }
     .pub-item:first-child { border-top: .5px solid var(--border-strong); }
@@ -228,25 +317,41 @@
 
   <div class="sheet">
 
-    <div class="source-link">
-      <span>Frederik Haug Korsgaard</span>
-      <span>View online: <a href="https://frednors.github.io/port/">frednors.github.io/port</a></span>
-    </div>
+    <header class="masthead">
+      <div class="masthead-main">
+        <h1 class="masthead-name">Frederik Haug<br>Korsgaard</h1>
+        <p class="masthead-sub">I build products that create measurable outcomes for people and business in Health, FinTech, Energy, and beyond.</p>
+        <div class="masthead-contact">
+          <div>
+            <div class="contact-label">Email</div>
+            <a href="mailto:frednors@proton.me">frednors@proton.me</a>
+          </div>
+          <div>
+            <div class="contact-label">LinkedIn</div>
+            <a href="https://www.linkedin.com/in/fredkors/">linkedin.com/in/fredkors</a>
+          </div>
+          <div>
+            <div class="contact-label">Website</div>
+            <a href="https://frednors.github.io/port/">frednors.github.io/port</a>
+          </div>
+        </div>
+      </div>
+      <div class="masthead-portrait">
+        <img src="hero/portrait.webp" alt="Frederik Haug Korsgaard" />
+      </div>
+    </header>
 
     <section class="about">
-      <div class="about-portrait">
-        <img src="hero/portrait.webp" alt="Frederik Haug Korsgaard" />
-        <div class="about-portrait-cap">Medical doctor turned product designer. Based in Aarhus, Denmark.</div>
-      </div>
-      <div class="about-content">
-        <p class="section-label">About me</p>
-        <h1 class="hero-title">From <em>diagnosis</em><br>to product strategy</h1>
+      <p class="section-label">About me</p>
+      <h2>From <em>diagnosis</em><br>to product strategy</h2>
+      <div class="about-grid">
         <div class="about-text">
           <p>5+ years of experience at the intersection of healthcare, design, and technology. I specialise in product vision and strategy, aligning business objectives with user needs through rigorous research, prototyping, and data-driven validation.</p>
           <p>I made the switch from medical doctor to product designer, because I realised that the biggest problems in healthcare wouldn't be solved one patient at a time. They'd be solved through technology and design.</p>
           <p>That shift taught me that the skills that make you good at healthcare products make you good at any complex, regulated industry. Health, fintech, energy. They all involve multiple user groups with intertwined journeys, sensitive data, heavy regulation, and real consequences when you get it wrong. The complexity is the same. So is the opportunity to make a meaningful difference for a lot of people.</p>
           <p>But understanding a problem and designing a solution isn't enough. If the impact is going to last, it has to be tied to a viable business. That's the part I care about most. Building products that create measurable outcomes for people and for the organisations behind them.</p>
         </div>
+        <div class="about-side">
         <div class="about-skills">
           <div class="about-skills-title">Core skills</div>
           <div class="about-skill-tags">
@@ -273,6 +378,262 @@
             <span class="about-skill-tag">Maze</span>
             <span class="about-skill-tag">Google Analytics</span>
           </div>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <p class="section-label">How I work</p>
+      <h2>From understanding to <em>measurable</em> impact</h2>
+      <p class="section-sub">I start with the business, the market, and the people, then work towards a solution that delivers real outcomes.</p>
+      <div class="process-grid">
+        <div class="process-step">
+          <div class="num">01</div>
+          <div class="title">Understand</div>
+          <div class="desc">Map the business, the market, and the users. Identify what's actually worth solving, and what isn't. In regulated industries, understanding the constraints is half the work.</div>
+        </div>
+        <div class="process-step">
+          <div class="num">02</div>
+          <div class="title">Vision &amp; Strategy</div>
+          <div class="desc">Define where the product needs to go and build the case for why. Align stakeholders around a shared direction so every decision that follows has a rationale and a business logic.</div>
+        </div>
+        <div class="process-step">
+          <div class="num">03</div>
+          <div class="title">Discover &amp; Design</div>
+          <div class="desc">Research, ideation, prototyping, and testing with real users. Move fast, but validate before you commit. The goal isn't a beautiful prototype. It's confidence that you're building the right thing.</div>
+        </div>
+        <div class="process-step">
+          <div class="num">04</div>
+          <div class="title">Deliver &amp; Measure</div>
+          <div class="desc">Ship, track, and learn. Design doesn't end at handoff. It ends when the numbers show it's working. If the impact isn't measurable, it isn't real.</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <p class="section-label">Working with AI</p>
+      <h2>Think &rarr; <em>AI</em> &rarr; Think</h2>
+      <p class="section-sub">I think, I delegate, I think again. The result is only as sharp as the question I ask and the judgment I bring to it.</p>
+
+      <div class="ai-condensed">
+        <div>
+          <h4>The right foundation</h4>
+          <p>A shared toolchain of custom skills, hooks, and plugins versioned in GitHub. Tool choices made with the engineers who ship the code, so prototypes run on the real component library. Compliance built in — GDPR, DPAs, and sandboxed models where the data demands it. And projects structured so a model onboards cold, the same way a new teammate would.</p>
+        </div>
+        <div>
+          <h4>AI in the strategy &amp; design process</h4>
+          <p>Desk research, transcription, and data analysis (Good Tape, Dovetail, Maze, Perplexity). High-fidelity prototypes built on the real design system and AI-simulated user testing (Figma Make, Claude Design, Claude Code). Copy, imagery, and user stories locked to the existing visual system (Figma MCP, Figma Weave). Slides, workshop materials, reports, and handoff documentation (Claude Code).</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <p class="section-label">Projects</p>
+      <h2>Project <em>experience</em></h2>
+
+      <div class="exp-item">
+        <div class="exp-date">2026 — Present</div>
+        <div>
+          <div class="exp-company">Shared Public Treatment Platform · Region of Southern Denmark</div>
+          <div class="exp-role">Product Manager &amp; Product Designer</div>
+          <div class="exp-desc">Denmark's national platform for digital therapy, closing the treatment gap for citizens who are too unwell for general practice but not referred to psychiatry. Three interconnected products: an editor for building therapy programmes, a clinician tool for monitoring and communicating with patients, and a citizen app for completing treatment at your own pace. Responsible for product strategy, user research, concept development, prototyping, and user testing, designed to meet WCAG and MDR requirements.</div>
+          <div class="exp-tags"><span class="exp-tag">Health</span></div>
+          <div class="exp-case"><a href="https://frednors.github.io/port/faelles-offentlig-platform.html">Case study online ↗</a></div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-date">2025 — 2026</div>
+        <div>
+          <div class="exp-company">Arla Mat · Arla Sweden</div>
+          <div class="exp-role">Product Design Lead</div>
+          <div class="exp-desc">Helped Arla Sweden turn a huge recipe library into a personal cooking experience. Defined the product vision and strategy and developed and A/B-tested new concepts, resulting in a 5× increase in cooking activity, stabilised retention, and an App Store ranking jump from 72 to 33.</div>
+          <div class="exp-case"><a href="https://frednors.github.io/port/arla-mat.html">Case study online ↗</a></div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-date">2025 — Present</div>
+        <div>
+          <div class="exp-company">Digitalised Medication Review · Bispebjerg Hospital</div>
+          <div class="exp-role">Product Design Lead</div>
+          <div class="exp-desc">Digitalising the medication review process at Bispebjerg Hospital, translating a complex clinical workflow into a tool that supports safe, efficient medication reviews.</div>
+          <div class="exp-tags"><span class="exp-tag">Health</span></div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-date">2025 — Present</div>
+        <div>
+          <div class="exp-company">Employee &amp; Manager Platform Redesign · Evovia</div>
+          <div class="exp-role">Product Designer</div>
+          <div class="exp-desc">Redesign of Evovia's platform for structured employee and manager development dialogues, modernising the experience for both the employees preparing for conversations and the managers running them.</div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-date">2025 — Present</div>
+        <div>
+          <div class="exp-company">Flexii · EWII</div>
+          <div class="exp-role">Product Designer</div>
+          <div class="exp-desc">A self-service platform giving owners of solar panels, wind turbines, and batteries a clear view of the value their flexible energy assets create. Turned complex, fluctuating market data into actionable insight through concept development, user flows, and wireframing.</div>
+          <div class="exp-tags"><span class="exp-tag">Energy</span></div>
+          <div class="exp-case"><a href="https://frednors.github.io/port/ewii.html">Case study online ↗</a></div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-date">2024 — Present</div>
+        <div>
+          <div class="exp-company">Telma (FUT) · City of Copenhagen</div>
+          <div class="exp-role">Product Designer</div>
+          <div class="exp-desc">Responsible for ensuring new Telma features create maximum value for end users through user-friendly communication and guidance on how new functionality can be adopted in everyday clinical practice.</div>
+          <div class="exp-tags"><span class="exp-tag">Health</span><span class="exp-tag">Product launch</span><span class="exp-tag">IT implementation</span></div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-date">2024 — Present</div>
+        <div>
+          <div class="exp-company">Gravitate Health</div>
+          <div class="exp-role">Design Lead</div>
+          <div class="exp-desc">A public-private partnership of 41 members across Europe and the US, led by the University of Oslo and Pfizer and funded by the Innovative Medicines Initiative, creating electronic package leaflets that are clearer and more relevant, so citizens get a better overview of their health and treatment. Responsible for concept development and user testing of electronic package leaflets in existing Danish health apps.</div>
+          <div class="exp-tags"><span class="exp-tag">Health</span><span class="exp-tag">UX research</span><span class="exp-tag">Prototyping</span><span class="exp-tag">Concept development</span><span class="exp-tag">Wireframes</span><span class="exp-tag">Health domain expert</span><span class="exp-tag">Stakeholder management</span></div>
+          <div class="exp-case"><a href="https://frednors.github.io/port/minlaege-gravitate-health.html">Case study online ↗</a></div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-date">2023 — 2024</div>
+        <div>
+          <div class="exp-company">Welcome · Jyske Bank</div>
+          <div class="exp-role">Product Designer</div>
+          <div class="exp-desc">Conducted market and trend analysis and UX research ahead of a five-day design sprint. Co-planned and facilitated the workshop, helping the client prioritise business and user needs, then developed and tested concepts for a new solution to meet them.</div>
+          <div class="exp-tags"><span class="exp-tag">Finance</span><span class="exp-tag">Workshop facilitation</span><span class="exp-tag">UX research</span><span class="exp-tag">Product vision &amp; strategy</span><span class="exp-tag">Concept development</span><span class="exp-tag">Digital prototypes</span><span class="exp-tag">User testing</span><span class="exp-tag">Design sprint</span></div>
+          <div class="exp-case"><a href="https://frednors.github.io/port/jyske-bank.html">Case study online ↗</a></div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-date">2022 — 2024</div>
+        <div>
+          <div class="exp-company">Shared Medication Decision Support (FMB) · North Denmark Region</div>
+          <div class="exp-role">Design Lead</div>
+          <div class="exp-desc">A national EU-tendered project by the Danish regions and the Organisation of General Practitioners: an evidence-based decision support system integrated into the regions' medication systems and GP practice systems, built to reduce medication errors and medicine-related hospital admissions. Shaped the product vision and strategy with the client, including an analytics tool for capturing end-user feedback on existing and upcoming functionality. Ran workshops and concept development with the business, developers, and clinicians to extend FMB into new verticals, including paediatrics and an AI module supporting correct, optimal medication for patients.</div>
+          <div class="exp-tags"><span class="exp-tag">Health</span><span class="exp-tag">UX research</span><span class="exp-tag">Product vision &amp; strategy</span><span class="exp-tag">Prototyping</span><span class="exp-tag">Wireframes</span><span class="exp-tag">Concept development</span><span class="exp-tag">Product data &amp; analytics</span><span class="exp-tag">AI</span><span class="exp-tag">Health domain expert</span><span class="exp-tag">Stakeholder management</span></div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-date">2023</div>
+        <div>
+          <div class="exp-company">Samblik Multisyg · Steno Diabetes Center Aarhus</div>
+          <div class="exp-role">Research &amp; Facilitation Lead</div>
+          <div class="exp-desc">Prepared and facilitated a five-day design sprint to create and test a new concept for cross-sector care of patients with multiple chronic conditions. Preparation included analysis of existing evidence and interviews with internal and external stakeholders and clinicians, distilled into the most promising focus areas. The sprint delivered prioritised focus areas, the first concept for the digital product, and a strategy for securing political and financial backing.</div>
+          <div class="exp-tags"><span class="exp-tag">Health</span><span class="exp-tag">UX research</span><span class="exp-tag">Workshop facilitation</span><span class="exp-tag">Prototyping</span><span class="exp-tag">Ideation</span><span class="exp-tag">Product vision &amp; strategy</span><span class="exp-tag">Wireframes</span><span class="exp-tag">User testing</span><span class="exp-tag">UX design</span></div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-date">2023</div>
+        <div>
+          <div class="exp-company">Customer Onboarding · Concordium</div>
+          <div class="exp-role">Product Designer</div>
+          <div class="exp-desc">Led the initial research and stakeholder interviews to build a thorough understanding of the connection between the Concordium business and its crypto wallet. Contributed to analysis of the existing user journey and design of the redesigned journey.</div>
+          <div class="exp-tags"><span class="exp-tag">Finance</span><span class="exp-tag">UX design</span><span class="exp-tag">Prototyping</span></div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-date">2022 — 2023</div>
+        <div>
+          <div class="exp-company">Samblik Børn · Steno Diabetes Center Aarhus</div>
+          <div class="exp-role">Product Designer</div>
+          <div class="exp-desc">Used existing data sources to create a unified, cross-sector overview of children's development from birth to school age, supporting early detection of and action on childhood overweight. Shaped the overall design process with the client: analysis of existing research on childhood overweight, review of existing software systems, interviews with health visitors and doctors, a digital prototype of the concept, and user testing with health visitors.</div>
+          <div class="exp-tags"><span class="exp-tag">Health</span><span class="exp-tag">UX research</span><span class="exp-tag">Workshop facilitation</span><span class="exp-tag">Prototyping</span><span class="exp-tag">Concept development</span></div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-date">2022 — 2023</div>
+        <div>
+          <div class="exp-company">Compassana · Bluespace Ventures</div>
+          <div class="exp-role">Product Designer</div>
+          <div class="exp-desc">Gathered and analysed insights and facilitated workshops to help the client shape the product vision and strategy for a new concept in the private Swiss healthcare market.</div>
+          <div class="exp-tags"><span class="exp-tag">Health</span><span class="exp-tag">UX research</span><span class="exp-tag">Stakeholder management</span><span class="exp-tag">Workshop facilitation</span><span class="exp-tag">Product vision &amp; strategy</span><span class="exp-tag">Health domain expert</span></div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-date">2021 — 2022</div>
+        <div>
+          <div class="exp-company">BioMedical Design · Novo Nordisk Foundation Fellowship Programme</div>
+          <div class="exp-role">BioMedical Design Fellow</div>
+          <div class="exp-desc">Ten weeks of fieldwork and interviews at the paediatric department, Aalborg University Hospital. Co-developed the concept and business strategy for a medtech device and mobile application designed to help manage incontinence.</div>
+          <div class="exp-tags"><span class="exp-tag">Health</span><span class="exp-tag">UX research</span><span class="exp-tag">Workshop facilitation</span><span class="exp-tag">Ideation</span><span class="exp-tag">IP strategy</span><span class="exp-tag">Regulatory strategy</span><span class="exp-tag">Business models</span><span class="exp-tag">Concept development</span><span class="exp-tag">Product vision &amp; strategy</span><span class="exp-tag">Prototyping</span><span class="exp-tag">Reimbursement strategy</span></div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-date">2019</div>
+        <div>
+          <div class="exp-company">Clinical Decision Support Systems (CDSS) · Central Denmark Region</div>
+          <div class="exp-role">Product Designer</div>
+          <div class="exp-desc">A research and innovation project backed by Innovation Fund Denmark, developing a clinical decision support system that helps healthcare staff in municipalities and hospitals identify citizens at risk of acute admission. Responsible for connecting patient and clinician needs with Enversion's AI technologies, applying clinical insight, research experience, and product design to AI health solutions. Helped build '+prio', an intelligent tool that helps clinicians prioritise patients.</div>
+          <div class="exp-tags"><span class="exp-tag">Health</span><span class="exp-tag">Product design</span><span class="exp-tag">UX research</span><span class="exp-tag">Prototyping</span><span class="exp-tag">Health domain expert</span><span class="exp-tag">Product vision &amp; strategy</span></div>
+          <div class="exp-case"><a href="https://frednors.github.io/port/cdss.html">Case study online ↗</a></div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-date">2017</div>
+        <div>
+          <div class="exp-company">Business Models for Successful Telemedicine · Aarhus University Hospital</div>
+          <div class="exp-role">Researcher</div>
+          <div class="exp-desc">Responsible for planning, conducting, and reporting a research project examining the business models behind successful telemedicine solutions. After analysing the Danish telemedicine market, conducted qualitative interviews with representatives of the companies behind the most successful solutions. Results published in Health Services Management Research.</div>
+          <div class="exp-tags"><span class="exp-tag">Health</span><span class="exp-tag">Research</span><span class="exp-tag">Qualitative interviews</span><span class="exp-tag">Health economics</span><span class="exp-tag">Business models</span></div>
+          <div class="exp-case"><a href="https://frednors.github.io/port/telemedicine-business-models.html">Case study online ↗</a></div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-date">2017</div>
+        <div>
+          <div class="exp-company">Neonatal Hypoglycaemia · Randers Regional Hospital</div>
+          <div class="exp-role">Product Designer</div>
+          <div class="exp-desc">Concept development and testing of an app that supports correct treatment of neonatal hypoglycaemia by keeping track of treatment algorithms, timing, and registration, and calculating medication doses.</div>
+          <div class="exp-tags"><span class="exp-tag">Health</span><span class="exp-tag">UX research</span><span class="exp-tag">Workshop facilitation</span><span class="exp-tag">User testing</span><span class="exp-tag">Digital prototypes</span></div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-date">2016</div>
+        <div>
+          <div class="exp-company">Family Pedigree · Department of Clinical Genetics, Aarhus University Hospital</div>
+          <div class="exp-role">Product Designer</div>
+          <div class="exp-desc">A family pedigree app helping patients collect family health information ahead of consultations at the Department of Clinical Genetics, improving clinical quality, making better use of the department's resources, and increasing patient flow.</div>
+          <div class="exp-tags"><span class="exp-tag">Health</span><span class="exp-tag">UX research</span><span class="exp-tag">Digital prototypes</span><span class="exp-tag">Workshop facilitation</span></div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-date">2016</div>
+        <div>
+          <div class="exp-company">Data Across Sectors · Aarhus Municipality</div>
+          <div class="exp-role">Product Designer</div>
+          <div class="exp-desc">An application supporting better sharing of patient information between the geriatric department at Aarhus University Hospital and Aarhus Municipality when collaborating on the care of geriatric patients.</div>
+          <div class="exp-tags"><span class="exp-tag">Health</span><span class="exp-tag">UX research</span></div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-date">2015</div>
+        <div>
+          <div class="exp-company">Trial Finder · Aarhus University Hospital</div>
+          <div class="exp-role">Product Designer</div>
+          <div class="exp-desc">A more efficient way to manage research protocols, improving the overview of active protocols and easing patient inclusion.</div>
+          <div class="exp-tags"><span class="exp-tag">Health</span><span class="exp-tag">UX research</span></div>
         </div>
       </div>
     </section>
@@ -303,7 +664,7 @@
         <div class="exp-date">2019 — 2021</div>
         <div>
           <div class="exp-company">Clinical Practice</div>
-          <div class="exp-role">Junior Doctor — Emergency Medicine, Orthopaedics, General Practice</div>
+          <div class="exp-role">Junior Doctor · Emergency Medicine, Orthopaedics, General Practice</div>
           <div class="exp-desc">Clinical rotations across emergency medicine, orthopaedic surgery, and general practice in Denmark. Developed first-hand understanding of healthcare delivery, clinical decision-making, and the systems that support, or hinder, good patient outcomes.</div>
         </div>
       </div>
@@ -312,7 +673,7 @@
         <div class="exp-date">2017</div>
         <div>
           <div class="exp-company">Aarhus University</div>
-          <div class="exp-role">Research Assistant — Telemedicine &amp; INNO-X Healthcare</div>
+          <div class="exp-role">Research Assistant · Telemedicine &amp; INNO-X Healthcare</div>
           <div class="exp-desc">Investigated business models of successful telemedicine implementations. Research published in peer-reviewed journal, contributing to the evidence base for scaling digital health solutions.</div>
         </div>
       </div>
@@ -415,6 +776,15 @@
       <div class="pub-item">
         <div class="pub-title">Successful implementation of telemedicine depends on personal relations between company representatives and healthcare providers: A qualitative study of business models for Danish home telemonitoring.</div>
         <div class="pub-meta">Peer-reviewed · Health Services Management Research</div>
+      </div>
+    </section>
+
+    <section>
+      <p class="section-label">Languages</p>
+      <div class="lang-chips">
+        <span class="lang-chip">Danish, Native</span>
+        <span class="lang-chip">English, Fluent</span>
+        <span class="lang-chip">Norwegian, Full comprehension, conversational</span>
       </div>
     </section>
 
